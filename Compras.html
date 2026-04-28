@@ -4,97 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Compras</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <a href="#"><button>Login</button></a>
-        <a href="cadastro.html"><button>Cadastro</button></a>
-        <a href="#"><button>Compras</button></a>
-        <br>
-        <form action="/buscar" method="get">
-            <input type="search" name="q" placeholder="Pesquisar..." aria-label="Buscar no site">
-            <button type="submit">Buscar</button>
-        </form>
+    <nav class="nav_index">
+        <div class="logo">
+            <img src="https://www.image2url.com/r2/default/images/1776905822711-66f1b81d-e99a-492f-8532-36259121c3b8.png" alt="image" />
+        </div>
+    <div id="nav_index_button">
+        <a href="index.html">Início</a>
+        <a href="Login.html">Login</a>
+        <a href="cadastro.html">Cadastro</a>
+    </div>
     </nav>
-    <header>
 
-    </header>
-    <main>
-        <div>
-            <h1>Lazy Little Plant</h1>
-            <h2>R$185.00 <s id="preco_antigo">200.00</s></h2>
-            <p>
-                A Lazy Greenhouse traz uma nova forma de cuidar das suas plantas. <br> Com design minimalista e tecnologia integrada, nossos vasos inteligentes monitoram automaticamente luz,<br> umidade e nutrição, garantindo o ambiente ideal sem exigir esforço constante. <br> Basta configurar uma vez e deixar que o sistema cuide do resto. <br>É a união entre natureza e automação, pensada para simplificar sua rotina <br>e manter seu espaço sempre vivo.
-            </p>
-        </div>
-        <div>
-            <div>
-                <p>Autoirrigação</p>
+    <main class="product-page">
+        <section class="product-main">
+            <div class="product-gallery">
+                <img src="https://www.image2url.com/r2/default/images/1776791311496-d3d72ae2-afbd-48a7-ac6d-7534884128c0.png" alt="Lazy Greenhouse" class="main-img">
             </div>
-            <div>
-                <p>Iluminação integrada</p>
+
+            <div class="product-details">
+                <span class="badge-novo">NOVO</span>
+                <h1>Lazy Greenhouse</h1>
+                <div class="price-container">
+                    <span class="price-current">R$ 185,00</span>
+                    <span class="price-old">R$ 220,00</span>
+                </div>
+                <p class="product-description">
+                    A Lazy Greenhouse traz uma nova forma de cuidar das suas plantas. Com design minimalista e tecnologia integrada...
+                </p>
+
+                <div class="feature-tags">
+                    <span> Autoirrigação</span>
+                    <span> Iluminação integrada</span>
+                    <span> Painel de controle</span>
+                </div>
+
+                <div class="action-buttons">
+                    <a class="btn-buy" href="Index.html">Compre agora</a>
+                    <a class="btn-cart" href="Index.html">Adicionar ao carrinho</a>
+                </div>
+                <div class="good-phrase">
+                    <p> "Se soubesse que o mundo se acabaria amanhã, eu ainda hoje plantaria uma árvore" – Martin Luther King</p>
+                </div>
+                <div class="spec-table">
+                    <div class="spec-row"><span>Nível de manutenção </span><strong>Lazy-Friendly</strong></div>
+                    <div class="spec-row"><span>Taxa de crescimento </span><strong>Média</strong></div>
+                    <div class="spec-row"><span>Tecnologia </span><strong>Arduino</strong></div>
+                </div>
             </div>
-            <div>
-                <p>Painel de Controle</p>
-            </div>
-        </div>
-        <div>
-            <div>
-                <button>Compre Agora</button>
-            </div>
-            <div>
-                <button> Adicionar ao carrinho </button>
-            </div>
-        </div>
-        <hr>
-        <div>
-            <p>Nivel de manutenção</p><p>Lazy-Friendly</p>
-            <p>Taxa de crescimento</p><p>Media</p>
-            <p>Tecnologia</p><p>Arduino</p>
-        </div>
-        <div>
-            <div>
+        </section>
+
+        <section class="product-extra">
+            <div class="growth-management">
                 <h2>Gestão Inteligente do Crescimento</h2>
-                <label for="">Eficiência da umidade do solo</label>
-                <hr id="Eficiência_da_umidade">
-                <label for="Otimização_superfície">Otimização da fotossíntese</label>
-                <hr id="Otimização_superfície"> 
+                <div class="progress-container">
+                    <label>EFICIÊNCIA DA HUMIDADE DO SOLO <span>94%</span></label>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 94%;"></div></div>
+                    
+                    <label>OTIMIZAÇÃO DA FOTOSSÍNTESE <span>82%</span></label>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 82%;"></div></div>
+                </div>
             </div>
-            <div>
-                <h2>Tecnologia Sustentável</h2>
-                <p>Projetado com materiais <br>biodegradáveis e sensores eficientes que reduzem o consumo de energia, <br>garantindo longa duração e menor impacto ambiental.</p>
+
+            <div class="sustainability-card">
+                <div class="card-icon"></div>
+                <h3>Tecnologia Sustentável</h3>
+                <p>Projetado com materiais biodegradáveis e sensores eficientes que reduzem o consumo de energia.</p>
             </div>
-        </div>
+        </section>
     </main>
-    <footer>
-        <div>
-            <p>
-                Desenvolve soluções para tornar o cuidado <br>
-                com plantas mais prático e acessível <br> 
-                através da tecnologia.
-            </p>
-        </div>
-        <div>
-            <ul>
-                <a href="#">Início</a>
-                <a href="#">Login</a>
-                <a href="#">Cadastro</a>
-                <a href="#">Sobre Nós</a>
-            </ul>
-        </div>
-        <div>
-            <ul>
-                <li>lazygreenhouse@gmail.com</li>
-                <li>(12) 98877-2660</li>
-                <li>Caçapava-SP</li>
-                <li>lazy.greenhouse</li>
-            </ul>
+    <footer class="footer_index">
+        <div id="footer_box"> 
+            <div id="footer_index_information1">
+                <p>
+                    Desenvolve soluções para tornar o cuidado <br>
+                    com plantas mais prático e acessível <br> 
+                    através da tecnologia.
+                </p>
+            </div>
+            <div id="footer_index_information2">
+                <ul>
+                    <a href="Index.html">Início</a>
+                    <a href="Login.html">Login</a>
+                    <a href="Cadastro.html">Cadastro</a>
+                    <a href="SobreNós.html">Sobre Nós</a>
+                </ul>
+            </div>
+            <div id="footer_index_information3">
+                <ul>
+                    <li>
+                        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" class="footer-icon">
+                        <a href="https://www.instagram.com/lazygreenhouse_projetosenai/">lazygreenhouse@gmail.com</a>
+                    </li>
+                    <li>
+                        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="WhatsApp" class="footer-icon">
+                        (12) 98877-2660
+                    </li>
+                    <li>
+                        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Localização" class="footer-icon">
+                        Caçapava-SP
+                    </li>
+                    <li>
+                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="footer-icon">
+                        lazy.greenhouse
+                    </li>
+                </ul>
+            </div>
         </div>
         <hr>
-        <div class="footer-style">
-            <p>© 2026 Lazy Greenhouse. | Todos os direitos reservados.</p>
-            <p>Contato: lazygreenhouse@email.com</p>
-            <a href="#">Termos de Uso e Privacidade</a>
+        <div id="footer_style">
+            <div class="footer_left">
+                <p>©2026 LazyGreenhouse. Todos os direitos reservados. </p>
+                <p>Caçapava-SP</p>
+            </div>
+            
+            <div class="footer_right">
+                <a href="#">Termos de uso</a>
+                <a href="#">Privacidade</a>
+            </div>
         </div>
     </footer>
 </body>
