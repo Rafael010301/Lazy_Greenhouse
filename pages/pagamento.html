@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento</title>
+    <link rel="stylesheet" href="styleM.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo macedo pp.png">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav_esq"> 
+                <img src="logo macedo ppp.png" alt="image" id="logo_nav" width="27" height="43"/>
+                <div id="nav_button">
+                    <a href="index.html">Início</a>
+                    <a href="Login.html">Login</a>
+                    <a href="cadastro.html">Cadastro</a>
+                </div>
+            </div>
+            <div class="nav_dir">
+                <a href="carrinho.html"><img src="carrinho-carrinho.png" alt="image" id="carrinho_nav" width="30" height="30"/></a>
+                <div class="search_bar">
+                    <input type="text" placeholder="O que você está procurando?">
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="main_pagamento"> >
+    <section class="pagamento">
+        <div id="entrega">   
+            <form action="" method="post">
+                <h2>Endereço de Entrega</h2>
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required placeholder="Seu nome completo"><br><br>
+                <label for="rua">Endereço:</label>
+                <input type="text" id="endereco" name="endereco" required placeholder="Rua, número, complemento"><br><br>
+                <div id="a">
+                    <label for="cidade">Cidade:</label>
+                    <input type="text" id="cidade" name="cidade" required placeholder="Cidade"><br><br>
+                    <label for="estado">Estado:</label>
+                    <input type="text" id="estado" name="estado" required placeholder="Estado"><br><br>
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep" required placeholder="CEP"><br><br>
+                </div>
+            </form>
+        </div>
+            
+        <div id="pagamento"> 
+            <form action="" method="post">
+                <h2>Informações de Pagamento</h2>
+                <label for="cartao">Número do Cartão:</label>
+                <input type="text" id="cartao" name="cartao" required placeholder="......."><br><br>
+                <div id="a">
+                    <label for="validade">Validade:</label>
+                    <input type="text" id="validade" name="validade" required><br><br>
+                    <label for="cvv">CVV:</label>
+                    <input type="text" id="cvv" name="cvv" required><br><br>
+                </div>
+            </form>
+        </div>   
+    </section>          
+    <section class="resumo">
+        <h2>Resumo do Pedido</h2>
+        <p>Lazy Greenhouse</p>
+        <div class="cupom-container">
+            <label for="cupom">Cupom de Desconto</label>
+            <div class="cupom-field">
+                <input type="text" id="cupom" name="cupom" placeholder="Digite seu cupom">
+                <button type="button" id="btn-cupom">Aplicar</button>
+             </div>
+        </div>
+        <br>
+        <p>Quantidade: 1</p>
+        <p>Preço Unitário: R$ 185,00</p>
+        <p>Total: R$ 185,00</p>
+        <button class="btn-confirmar">Confirmar Compra</button>
+    </section>        
+    </main>
+         <footer>
+        <div>
+            <p>
+                Desenvolve soluções para tornar o cuidado <br>
+                com plantas mais prático e acessível <br> 
+                através da tecnologia.
+            </p>
+        </div>
+        <div  id="navegação">
+            <ul>
+                <p><b>Navegação</b></p>
+                <a href="#">Início</a>
+                <a href="#">Login</a>
+                <a href="#">Cadastro</a>
+                <a href="#">Sobre Nós</a>
+            </ul>
+        </div>
+        <div id="contato">           
+            <ul>
+                    <li>
+                        <img src="envelope.png" alt="Email" class="footer-icon">
+                        <a>lazygreenhouse@gmail.com</a>
+                    </li>
+                    <li>
+                        <img src="whatsapp.png" alt="WhatsApp" class="footer-icon">
+                        (12) 98877-2660
+                    </li>
+                    <li>
+                        <img src="instagram.png" alt="Instagram" class="footer-icon">
+                        lazy.greenhouse
+                    </li>
+                    <li>
+                        <img src="marcador.png" alt="Localização" class="footer-icon">
+                        Caçapava-SP 
+                    </li>
+                </ul>
+        </div>
+        <hr>
+        <div class="footer-style">
+            <p>© 2026 Lazy Greenhouse. | Todos os direitos reservados.</p>
+            <a href="#">Termos de Uso e Privacidade</a>
+        </div>
+    </footer>  
+</body>    
+</html>  
