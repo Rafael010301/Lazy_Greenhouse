@@ -1,24 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box; 
     font-family: 'Montserrat', sans-serif; 
+}
+h1, h2, h3, h4, h5, h6 { cursor: default; }
+a { cursor: pointer; }
+p { font-weight: 400; }
 
-}
-* h1 h2 h3 h4 h5 h6{
-    cursor: default;
-}
-a{
-    cursor: pointer;
-}
-.nav_index{
-    display:flex;
+/* Navbar */
+.nav_index {
+    display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #102C26;
     margin: 3px;
     padding: 10px 50px;
+}
+.nav_index img {
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 20px;
+}
+#nav_index_navbar {
+    display: flex;
+    border: none;
+    border-radius: 6px;
+    width: 300px;
+    height: 40px;
+    flex-direction: row-reverse;
 }
 #nav_index_button a {
     text-decoration: none;
@@ -30,77 +42,52 @@ a{
     transition: all 0.3s ease; 
 }
 #nav_index_button a:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Brilho sutil */
-    backdrop-filter: blur(5px);                 /* Desfoque de fundo (muito moderno) */
+    background-color: rgba(255, 255, 255, 0.1); 
+    backdrop-filter: blur(5px);
     color: #F2C94C;
 }
+#nav_index_button a:active { transform: scale(0.95); }
 
-#nav_index_button a:active {
-    transform: scale(0.95); /* Sensação de clique real */
-}
-#nav_index_navbar{
-    display: flex;
-    border: none;
-    border-radius: 6px;
-    width: 300px;
-    height: 40px;
-    flex-direction: row-reverse;
-
-}
-.nav_index img{
-    display: flex;
-    flex-direction: row-reverse;
-    margin: 20px;
-}
-.header_index{
+/* Header Index */
+.header_index {
     display: flex;
     align-items: center;
     justify-content: space-around;
 }
-.header_index img{
+.header_index img {
     display: flex;
     flex: 2;
     height: 500px;
     width: 500px;
 }
-#verdao {
-    color: #88D66B;
-    text-decoration: none;
-    
-}
-.header_index_text b {
-    transition: ease 0.3s;
-}
-.header_index_text b:hover{
-
-    transform: scale(1.05);
-}
-.header_index_text{
-    align-items: center;
-    text-align: center;
-}
-.header_index .header_index_text hr{
+.header_index hr { width: 400px; }
+.header_index .header_index_text hr {
     display: flex;
     align-items: center;
     margin-top: 10px;
     width: 600px;
 }
-.header_index_text h1{
-    font-size: 60px;
+.header_index_text {
+    align-items: center;
+    text-align: center;
 }
-.header_index hr{
-    width: 400px;
+.header_index_text h1 { font-size: 60px; }
+.header_index_text b { transition: ease 0.3s; }
+.header_index_text b:hover { transform: scale(1.05); }
+
+#verdao {
+    color: #88D66B;
+    text-decoration: none;
 }
 #header_index_button {
-    height:50px;
+    height: 50px;
     width: 190px;
     background-color: #F2C94C;
     color: rgb(0, 0, 0);
     padding: 3px;
     border-radius: 5px;
-    border:solid 2px;
     border: solid 2px #000;
-    display:inline-flex;
+    display: inline-flex;
     text-decoration: none;
     justify-content: center; 
     align-items: center;     
@@ -117,105 +104,43 @@ a{
     transform: scale(1.05);   
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); 
 }
-#header_index_button:active {
-    transform: scale(0.98);
-}
-#header_index_buttom:hover{
-    background-color: #d9b43c;
-    transform:scale(1.05) ;
-    transition: 0.3s;
-}
-.main_index_group{
+#header_index_button:active { transform: scale(0.98); }
+
+/* Main Index */
+.main_index_group {
     margin: 100px;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-#main_index_title{
+#main_index_title {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 20px;
 }
-#main_index_title h2{
-    font-size: 30px;
-}
-/* Título principal (Lazy Greenhouse) - Bem forte */
-.main_index_text h2 {
-    font-weight: 800; 
-}
+#main_index_title h2 { font-size: 30px; }
 
-/* Títulos dos cards */
-.main_index_box h2 {
-    font-weight: 700;
-}
-
-/* Parágrafos e descrições - Mais leve para não cansar a vista */
-p {
-    font-weight: 400;
-}
-
-/* A tag "O MELHOR" - Geralmente bem grossa no Figma */
-.tag-melhor {
-    font-weight: 900;
-    text-transform: uppercase; /* Deixa em caixa alta para combinar */
-}
-#main_index_list {
-    margin: 60px;
-}
-#main_index_list ul{
-    display: flex;
-    flex-direction: row; 
-    justify-content: space-around;
-    list-style: none; 
-    padding: 0;      
-    margin: 0;
-}
-/* Isso garante que os itens da lista alinhem tudo no centro (ícone, título, p) */
-#main_index_list li {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    max-width: 300px;
-    background-color: #88D66B;
-}
-
-/* Estilo específico para os ícones */
-.list-icon {
-    width: 50px;         
-    height: 50px;       
-    margin-bottom: 15px; 
-    object-fit: contain; 
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-#main_index_list li:hover .list-icon {
-    transform: scale(1.2) rotate(5deg); /* Aumenta e gira um pouquinho */
-}
-#main_index_list li { 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    max-width: 300px;
-    margin: 10px;
-    border-radius: 20px;
-    cursor:default;
-}
-#main_index_list li p {
-    font-weight: normal; 
-    text-align: center;  
-    font-size: 14px; 
-         
-}
+/* Main Text & Typography */
 .main_index_text {
     padding: 20px;
     max-width: 1000px;        
     margin: 60px auto 5px;     
 }
-/*Container pai*/
-/* 1. Container Pai: Controla a largura total e centraliza */
+.main_index_text h2 {
+    font-weight: 800; 
+    font-size: 42px;         
+    color: #102C26;          
+    margin-bottom: 5px;
+}
+.main_index_text h4 {
+    font-size: 18px;
+    color: #666;             
+    font-weight: normal;
+    margin-bottom: 15px;
+}
+
+/* Main Box */
 .main_index_box {
     display: flex;
     flex-direction: row;
@@ -225,8 +150,25 @@ p {
     margin: 50px auto;  
     padding: 0 20px;
 }
+.main_index_box h2 {
+    font-weight: 700;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.main_index_box p {
+    color: white;
+    font-size: 14px;
+    line-height: 1.4;
+}
+.main_index_box img {
+    align-self: flex-end; 
+    max-width: 100%;      
+    height: auto;
+    border-radius: 10px;  
+    margin-top: 10px;     
+}
 
-/* 2. Card de Destaque (Esquerda) */
+/* Card Principal (Esquerda) */
 #main_index_card1 {
     flex: 1.5; 
     background-color: #E8E8E8; 
@@ -236,51 +178,26 @@ p {
     flex-direction: column;
     justify-content: flex-start;
 }
+#main_index_card1 img {
+    display: flex;
+    align-items: center;
+    max-height: 500px;
+}
 #main_index_card1, .main_index_column_small {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 #main_index_card1:hover, .main_index_column_small:hover {
     transform: translateY(-8px); 
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9); 
 }
 
-.tag-melhor {
-    background-color: black;
-    width: fit-content;
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
-
-/* Estilo do Preço (Botão Preto) */
-.preco-box h4 {
-    background-color: #000;
-    color: #fff;
-    width: fit-content;
-    padding: 10px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 0; /* Remova o auto daqui */
-}
-.preco-box {
-    margin-top: auto;
-}
-.preco-box a{
-    text-decoration: none;
-}
-
-/* 3. Coluna da Direita */
+/* Coluna Direita (Cards Pequenos) */
 .main_index_right_column {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
-
-/* 4. Estilo Comum dos Cards Pequenos */
 .main_index_column_small {
     padding: 25px;
     border-radius: 20px;
@@ -288,87 +205,82 @@ p {
     flex-direction: column;
     min-height: 180px;
 }
-/* Seleciona todas as imagens dentro dos cards */
-.main_index_box img {
-    align-self: flex-end; /* Alinha a imagem à direita/baixo */
-    max-width: 100%;      /* Não deixa ela estourar o card */
-    height: auto;
-    border-radius: 10px;  /* Deixa as pontas da foto suaves */
-    margin-top: 10px;     /* Espaço entre o texto e a foto */
-}
+.card-verde { background-color: #88D66B; color: white; }
+.card-cinza { background-color: #2A4B7D; color: white; }
 
-/* Ajuste específico para o card grande se a foto for muito alta */
-#main_index_card1 img {
-    display: flex;
-    align-items: center;
-    max-height: 500px;
-}
-
-/* Cores específicas dos cards pequenos conforme o Figma */
-.card-verde {
-    background-color: #88D66B; /* Verde água */
-    color: white;
-}
-
-.card-cinza {
-    background-color: #2A4B7D; /* Cinza claríssimo */
-    color: white;
-}
-
-/* Ajuste de fontes internas */
-.main_index_box h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.main_index_box p {
-    color: white;
-    font-size: 14px;
-    line-height: 1.4;
-}
-.main_index_text {
-    text-align:flex;
-    max-width: 1000px;        
-    margin: 60px auto 5px; 
-}
-
-.main_index_text h2 {
-    font-size: 42px;         
-    color: #102C26;          
-    margin-bottom: 5px;
-}
-
-.main_index_text h4 {
-    font-size: 18px;
-    color: #666;             
-    font-weight: normal;
+/* Elementos dos Cards */
+.tag-melhor {
+    background-color: black;
+    width: fit-content;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 900;
+    text-transform: uppercase;
     margin-bottom: 15px;
 }
-.footer_index {
-    display: flex;
-    background-color: #102C26;
-    flex-direction: column;
-    
-    
-}
-/* Container principal do Footer */
-.footer_index {
-    background-color: #102C26;
-    padding: 60px 50px 30px; /* Mais espaço no topo e laterais */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Centraliza a logo e a linha horizontal */
+.preco-box { margin-top: auto; }
+.preco-box a { text-decoration: none; }
+.preco-box h4 {
+    background-color: #000;
+    color: #fff;
+    width: fit-content;
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 0; 
 }
 
-/* Ajuste específico da Imagem da Logo */
+/* Listagem Inteligente */
+#main_index_list { margin: 60px; }
+#main_index_list ul {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-around;
+    list-style: none; 
+    padding: 0;      
+    margin: 0;
+}
+#main_index_list li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    max-width: 300px;
+    background-color: #88D66B;
+    margin: 10px;
+    border-radius: 20px;
+    cursor: default;
+}
+#main_index_list li p {
+    font-weight: normal; 
+    font-size: 14px; 
+    text-align: center;
+}
+.list-icon {
+    width: 50px;         
+    height: 50px;       
+    margin-bottom: 15px; 
+    object-fit: contain; 
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+#main_index_list li:hover .list-icon { transform: scale(1.2) rotate(5deg); }
+
+/* Footer */
+.footer_index {
+    background-color: #102C26;
+    padding: 60px 50px 30px; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+}
 .footer_index .logo img {
-    width: 90px;      /* Tamanho controlado para não quebrar o layout */
-    height: auto;      /* Mantém a proporção */
-    margin-bottom: 40px; /* Espaço entre a logo e as colunas de texto */
+    width: 90px;      
+    height: auto;      
+    margin-bottom: 40px; 
     display: block;
 }
-
-/* Organização das colunas de informação */
 #footer_box {
     display: flex;
     justify-content: space-between;
@@ -377,8 +289,6 @@ p {
     margin-bottom: 40px;
     gap: 30px;
 }
-
-/* Ajuste da linha horizontal para não ficar colada */
 .footer_index hr {
     width: 100%;
     max-width: 1100px;
@@ -386,31 +296,46 @@ p {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin: 20px 0;
 }
-#footer_index_information1{
-    color: white;
-}
+
+#footer_index_information1 { color: white; }
 #footer_index_information2 ul {
     display: flex;
     margin: 20px;
     flex-direction: column;
     color: white;
-    
 }
 #footer_index_information2 a {
     color: white;
     text-decoration: none;
     padding: 2px;
-    
 }
-#footer_index_information3 li{
-    color: white;
+#footer_index_information3 ul {
     list-style: none;
-    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px; 
 }
-#footer_index_information3 li a{
+#footer_index_information3 li {
+    display: flex;
+    align-items: center; 
     color: white;
-    text-decoration: none;
+    font-size: 14px;
+    gap: 10px; 
+    transition: color 0.3s ease;
+    cursor: pointer;
 }
+#footer_index_information3 a { color: white; text-decoration: none; }
+#footer_index_information3 li:hover, 
+#footer_index_information3 a:hover { color: #F2C94C; }
+#footer_index_information3 li:hover .footer-icon { transform: scale(1.2); }
+
+.footer-icon {
+    width: 18px; 
+    height: 18px; 
+    transition: transform 0.3s ease;
+    color: #000;
+}
+
 #footer_style {
     display: flex;
     justify-content: space-between; 
@@ -421,22 +346,17 @@ p {
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
-
-/* Ajuste do lado Esquerdo */
 .footer_left p {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
     text-align: left; 
 }
-
-/* Ajuste do lado Direito */
 .footer_right {
     display: flex;
     flex-direction: column; 
     align-items: flex-end;  
 }
-
 .footer_right a {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.7);
@@ -448,207 +368,15 @@ p {
     text-decoration: underline; 
     transition: 0.2s;
 }
+#footer_style a:active { opacity: 0.5; }
 
-#footer_style a:active {
-    opacity: 0.5; 
-}
-/* Estilo para a lista de contatos */
-#footer_index_information3 ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px; 
-}
-
-#footer_index_information3 li {
-    display: flex;
-    align-items: center; 
-    color: white;
-    font-size: 14px;
-    gap: 10px; 
-    transition: color 0.3s ease;
-    cursor: pointer;
-}
-#footer_index_information3 a{
-    color :white
-}
-#footer_index_information3 a:hover{
-    color: #F2C94C;
-}
-
-
-/* Tamanho dos ícones */
-.footer-icon {
-    width: 18px; 
-    height: 18px; 
-    transition: transform 0.3s ease;
-    color: #000;
-}
-
-/* Efeito de Hover na linha toda */
-#footer_index_information3 li:hover {
-    color: #F2C94C; /* Muda o texto para o amarelo da marca */
-}
-
-#footer_index_information3 li:hover .footer-icon {
-    transform: scale(1.2); /* O ícone cresce um pouco */
-}
-/* Layout Geral da Página de Produto */
-.product-page {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.product-main {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Divide em duas colunas iguais */
-    gap: 60px;
-    margin-bottom: 60px;
-}
-
-/* Badge "NOVO" */
-.badge-novo {
-    background: #D1F0E8;
-    color: #102C26;
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 10px;
-    font-weight: 800;
-}
-
-/* Preços */
-.price-container {
-    margin: 15px 0;
-}
-.price-current {
-    font-size: 28px;
-    font-weight: 800;
-    color: #000;
-}
-.price-old {
-    text-decoration: line-through;
-    color: #999;
-    font-size: 16px;
-    margin-left: 10px;
-}
-
-/* Tags de Recursos */
-.feature-tags {
-    display: flex;
-    gap: 15px;
-    margin: 25px 0;
-}
-.feature-tags span {
-    background: #f0f0f0;
-    padding: 8px 15px;
-    border-radius: 8px;
-    font-size: 12px;
-    color: #555;
-}
-.action-buttons a{
-    display: flex;
-    text-decoration: none;
-    flex-direction: column;
-    text-align: center;
-    color: #000;
-
-}
-.good-phrase{
-    margin-top: 20px;
-}
-
-/* Botões Estilo Figma */
-.btn-buy {
-    width: 100%;
-    background: #F2C94C;
-    border: none;
-    padding: 15px;
-    border-radius: 8px;
-    font-weight: 700;
-    cursor: pointer;
-    margin-bottom: 10px;
-    transition: 0.3s;
-}
-.btn-buy a{
-    text-decoration: none;
-    color: black;
-}
-.btn-buy:hover { 
-    background:#102C26; 
-    color: white;
-    transform: scale(1.02); 
-    
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); 
-}
-.btn-buy:active{
-    transform: scale(0.95);
-}
-.btn-cart {
-    width: 100%;
-    background: white;
-    border: 2px solid #000;
-    padding: 15px;
-    border-radius: 8px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.btn-cart a {
-    text-decoration: none;
-    color: black;
-}
-.btn-cart:hover { 
-    background: whitesmoke; 
-    color: black;
-    transform: scale(1.02);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); 
-}
-.btn-cart:active{
-    transform: scale(0.95);
-}
-/*Barra de manutenção :)*/
-.spec-table{
-    margin-top: 150px;
-}
-/* Barras de Progresso */
-.progress-container label {
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    font-weight: 700;
-    margin: 15px 0 5px;
-}
-.progress-bar {
-    height: 8px;
-    background: #eee;
-    border-radius: 10px;
-    overflow: hidden;
-}
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #102C26, #88D66B);
-}
-
-/* Card de Sustentabilidade */
-.sustainability-card {
-    background: #102C26;
-    color: white;
-    padding: 30px;
-    border-radius: 20px;
-    margin-top: 30px;
-}
-/* Estilos específicos para a página Sobre Nós */
-/* --- ESTILIZAÇÃO EXCLUSIVA: SOBRE NÓS --- */
-
-/* Header centralizado e limpo */
-.logo img{
+/* Sobre Nós */
+.logo img {
     display: flex;
     justify-content: flex-start;
     height: fit-content;
     width: fit-content;
 }
-
 .sobre-header {
     display: flex;
     flex-direction: column;
@@ -657,15 +385,12 @@ p {
     padding: 80px 20px;
     background-color: #ffffff;
 }
-
 .sobre-header h1 {
     font-size: 45px;
     font-weight: 800;
     color: #102C26;
     margin: 20px 0;
 }
-
-/* Grid de conteúdo em duas colunas */
 .sobre-main {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -674,22 +399,17 @@ p {
     margin: 0 auto 100px;
     padding: 0 20px;
 }
-
-/* Estilo dos blocos de texto dentro do Main */
 .sobre-main div h3 {
     font-size: 24px;
     color: #102C26;
     margin-bottom: 15px;
     font-weight: 700;
 }
-
 .sobre-main div p {
     font-size: 16px;
     line-height: 1.8;
     color: #444;
 }
-
-/* Ajuste para a seção final (Citação/Frase) ocupar a largura toda */
 .sobre-main div:last-child {
     grid-column: 1 / -1; 
     text-align: center;

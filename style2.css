@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: white;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+}
+
+#main_cadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: 27px;
+} 
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    width: 800px;
+    min-height: 500px;
+    gap: 27px;
+}
+#cadastro form{
+    display: flex;
+    flex-direction: column;
+}
+#cadastro input:not([type="checkbox"]) {
+    width: 400px;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #999;
+    border-radius: 5px;
+    display: block;
+}
+.banner{
+    width: 350px;    
+    min-width: 350px;
+    background-color: #102C26;
+    color: white;
+    background-image: 
+        linear-gradient(
+            rgba(10, 30, 24, 0.80),
+            rgba(10, 30, 24, 0.80)
+        ),
+        url(fundobanner.png);
+}
+.banner p {
+    font-size: 13px;
+    color: wheat;
+    font: 'Inter';
+    padding: 10px;
+}
+.banner h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px;
+}
+button {
+    width: 100%;
+    height: 46px;
+    background: #F2C94C;
+    color: #1a1a1a;
+    font-size: 15px;
+    font-weight: 600;
+    border: 2px solid #000000;
+    border-radius: 10px;        
+    cursor: pointer;
+    margin-top: 16px;
+}
+.check-row {
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start;
+    width: 400px; 
+    margin-top: 10px;
+    gap: 10px; 
+}
+.check-row input[type="checkbox"] {
+    width: auto; 
+    margin: 0;   
+    cursor: pointer;
+}
+.social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+.social p {
+    font-size: 13px;
+    color: #999;
+}
+
+.social-botoes {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+.social-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 44px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    background: #f5f5f5;
+}
+.social-btn:hover {
+    background: #ebebeb;
+}
+.social-btn img {
+    width: 18px;
+    height: 18px;
+}
+footer {
+    background: #102C26;
+    color: #ffffff;
+    padding: 48px 60px 24px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+}
+#navegação a {
+    display: flex;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 14px;
+    flex-direction: column;
+}
+footer hr {
+    grid-column: 1 / -1; 
+    border: none;
+    border-top: 1px solid #2e5a4a;
+    margin: 8px 0;
+    text-decoration: none;
+    color: #ffffff;
+}
+.footer-style {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.footer-style a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+#main_login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: 27px;
+} 
+#login{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    text-align: center;
+}
+#login h3 {
+    text-align: center; 
+    padding: 10px; 
+}
+#login > p {
+    text-align: center;
+    padding: 10px; 
+}
+#login form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+#login input{
+    width: 400px;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #999;
+    border-radius: 5px;
+    display: block;
+}
+#login label {
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'inter';
+    color: #000000;
+    margin-top: 10px;
+    text-align: left;
+}
+#logo_login{
+    width: 50px; 
+    height: 50px;
+    margin:0 auto;
+    padding: 10px;
+    display: block;
+}
+.senha{
+    display: flex;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'inter';
+    color: #000000;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.senha a{
+    color: black;
+    text-decoration: none;
+}
+#main_esqueci {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+#esqueci{
+    background: white;
+    border-radius: 10px;
+    padding: 40px 36px;
+    width: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+#esqueci input{
+    width: 310px;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #999;
+    border-radius: 5px;
+    display: block;
+}
+#esqueci label {
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'inter';
+    color: #000000;
+    margin-top: 10px;
+    text-align: left;
+}
+#esqueci  p {
+    font-size: 13px;
+    color: #000000;
+    line-height: 1.7;
+    text-align: left;
+    font-family: 'inter';
+}
+#esqueci h3 {
+    text-align: center; 
+}
+.ainda{
+    display: flex;
+    font-size: 13px;
+    font-weight: 300;
+    font-family: 'inter';
+    text-decoration: none;
+    gap: 3px;
+    justify-content: center;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+.ainda a{
+    text-decoration: none;
+    color: black;
+    margin-top: 3px;
+}   
+hr{
+    border: none;
+    border-top: 1px solid #000000; 
+    margin-right: 5px;
+    margin-left: 5px ;
+}
