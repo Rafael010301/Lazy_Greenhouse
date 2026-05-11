@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho — Lazy Greenhouse</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/logo macedo pp.png">
+    <style>
+        /* ==========================================
+           Estilos do Carrinho
+           MELHORIA: Página nova criada para
+           visualizar e gerenciar os itens do carrinho
+           antes de ir para o pagamento.
+           ========================================== */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #f4f6f8;
+            min-height: 100vh;
+        }
+
+        /* --- Navbar --- */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #102C26;
+            padding: 10px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav_left { display: flex; align-items: center; gap: 16px; }
+        #nav_logo_img { width: 38px; height: 38px; object-fit: contain; }
+        .nav_links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            font-size: 15px;
+            padding: 8px 14px;
+            border-radius: 5px;
+            transition: background 0.2s;
+        }
+        .nav_links a:hover { background: rgba(255,255,255,0.1); color: #F2C94C; }
+        .nav_right { display: flex; align-items: center; }
+        #nav_cart_link { position: relative; display: flex; align-items: center; text-decoration: none; }
+        #nav_cart_icon { width: 28px; height: 28px; filter: invert(1); }
+        #nav_cart_badge {
+            position: absolute; top: -8px; right: -8px;
+            background: #F2C94C; color: #000;
+            font-size: 11px; font-weight: 700;
+            width: 18px; height: 18px; border-radius: 50%;
+            display: none; align-items: center; justify-content: center;
+        }
+
+        /* --- Layout principal --- */
+        .carrinho-page {
+            max-width: 900px;
+            margin: 48px auto;
+            padding: 0 24px;
+        }
+
+        /* Título da página */
+        .carrinho-titulo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #102C26;
+            margin-bottom: 8px;
+        }
+        .carrinho-subtitulo {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 32px;
+        }
+
+        /* --- Mensagem de carrinho vazio --- */
+        .carrinho-vazio {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        }
+        .carrinho-vazio .icone-vazio { font-size: 72px; margin-bottom: 20px; }
+        .carrinho-vazio h3 { font-size: 22px; color: #333; margin-bottom: 8px; }
+        .carrinho-vazio p { font-size: 14px; color: #888; margin-bottom: 28px; }
+        .btn-ir-compras {
+            display: inline-block;
+            background: #102C26;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+        .btn-ir-compras:hover { background: #1a4a3a; }
+
+        /* --- Lista de itens do carrinho --- */
+        .carrinho-lista { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+
+        .carrinho-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: white;
+            border-radius: 14px;
+            padding: 20px 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+        }
+        .item-img {
+            width: 88px; height: 88px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid #eee;
+            flex-shrink: 0;
+        }
+        .item-info { flex: 1; }
+        .item-nome { font-size: 17px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+        .item-desc { font-size: 13px; color: #999; margin-bottom: 12px; }
+
+        /* Controles de quantidade */
+        .item-quantidade {
+            display: flex; align-items: center; gap: 12px;
+        }
+        .qty-btn {
+            width: 30px; height: 30px; border-radius: 50%;
+            border: 1px solid #ccc; background: white;
+            font-size: 16px; font-weight: 700; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            color: #333; transition: all 0.2s;
+        }
+        .qty-btn:hover { background: #102C26; color: white; border-color: #102C26; }
+        .qty-numero { font-size: 16px; font-weight: 700; min-width: 24px; text-align: center; }
+
+        /* Coluna do preço e botão de remover */
+        .item-preco-col { display: flex; flex-direction: column; align-items: flex-end; gap: 12px; }
+        .item-preco { font-size: 18px; font-weight: 800; color: #102C26; }
+        .btn-remover {
+            background: none; border: none; cursor: pointer;
+            color: #ccc; font-size: 13px; font-weight: 600;
+            transition: color 0.2s; padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .btn-remover:hover { color: #c62828; }
+
+        /* --- Rodapé do carrinho: total + botão --- */
+        .carrinho-rodape {
+            background: white;
+            border-radius: 16px;
+            padding: 28px 32px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+        }
+        .rodape-linha {
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+            color: #666;
+            padding: 8px 0;
+        }
+        .rodape-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 22px;
+            font-weight: 800;
+            color: #102C26;
+            padding: 16px 0 20px;
+            border-top: 2px solid #f0f0f0;
+            margin-top: 8px;
+        }
+        .btn-checkout {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #102C26, #1a4a3a);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            letter-spacing: 0.5px;
+        }
+        .btn-checkout:hover {
+            background: linear-gradient(135deg, #1a4a3a, #2e7d32);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16, 44, 38, 0.3);
+        }
+        .btn-continuar {
+            display: block;
+            text-align: center;
+            margin-top: 14px;
+            color: #888;
+            font-size: 14px;
+            text-decoration: none;
+        }
+        .btn-continuar:hover { color: #102C26; text-decoration: underline; }
+        .seguro-msg {
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 12px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            margin-top: 80px;
+            background: #102C26;
+            color: white;
+            padding: 40px 60px 24px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+        #navegação a {
+            display: block; text-decoration: none;
+            color: white; font-size: 14px; margin-bottom: 4px;
+        }
+        footer hr { grid-column: 1 / -1; border: none; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-style {
+            grid-column: 1 / -1;
+            display: flex; justify-content: space-between;
+            font-size: 13px; color: rgba(255,255,255,0.7);
+        }
+        .footer-style a { color: rgba(255,255,255,0.7); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav>
+        <div class="nav_left">
+            <a href="index.html">
+                <img src="../img/logo macedo pp.png" alt="Logo" id="nav_logo_img" />
+            </a>
+            <div class="nav_links">
+                <a href="index.html">Início</a>
+                <a href="Compras.html">Compras</a>
+                <a href="login.html">Login</a>
+            </div>
+        </div>
+        <div class="nav_right">
+            <!-- Ícone do carrinho na própria página do carrinho -->
+            <a href="carrinho.html" id="nav_cart_link">
+                <img src="../img/carrinho-carrinho.png" alt="Carrinho" id="nav_cart_icon" />
+                <span id="nav_cart_badge">0</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ===== CONTEÚDO DO CARRINHO ===== -->
+    <div class="carrinho-page">
+        <h1 class="carrinho-titulo">Meu Carrinho</h1>
+        <p class="carrinho-subtitulo" id="subtitulo-qtd">Carregando...</p>
+
+        <!-- Área que o JS vai preencher com os itens ou mensagem de vazio -->
+        <div id="carrinho-conteudo"></div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div>
+            <p>Desenvolve soluções para tornar o cuidado <br>
+               com plantas mais prático e acessível <br>
+               através da tecnologia.</p>
+        </div>
+        <div id="navegação">
+            <p><b>Navegação</b></p>
+            <a href="index.html">Início</a>
+            <a href="login.html">Login</a>
+            <a href="cadastro.html">Cadastro</a>
+            <a href="SobreNós.html">Sobre Nós</a>
+        </div>
+        <div>
+            <p style="color:rgba(255,255,255,0.7); font-size:14px;">lazygreenhouse@gmail.com<br>(12) 98877-2660<br>Caçapava-SP</p>
+        </div>
+        <hr>
+        <div class="footer-style">
+            <p>© 2026 Lazy Greenhouse. Todos os direitos reservados.</p>
+            <a href="#">Termos de Uso e Privacidade</a>
+        </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // MELHORIA: Todo o conteúdo do carrinho é gerado dinamicamente pelo JS
+        // lendo os dados do localStorage — não há HTML fixo de produtos.
+
+        const PRECO_UNITARIO = 185.00;
+
+        // Lê o carrinho do localStorage
+        function lerCarrinho() {
+            return JSON.parse(localStorage.getItem('carrinho')) || [];
+        }
+
+        // Salva o carrinho no localStorage
+        function salvarCarrinho(carrinho) {
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+        }
+
+        // Formata número como reais
+        function formatarReais(valor) {
+            return 'R$ ' + valor.toFixed(2).replace('.', ',');
+        }
+
+        // Atualiza o badge de quantidade na navbar
+        function atualizarBadge(carrinho) {
+            const badge = document.getElementById('nav_cart_badge');
+            const total = carrinho.reduce((s, i) => s + i.quantidade, 0);
+            badge.textContent = total;
+            badge.style.display = total > 0 ? 'flex' : 'none';
+        }
+
+        // Renderiza o conteúdo da página com base no carrinho
+        function renderizarCarrinho() {
+            const carrinho = lerCarrinho();
+            const container = document.getElementById('carrinho-conteudo');
+            const subtituloEl = document.getElementById('subtitulo-qtd');
+
+            atualizarBadge(carrinho);
+
+            // Se carrinho estiver vazio, mostra mensagem
+            if (carrinho.length === 0) {
+                subtituloEl.textContent = 'Seu carrinho está vazio.';
+                container.innerHTML = `
+                    <div class="carrinho-vazio">
+                        <div class="icone-vazio">🛒</div>
+                        <h3>Nada por aqui ainda!</h3>
+                        <p>Adicione produtos para continuar as compras.</p>
+                        <a href="Compras.html" class="btn-ir-compras">Ver produtos</a>
+                    </div>
+                `;
+                return;
+            }
+
+            // Conta total de itens
+            const totalItens = carrinho.reduce((s, i) => s + i.quantidade, 0);
+            subtituloEl.textContent = totalItens + (totalItens === 1 ? ' item no carrinho' : ' itens no carrinho');
+
+            // Calcula o valor total
+            const totalValor = carrinho.reduce((s, i) => s + (i.preco * i.quantidade), 0);
+
+            // Monta o HTML da lista de itens
+            let htmlItens = '<div class="carrinho-lista">';
+            carrinho.forEach(function(item, index) {
+                const subtotalItem = item.preco * item.quantidade;
+                htmlItens += `
+                    <div class="carrinho-item">
+                        <img src="${item.imagem}" alt="${item.nome}" class="item-img">
+                        <div class="item-info">
+                            <p class="item-nome">${item.nome}</p>
+                            <p class="item-desc">Estufa inteligente • Bivolt</p>
+                            <div class="item-quantidade">
+                                <button class="qty-btn" onclick="alterarQuantidade(${index}, -1)">−</button>
+                                <span class="qty-numero">${item.quantidade}</span>
+                                <button class="qty-btn" onclick="alterarQuantidade(${index}, +1)">+</button>
+                            </div>
+                        </div>
+                        <div class="item-preco-col">
+                            <p class="item-preco">${formatarReais(subtotalItem)}</p>
+                            <button class="btn-remover" onclick="removerItem(${index})">✕ Remover</button>
+                        </div>
+                    </div>
+                `;
+            });
+            htmlItens += '</div>';
+
+            // Monta o rodapé com total e botão de checkout
+            const htmlRodape = `
+                <div class="carrinho-rodape">
+                    <div class="rodape-linha">
+                        <span>Subtotal (${totalItens} ${totalItens === 1 ? 'item' : 'itens'})</span>
+                        <span>${formatarReais(totalValor)}</span>
+                    </div>
+                    <div class="rodape-linha">
+                        <span>Frete</span>
+                        <span style="color:#2e7d32; font-weight:600;">Grátis</span>
+                    </div>
+                    <div class="rodape-total">
+                        <span>Total</span>
+                        <span>${formatarReais(totalValor)}</span>
+                    </div>
+                    <a href="pagamento.html" class="btn-checkout">Finalizar Compra →</a>
+                    <a href="Compras.html" class="btn-continuar">← Continuar comprando</a>
+                    <p class="seguro-msg">🔒 Compra 100% segura e criptografada</p>
+                </div>
+            `;
+
+            container.innerHTML = htmlItens + htmlRodape;
+        }
+
+        // Altera a quantidade de um item (+1 ou -1)
+        function alterarQuantidade(index, delta) {
+            let carrinho = lerCarrinho();
+            carrinho[index].quantidade += delta;
+            // Remove o item se a quantidade chegar a 0
+            if (carrinho[index].quantidade <= 0) {
+                carrinho.splice(index, 1);
+            }
+            salvarCarrinho(carrinho);
+            renderizarCarrinho(); // re-renderiza para refletir a mudança
+        }
+
+        // Remove um item do carrinho pelo índice
+        function removerItem(index) {
+            let carrinho = lerCarrinho();
+            carrinho.splice(index, 1);
+            salvarCarrinho(carrinho);
+            renderizarCarrinho();
+        }
+
+        // Inicializa a renderização ao carregar a página
+        renderizarCarrinho();
+    </script>
+
+</body>
+</html>

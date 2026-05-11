@@ -1,63 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Cadastro — Lazy Greenhouse</title>
     <link rel="stylesheet" href="../css/style2.css">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo macedo pp.png">
 </head>
 <body>
     <main id="main_cadastro">
         <div class="wrapper">
+
+            <!-- Banner lateral esquerdo (mantido do original) -->
             <div class="banner">
                 <p>Lazy Greenhouse</p>
                 <br>
                 <h1>O futuro é <br> natural.</h1>
             </div>
-        <div id="cadastro">
-            <h3>Cadastre-se</h3>
-            <form  method="post">
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="usuario" placeholder="Digite seu nome" required="">
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Digite seu email" required="">
-                <label for="senha">Senha</label>
-                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required="">
-                <label for="Confima_senha">Confirme sua senha</label>
-                <input type="password" id="Confima_senha" name="confirmaçao" placeholder="Confirme sua senha" required="">
-                <button >Criar conta</button>
-                <div class="check-row">
-                    <input type="checkbox" id="termos">
-                    <label for="termos">Eu concordo com os termos</label>
-                </div>
-            </form>
-            <div class="social">
-                <p>OU continue com</p>
-                <div class="social-botoes">
-                    <a href="#" class="social-btn">
-                        <img src="../img/Google_icon-icons.com_66793(1).png" alt="Google">
-                        Google
-                    </a>
-                    <a href="#" class="social-btn">
-                        <img src="../img/facebook_82510.png" alt="Facebook">
-                        Facebook
-                    </a>
-            </div>
-    </div>
-            </div >  
-        </div>  
-    </main> 
 
-     <footer>
+            <!-- Painel do formulário de cadastro -->
+            <div id="cadastro">
+
+                <!-- MELHORIA: Logo adicionada ao painel do formulário de cadastro -->
+                <img id="logo_login" src="../img/logo macedo pp.png" alt="Logo Lazy Greenhouse">
+
+                <h3>Cadastre-se</h3>
+
+                <form method="post">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" name="usuario" placeholder="Digite seu nome" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Digite seu email" required>
+
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+
+                    <label for="confirma_senha">Confirme sua senha</label>
+                    <input type="password" id="confirma_senha" name="confirmacao" placeholder="Confirme sua senha" required>
+
+                    <!-- MELHORIA: Botão trocado de "Criar conta" para "Cadastrar" -->
+                    <button type="submit">Cadastrar</button>
+
+                    <div class="check-row">
+                        <input type="checkbox" id="termos" required>
+                        <label for="termos">Eu concordo com os termos</label>
+                    </div>
+                </form>
+
+                <div class="social">
+                    <p>OU continue com</p>
+                    <div class="social-botoes">
+                        <a href="#" class="social-btn">
+                            <img src="../img/Google_icon-icons.com_66793(1).png" alt="Google">
+                            Google
+                        </a>
+                        <a href="#" class="social-btn">
+                            <img src="../img/facebook_82510.png" alt="Facebook">
+                            Facebook
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Link para quem já tem conta -->
+                <div class="ainda">
+                    <p>Já tem uma conta?</p>
+                    <a href="login.html">Entrar</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
         <div>
             <p>
                 Desenvolve soluções para tornar o cuidado <br>
-                com plantas mais prático e acessível <br> 
+                com plantas mais prático e acessível <br>
                 através da tecnologia.
             </p>
         </div>
-        <div  id="navegação">
+        <div id="navegação">
             <ul>
                 <p><b>Navegação</b></p>
                 <a href="index.html">Início</a>
@@ -66,7 +89,7 @@
                 <a href="SobreNós.html">Sobre Nós</a>
             </ul>
         </div>
-        <div id="contato">           
+        <div id="contato">
             <ul>
                 <li>lazygreenhouse@gmail.com</li>
                 <li>(12) 98877-2660</li>
@@ -79,6 +102,6 @@
             <p>© 2026 Lazy Greenhouse. | Todos os direitos reservados.</p>
             <a href="#">Termos de Uso e Privacidade</a>
         </div>
-    </footer>   
+    </footer>
 </body>
 </html>

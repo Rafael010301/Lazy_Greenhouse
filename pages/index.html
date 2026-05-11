@@ -1,102 +1,231 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Home</title>
+    <title>Home — Lazy Greenhouse</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- MELHORIA: Favicon adicionado -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/logo macedo pp.png">
 </head>
 <body id="body_index">
+
+    <!-- ===== NAVBAR ===== -->
+    <!-- MELHORIA: Nav reestruturada — logo + links à esquerda, busca + carrinho à direita -->
     <nav class="nav_index">
-        <div id="nav_index_button">
-            <img src="https://www.image2url.com/r2/default/images/1776905822711-66f1b81d-e99a-492f-8532-36259121c3b8.png" alt="image" />
-            <a href="login.html">Login</a>
-            <a href="cadastro.html">Cadastro</a>
-            <a href="Compras.html">Compras</a>
-            <a href="SobreNós.html">Sobre nós</a>
-            <br>
+
+        <!-- Lado esquerdo: logo e links de navegação -->
+        <div class="nav_left">
+            <a href="index.html" id="nav_logo_link">
+                <img src="../img/logo macedo pp.png" alt="Logo Lazy Greenhouse" id="nav_logo_img" />
+            </a>
+            <div id="nav_index_button">
+                <a href="login.html">Login</a>
+                <a href="cadastro.html">Cadastro</a>
+                <a href="Compras.html">Compras</a>
+                <a href="SobreNós.html">Sobre nós</a>
+            </div>
         </div>
-        <form action="/buscar" method="get" class="nav_index">            
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAACcklEQVR4AbTVXWjNcRzH8TPJGpZQS7jgxopFIbshJka5IDVRLDIXSly4QHJjxVIuuEa2JLlzxczDLplCeaqRlORheRhRiOP1/fvvbKednbYjp+/7//l+f//vw//5jMr851/RAdlsthJ12IsLKeEv448fzrEVHKC4HEc0+IAbOIqalPBv8j/KacYY/pA2aICCOtmPsB/NmIWKsrKymiB8VKMFB/FQzVJa0PIGSFwiK464ki7X8DCe4pc4sfDRjUMWVmAiOtUupoMsN0DCOHvb8A7zNOikRU1OHMxcSVHTlvYQ9ltugKUTmIFGhW/osEzua4lbMRPHkWfJAJMrrG5Hq4J2OiJTc1lBnP2OtJfwryUDuLUIOxmbEona6LdwYH0sRLzA5jceoFSL2ugx5IAnTvVnqd3V/lD7DAUHlNkxGv9qWQ36rgo3k+kL7ouq3aCxtCRTGw9KvID3BjYYOCDW45kOLYX5adHdVBPpG3A7iTKZ3amWInvSojupJpIMcIM+ic5jk1NdQ0dkatYpaECbXr00Z8mANNpJX+Gsgql0WJbmnpL8EruQZ7kBJn+2ZzMmI76QjbSoab5NQnx5J9ENenyheZYbEKsS4gO3iv8NrRpcQQOqxInxpyDWrlo4g69YiefW16IJ9Si3lntMw08wpIMzB+cQwy7Stwq68YIfH7dYi6anxbPVXKeLMAGPMR21GDwgFhX0Ygs/jnw1PYB4V27RfahHlZwmxKUVZuJFfc/pwnfEe1F4gJ2JKe5BO1oQ13gjPYYO9CRJ/Ztu7jSsRzRPXri8e2BHyWZgXJo4y/gfvySOP6HiZzDSaZp24RpyZ/cHAAD//821h/QAAAAGSURBVAMA0XXhMWwL3b4AAAAASUVORK5CYII=" alt="icon" />
-            <input type="search" name="q" placeholder="O que você está procurando ?" aria-label="Buscar no site" id="nav_index_navbar" >
-        </form>
+
+        <!-- Lado direito: campo de busca + ícone do carrinho -->
+        <!-- MELHORIA: Carrinho movido para a direita e funcional (link para carrinho.html) -->
+        <div class="nav_right">
+            <form action="/buscar" method="get" class="nav_search_form">
+                <input type="search" name="q" placeholder="O que você está procurando?"
+                       aria-label="Buscar no site" id="nav_index_navbar">
+            </form>
+            <a href="carrinho.html" id="nav_cart_link" title="Ver carrinho de compras">
+                <img src="../img/carrinho-carrinho.png" alt="Carrinho" id="nav_cart_icon" />
+                <!-- Badge que mostra quantidade de itens no carrinho -->
+                <span id="nav_cart_badge">0</span>
+            </a>
+        </div>
+
     </nav>
-    <header class="header_index">
-        <div class="header_index_text">
-            <h1>Mais <b id="verdao">Verde</b><br>Menos Esforço</h1>
-            <h4>Cuidar das suas plantas nunca foi tão fácil</h4>
-                <hr>
-            <a href="Compras.html" id="header_index_button" >Compre agora</a>
-            <a href="login.html" id="header_index_button">Entre agora</a>
+
+    <!-- ===== HERO SECTION ===== -->
+    <!-- MELHORIA: Banner hero de largura total adicionado ao início da página -->
+    <section class="hero">
+        <div class="hero_content">
+            <span class="hero_badge">✦ Automação Inteligente</span>
+            <h1>Mais <span id="verdao">Verde</span><br>Menos Esforço</h1>
+            <p class="hero_subtitle">Cuidar das suas plantas nunca foi tão fácil</p>
+            <hr class="hero_divider">
+            <div class="hero_buttons">
+                <a href="Compras.html" class="hero_btn_primary">Compre agora</a>
+                <a href="login.html" class="hero_btn_secondary">Entre agora</a>
+            </div>
         </div>
-        <div>
-            <img src="https://www.image2url.com/r2/default/images/1776736543858-f84c0565-94a6-400d-bf42-408f97d1f0ca.jpeg" alt="image" />        
+        <div class="hero_image">
+            <img src="https://www.image2url.com/r2/default/images/1776736543858-f84c0565-94a6-400d-bf42-408f97d1f0ca.jpeg" alt="Lazy Greenhouse produto" />
         </div>
-    </header>
+    </section>
+
     <main>
+        <!-- Seção Simplicidade Inteligente -->
         <div class="main_index_group">
             <div id="main_index_title">
                 <h2>Simplicidade Inteligente</h2>
-                <p> Automatizamos a ciência da botânica para que você possa aproveitar <br>a serenidade da natureza sem o estresse da manutenção.</p>
+                <p>Automatizamos a ciência da botânica para que você possa aproveitar <br>a serenidade da natureza sem o estresse da manutenção.</p>
             </div>
-            <div id="main_index_list">
-                <ul>
-                    <li>
-                        <img src="https://www.image2url.com/r2/default/images/1776796521267-66bc87af-de43-4422-b262-175a51be83c0.png" alt="Ícone 1" class="list-icon">
-                        <h3>Cuidado Automatizado</h3>
-                        <p>Sensores de umidade de alta precisão e otimização da luz garantem que suas plantas recebam exatamente o que precisam, no momento certo.</p>
-                    </li>
-                    <li>
-                        <img src="https://cdn-icons-png.flaticon.com/512/3105/3105807.png" alt="Configuração Simples" class="list-icon">
-                        <h3>Configuração Simples</h3>
-                        <p>Basta conectar, preencher o reservatório e sincronizar com o aplicativo. Nosso sistema plug  and-play cuida do resto desde o primeiro dia.</p>
-                    </li>
-                    <li>
-                        <img src="https://cdn-icons-png.flaticon.com/512/628/628283.png" alt="Plantas Saudáveis" class="list-icon">
-                        <h3>Plantas Saudáveis</h3>
-                        <p>Plantas cultivadas em nossos ecossistemas vivem, em média, até 4 vezes mais, graças ao equilíbrio   nutricional constante e à circulação de ar adequada.</p>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="main_index_text">
-            <h2>Lazy Greenhouse</h2>
-            <h4>A natureza, automatizada</h4>
-            <img src="#" alt="">
-        </div>
-        <div class="main_index_box">
-            <div id="main_index_card1">
-                <p class="tag-melhor">O melhor</p>
-                <h2>Forma Inteligente</h2>
-                <p>Estética limpa com propósito real.</p>
-                <img src="https://www.image2url.com/r2/default/images/1776791311496-d3d72ae2-afbd-48a7-ac6d-7534884128c0.png" alt="image" />
-                    <div class="preco-box">
-                    <a href="Compras.html"><h4>COMPRAR</h4></a> 
+        <!-- MELHORIA: Seção de Avaliações com efeito Marquee (3 colunas em direções opostas) -->
+        <section class="reviews-section">
+            <h2>O que nossos clientes dizem</h2>
+            <div class="reviews-container">
+                <!-- Coluna 1: Sobe -->
+                <div class="review-col review-col-up">
+                    <div class="review-card">
+                        <p>"Minhas orquídeas nunca estiveram tão lindas. O sistema de umidade é perfeito!"</p>
+                        <div class="user">
+                            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>Mariana Silva</h4>
+                                <span>São Paulo, SP</span>
+                            </div>
+                        </div>
                     </div>
-            </div>
-            <div class="main_index_right_column">
-                <div class="main_index_column_small card-verde">
-                    <h2>Pensado para você</h2>
-                    <p>Simples de usar, difícil de largar</p>
-                    <img src="https://www.image2url.com/r2/default/images/1776791086076-5225bd98-225e-4922-9e8d-8f1d09e55770.png" alt="image" />
+                    <div class="review-card">
+                        <p>"Finalmente posso viajar sem medo de minhas plantas morrerem. Recomendo muito!"</p>
+                        <div class="user">
+                            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>Ricardo Oliveira</h4>
+                                <span>Rio de Janeiro, RJ</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Duplicados para o loop infinito -->
+                    <div class="review-card">
+                        <p>"Minhas orquídeas nunca estiveram tão lindas. O sistema de umidade é perfeito!"</p>
+                        <div class="user">
+                            <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>Mariana Silva</h4>
+                                <span>São Paulo, SP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <p>"Finalmente posso viajar sem medo de minhas plantas morrerem. Recomendo muito!"</p>
+                        <div class="user">
+                            <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>Ricardo Oliveira</h4>
+                                <span>Rio de Janeiro, RJ</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="main_index_column_small card-cinza">
-                    <h2>Feito para você</h2>
-                    <p>Baseado no seus gostos</p>
-                    <img src="https://www.image2url.com/r2/default/images/1776791198278-2af53777-425d-496f-8057-e5744f039abf.png" alt="image" />
+
+                <!-- Coluna 2: Desce -->
+                <div class="review-col review-col-down">
+                    <div class="review-card">
+                        <p>"O design é impecável. Ficou maravilhoso na minha sala e funciona super bem."</p>
+                        <div class="user">
+                            <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>Carla Mendes</h4>
+                                <span>Belo Horizonte, MG</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <p>"A tecnologia é incrível. O app me avisa tudo e as plantas crescem rápido."</p>
+                        <div class="user">
+                            <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>João Pedro</h4>
+                                <span>Curitiba, PR</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Duplicados -->
+                    <div class="review-card">
+                        <p>"O design é impecável. Ficou maravilhoso na minha sala e funciona super bem."</p>
+                        <div class="user">
+                            <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>Carla Mendes</h4>
+                                <span>Belo Horizonte, MG</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <p>"A tecnologia é incrível. O app me avisa tudo e as plantas crescem rápido."</p>
+                        <div class="user">
+                            <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>João Pedro</h4>
+                                <span>Curitiba, PR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna 3: Sobe -->
+                <div class="review-col review-col-up">
+                    <div class="review-card">
+                        <p>"Atendimento excelente e produto de alta qualidade. Minha horta está bombando!"</p>
+                        <div class="user">
+                            <img src="https://randomuser.me/api/portraits/women/5.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>Ana Beatriz</h4>
+                                <span>Porto Alegre, RS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <p>"A Lazy Greenhouse mudou minha relação com a natureza dentro de casa."</p>
+                        <div class="user">
+                            <img src="https://randomuser.me/api/portraits/men/6.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>Bruno Santos</h4>
+                                <span>Salvador, BA</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Duplicados -->
+                    <div class="review-card">
+                        <p>"Atendimento excelente e produto de alta qualidade. Minha horta está bombando!"</p>
+                        <div class="user">
+                            <img src="https://randomuser.me/api/portraits/women/5.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>Ana Beatriz</h4>
+                                <span>Porto Alegre, RS</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <p>"A Lazy Greenhouse mudou minha relação com a natureza dentro de casa."</p>
+                        <div class="user">
+                            <img src="https://randomuser.me/api/portraits/men/6.jpg" alt="User">
+                            <div class="user-info">
+                                <h4>Bruno Santos</h4>
+                                <span>Salvador, BA</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- MELHORIA: Seção Inferior Reimaginada -->
+        <section class="reimagined-bottom">
+            <div class="bottom-overlay">
+                <h2>Pronto para começar sua jornada botânica?</h2>
+                <p>Junte-se a milhares de pessoas que transformaram suas casas em verdadeiros oásis inteligentes. O futuro do cultivo está aqui, e ele é mais simples do que você imagina.</p>
+                <a href="Compras.html" class="bottom-cta">Garanta a sua agora</a>
+            </div>
+        </section>
     </main>
+
     <footer class="footer_index">
-        <div id="footer_box"> 
+        <div id="footer_box">
             <div id="footer_index_information1">
-                <p>
-                    Desenvolve soluções para tornar o cuidado <br>
-                    com plantas mais prático e acessível <br> 
-                    através da tecnologia.
-                </p>
+                <p>Desenvolve soluções para tornar o cuidado <br>
+                    com plantas mais prático e acessível <br>
+                    através da tecnologia.</p>
             </div>
             <div id="footer_index_information2">
                 <ul>
@@ -130,15 +259,31 @@
         <hr>
         <div id="footer_style">
             <div class="footer_left">
-                <p>©2026 LazyGreenhouse. Todos os direitos reservados. </p>
+                <p>©2026 LazyGreenhouse. Todos os direitos reservados.</p>
                 <p>Caçapava-SP</p>
             </div>
-            
             <div class="footer_right">
                 <a href="#">Termos de uso</a>
                 <a href="#">Privacidade</a>
             </div>
         </div>
     </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <!-- MELHORIA: Script que lê o localStorage e atualiza o badge de quantidade do carrinho -->
+    <script>
+        function atualizarBadgeCarrinho() {
+            // Pega o carrinho salvo no navegador (ou array vazio se não existir)
+            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            const badge = document.getElementById('nav_cart_badge');
+            // Soma a quantidade total de todos os itens
+            const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
+            badge.textContent = total;
+            // Mostra o badge só quando tem item, esconde quando está vazio
+            badge.style.display = total > 0 ? 'flex' : 'none';
+        }
+        atualizarBadgeCarrinho();
+    </script>
+
 </body>
 </html>

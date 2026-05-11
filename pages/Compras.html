@@ -1,88 +1,134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Compras</title>
+    <title>Compras — Lazy Greenhouse</title>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/logo macedo pp.png">
 </head>
 <body>
+
+    <!-- ===== NAVBAR ===== -->
+    <!-- MELHORIA: Nav igual à home — logo + links à esquerda, busca + carrinho à direita -->
     <nav class="nav_index">
-        <div class="logo">
-            <img src="https://www.image2url.com/r2/default/images/1776905822711-66f1b81d-e99a-492f-8532-36259121c3b8.png" alt="image" />
+        <div class="nav_left">
+            <a href="index.html" id="nav_logo_link">
+                <img src="../img/logo macedo pp.png" alt="Logo Lazy Greenhouse" id="nav_logo_img" />
+            </a>
+            <div id="nav_index_button">
+                <a href="index.html">Início</a>
+                <a href="login.html">Login</a>
+                <a href="cadastro.html">Cadastro</a>
+                <a href="SobreNós.html">Sobre nós</a>
+            </div>
         </div>
-    <div id="nav_index_button">
-        <a href="index.html">Início</a>
-        <a href="login.html">Login</a>
-        <a href="cadastro.html">Cadastro</a>
-    </div>
+        <div class="nav_right">
+            <form action="/buscar" method="get" class="nav_search_form">
+                <input type="search" name="q" placeholder="O que você está procurando?"
+                       aria-label="Buscar" id="nav_index_navbar">
+            </form>
+            <!-- MELHORIA: Ícone do carrinho funcional à direita -->
+            <a href="carrinho.html" id="nav_cart_link" title="Ver carrinho">
+                <img src="../img/carrinho-carrinho.png" alt="Carrinho" id="nav_cart_icon" />
+                <span id="nav_cart_badge">0</span>
+            </a>
+        </div>
     </nav>
 
     <main class="product-page">
         <section class="product-main">
+
+            <!-- Galeria do produto -->
             <div class="product-gallery">
-                <img src="https://www.image2url.com/r2/default/images/1776791311496-d3d72ae2-afbd-48a7-ac6d-7534884128c0.png" alt="Lazy Greenhouse" class="main-img">
+                <img src="https://www.image2url.com/r2/default/images/1776791311496-d3d72ae2-afbd-48a7-ac6d-7534884128c0.png"
+                     alt="Lazy Greenhouse" class="main-img">
             </div>
 
+            <!-- Detalhes do produto -->
             <div class="product-details">
                 <span class="badge-novo">NOVO</span>
                 <h1>Lazy Greenhouse</h1>
+
                 <div class="price-container">
                     <span class="price-current">R$ 185,00</span>
                     <span class="price-old">R$ 220,00</span>
                 </div>
+
                 <p class="product-description">
-                    A Lazy Greenhouse traz uma nova forma de cuidar das suas plantas. Com design minimalista e tecnologia integrada...
+                    A Lazy Greenhouse traz uma nova forma de cuidar das suas plantas. Com design minimalista e tecnologia integrada, ela automatiza irrigação e iluminação para que você não precise se preocupar com nada.
                 </p>
 
                 <div class="feature-tags">
-                    <span> Autoirrigação</span>
-                    <span> Iluminação integrada</span>
-                    <span> Painel de controle</span>
+                    <span>Autoirrigação</span>
+                    <span>Iluminação integrada</span>
+                    <span>Painel de controle</span>
+                    <!-- MELHORIA: Tags adicionais de características -->
+                    <span>Wi-Fi</span>
+                    <span>App compatível</span>
                 </div>
 
+                <!-- Botões de ação -->
                 <div class="action-buttons">
-                    <a class="btn-buy" href="index.html">Compre agora</a>
-                    <a class="btn-cart" href="index.html">Adicionar ao carrinho</a>
+                    <a class="btn-buy" href="pagamento.html">Compre agora</a>
+                    <!-- MELHORIA: Botão "Adicionar ao carrinho" agora salva no localStorage
+                         e redireciona para o carrinho -->
+                    <a class="btn-cart" href="#" id="btn-adicionar-carrinho">Adicionar ao carrinho</a>
                 </div>
+
                 <div class="good-phrase">
-                    <p> "Se soubesse que o mundo se acabaria amanhã, eu ainda hoje plantaria uma árvore" – Martin Luther King</p>
+                    <p>"Se soubesse que o mundo se acabaria amanhã, eu ainda hoje plantaria uma árvore" – Martin Luther King</p>
                 </div>
+
+                <!-- Tabela de especificações -->
+                <!-- MELHORIA: Adicionados detalhes técnicos do produto (tamanho, voltagem, etc.) -->
                 <div class="spec-table">
-                    <div class="spec-row"><span>Nível de manutenção </span><strong>Lazy-Friendly</strong></div>
-                    <div class="spec-row"><span>Taxa de crescimento </span><strong>Média</strong></div>
-                    <div class="spec-row"><span>Tecnologia </span><strong>Arduino</strong></div>
+                    <div class="spec-row"><span>Nível de manutenção</span><strong>Lazy-Friendly</strong></div>
+                    <div class="spec-row"><span>Taxa de crescimento</span><strong>Média</strong></div>
+                    <div class="spec-row"><span>Tecnologia</span><strong>Arduino + Wi-Fi</strong></div>
+                    <!-- MELHORIA: Novas linhas de especificação adicionadas -->
+                    <div class="spec-row"><span>Voltagem</span><strong>110V / 220V (bivolt)</strong></div>
+                    <div class="spec-row"><span>Dimensões</span><strong>30 × 20 × 45 cm</strong></div>
+                    <div class="spec-row"><span>Peso</span><strong>2,3 kg</strong></div>
+                    <div class="spec-row"><span>Conectividade</span><strong>Wi-Fi 2.4GHz</strong></div>
+                    <div class="spec-row"><span>Reservatório de água</span><strong>1,5 litros</strong></div>
+                    <div class="spec-row"><span>Garantia</span><strong>12 meses</strong></div>
+                    <div class="spec-row"><span>Cor disponível</span><strong>Branco / Preto</strong></div>
                 </div>
+
             </div>
         </section>
 
+        <!-- Seção extra: indicadores e sustentabilidade -->
         <section class="product-extra">
             <div class="growth-management">
                 <h2>Gestão Inteligente do Crescimento</h2>
                 <div class="progress-container">
                     <label>EFICIÊNCIA DA HUMIDADE DO SOLO <span>94%</span></label>
                     <div class="progress-bar"><div class="progress-fill" style="width: 94%;"></div></div>
-                    
+
                     <label>OTIMIZAÇÃO DA FOTOSSÍNTESE <span>82%</span></label>
                     <div class="progress-bar"><div class="progress-fill" style="width: 82%;"></div></div>
+
+                    <!-- MELHORIA: Indicador extra de economia de água -->
+                    <label>ECONOMIA DE ÁGUA <span>70%</span></label>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 70%;"></div></div>
                 </div>
             </div>
 
             <div class="sustainability-card">
-                <div class="card-icon"></div>
                 <h3>Tecnologia Sustentável</h3>
                 <p>Projetado com materiais biodegradáveis e sensores eficientes que reduzem o consumo de energia.</p>
             </div>
         </section>
     </main>
+
     <footer class="footer_index">
-        <div id="footer_box"> 
+        <div id="footer_box">
             <div id="footer_index_information1">
-                <p>
-                    Desenvolve soluções para tornar o cuidado <br>
-                    com plantas mais prático e acessível <br> 
-                    através da tecnologia.
-                </p>
+                <p>Desenvolve soluções para tornar o cuidado <br>
+                    com plantas mais prático e acessível <br>
+                    através da tecnologia.</p>
             </div>
             <div id="footer_index_information2">
                 <ul>
@@ -96,7 +142,7 @@
                 <ul>
                     <li>
                         <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" class="footer-icon">
-                        <a href="https://www.instagram.com/lazygreenhouse_projetosenai/">lazygreenhouse@gmail.com</a>
+                        <a href="">lazygreenhouse@gmail.com</a>
                     </li>
                     <li>
                         <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="WhatsApp" class="footer-icon">
@@ -116,15 +162,64 @@
         <hr>
         <div id="footer_style">
             <div class="footer_left">
-                <p>©2026 LazyGreenhouse. Todos os direitos reservados. </p>
+                <p>©2026 LazyGreenhouse. Todos os direitos reservados.</p>
                 <p>Caçapava-SP</p>
             </div>
-            
             <div class="footer_right">
                 <a href="#">Termos de uso</a>
                 <a href="#">Privacidade</a>
             </div>
         </div>
     </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // MELHORIA: Atualiza badge do carrinho ao carregar a página
+        function atualizarBadgeCarrinho() {
+            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+            const badge = document.getElementById('nav_cart_badge');
+            const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
+            badge.textContent = total;
+            badge.style.display = total > 0 ? 'flex' : 'none';
+        }
+
+        // MELHORIA: Adiciona o produto ao carrinho (localStorage) ao clicar no botão
+        document.getElementById('btn-adicionar-carrinho').addEventListener('click', function(e) {
+            e.preventDefault(); // impede de seguir o href="#"
+
+            // Produto fixo (único produto do site)
+            const produto = {
+                id: 1,
+                nome: 'Lazy Greenhouse',
+                preco: 185.00,
+                quantidade: 1,
+                imagem: 'https://www.image2url.com/r2/default/images/1776791311496-d3d72ae2-afbd-48a7-ac6d-7534884128c0.png'
+            };
+
+            // Pega carrinho atual ou cria vazio
+            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+            // Verifica se o produto já está no carrinho
+            const indexExistente = carrinho.findIndex(item => item.id === produto.id);
+
+            if (indexExistente >= 0) {
+                // Se já existe, incrementa a quantidade
+                carrinho[indexExistente].quantidade += 1;
+            } else {
+                // Senão, adiciona novo item
+                carrinho.push(produto);
+            }
+
+            // Salva de volta no localStorage
+            localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+            // Atualiza o badge e redireciona para o carrinho
+            atualizarBadgeCarrinho();
+            window.location.href = 'carrinho.html';
+        });
+
+        atualizarBadgeCarrinho();
+    </script>
+
 </body>
 </html>

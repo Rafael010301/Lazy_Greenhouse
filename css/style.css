@@ -1,112 +1,289 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* ==========================================
+   RESET GLOBAL
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
-    font-family: 'Montserrat', sans-serif; 
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
 }
 h1, h2, h3, h4, h5, h6 { cursor: default; }
 a { cursor: pointer; }
 p { font-weight: 400; }
 
-/* Navbar */
+/* ==========================================
+   NAVBAR
+   MELHORIA: Reestruturada para ter logo+links
+   à esquerda e busca+carrinho à direita.
+   Agora é sticky (fica fixo ao rolar a página).
+   ========================================== */
 .nav_index {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between; /* empurra esquerda e direita para as pontas */
     background-color: #102C26;
-    margin: 3px;
     padding: 10px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 100; /* garante que fique sobre o conteúdo ao rolar */
 }
-.nav_index img {
+
+/* Container do lado esquerdo (logo + links) */
+.nav_left {
     display: flex;
-    flex-direction: row-reverse;
-    margin: 20px;
+    align-items: center;
+    gap: 16px;
 }
-#nav_index_navbar {
+
+/* Logo na navbar */
+#nav_logo_img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+/* Container do lado direito (busca + carrinho) */
+/* MELHORIA: Lado direito da nav com busca e carrinho */
+.nav_right {
     display: flex;
-    border: none;
-    border-radius: 6px;
-    width: 300px;
-    height: 40px;
-    flex-direction: row-reverse;
+    align-items: center;
+    gap: 16px;
+}
+
+/* ==========================================
+   LINKS DA NAVBAR
+   ========================================== */
+#nav_index_button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 #nav_index_button a {
     text-decoration: none;
     color: white;
     font-weight: 500;
-    font-size: 16px;
-    padding: 8px 15px;
+    font-size: 15px;
+    padding: 8px 14px;
     border-radius: 5px;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
 }
 #nav_index_button a:hover {
-    background-color: rgba(255, 255, 255, 0.1); 
+    background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
     color: #F2C94C;
 }
 #nav_index_button a:active { transform: scale(0.95); }
 
-/* Header Index */
-.header_index {
+/* ==========================================
+   CAMPO DE BUSCA NA NAV
+   MELHORIA: Fundo e placeholder com contraste
+   correto — antes era branco sem cor definida.
+   ========================================== */
+.nav_search_form {
+    display: flex;
+    align-items: center;
+}
+#nav_index_navbar {
+    border: none;
+    border-radius: 6px;
+    width: 280px;
+    height: 38px;
+    padding: 0 14px;
+    /* MELHORIA: Fundo levemente branco translúcido no fundo escuro da nav */
+    background-color: rgba(255, 255, 255, 0.12);
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: background-color 0.2s ease;
+}
+/* MELHORIA: Cor do placeholder visível no fundo escuro */
+#nav_index_navbar::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+#nav_index_navbar:focus {
+    background-color: rgba(255, 255, 255, 0.22);
+}
+
+/* ==========================================
+   CARRINHO NA NAVBAR
+   MELHORIA: Ícone do carrinho agora funcional
+   (link para carrinho.html) e posicionado
+   corretamente à direita.
+   ========================================== */
+#nav_cart_link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+#nav_cart_icon {
+    width: 28px;
+    height: 28px;
+    /* Inverte as cores do ícone preto para branco */
+    filter: invert(1);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+#nav_cart_icon:hover { transform: scale(1.15); }
+
+/* Badge de contagem de itens no carrinho */
+#nav_cart_badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #F2C94C;
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: none; /* escondido por padrão, JS mostra quando há itens */
+    align-items: center;
+    justify-content: center;
+}
+
+/* ==========================================
+   HERO SECTION
+   MELHORIA: Banner de largura total adicionado
+   ao início da página. Usa imagem de fundo com
+   overlay escuro para manter o texto legível.
+   ========================================== */
+.hero {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    padding: 80px 100px;
+    /* Overlay escuro sobre o fundo para manter contraste do texto */
+    background-color: #102C26;
+    background-image:
+        linear-gradient(
+            rgba(16, 44, 38, 0.90),
+            rgba(16, 44, 38, 0.90)
+        ),
+        url('../img/fundobanner.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 520px;
+    width: 100%;
+    gap: 40px;
 }
-.header_index img {
-    display: flex;
-    flex: 2;
-    height: 500px;
-    width: 500px;
-}
-.header_index hr { width: 400px; }
-.header_index .header_index_text hr {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-    width: 600px;
-}
-.header_index_text {
-    align-items: center;
-    text-align: center;
-}
-.header_index_text h1 { font-size: 60px; }
-.header_index_text b { transition: ease 0.3s; }
-.header_index_text b:hover { transform: scale(1.05); }
 
-#verdao {
-    color: #88D66B;
-    text-decoration: none;
+/* Bloco de texto do hero (esquerda) */
+.hero_content {
+    display: flex;
+    flex-direction: column;
+    max-width: 520px;
+    color: white;
 }
-#header_index_button {
-    height: 50px;
-    width: 190px;
-    background-color: #F2C94C;
-    color: rgb(0, 0, 0);
-    padding: 3px;
-    border-radius: 5px;
-    border: solid 2px #000;
-    display: inline-flex;
-    text-decoration: none;
-    justify-content: center; 
-    align-items: center;     
-    text-align: center;
-    font-size: 20px;
-    margin: 20px;
+
+/* Pílula/badge acima do título */
+.hero_badge {
+    background-color: rgba(242, 201, 76, 0.12);
+    border: 1px solid #F2C94C;
+    color: #F2C94C;
+    font-size: 13px;
     font-weight: 600;
-    transition: all 0.3s ease-in-out;
+    padding: 6px 18px;
+    border-radius: 20px;
+    width: fit-content;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
 }
-#header_index_button:hover {
-    background-color: #102C26; 
-    color: #ffffff;            
-    border-color: #102C26;     
-    transform: scale(1.05);   
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); 
-}
-#header_index_button:active { transform: scale(0.98); }
 
-/* Main Index */
+/* Título principal do hero */
+.hero h1 {
+    font-size: 62px;
+    font-weight: 800;
+    line-height: 1.1;
+    color: white;
+    margin-bottom: 16px;
+}
+
+/* Subtítulo do hero */
+.hero_subtitle {
+    font-size: 18px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.78);
+    margin-bottom: 28px;
+}
+
+/* Divisor decorativo */
+.hero_divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 30px;
+    width: 280px;
+}
+
+/* Container dos botões CTA */
+.hero_buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+/* Botão primário: amarelo sólido */
+.hero_btn_primary {
+    height: 50px;
+    padding: 0 32px;
+    background-color: #F2C94C;
+    color: #111;
+    border-radius: 8px;
+    border: 2px solid #F2C94C;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+.hero_btn_primary:hover {
+    background-color: transparent;
+    color: #F2C94C;
+}
+
+/* Botão secundário: contorno branco */
+.hero_btn_secondary {
+    height: 50px;
+    padding: 0 32px;
+    background-color: transparent;
+    color: white;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+.hero_btn_secondary:hover {
+    border-color: white;
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Imagem do produto no hero (direita) */
+.hero_image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    max-width: 420px;
+}
+.hero_image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+    /* Sombra suave para destacar o produto */
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+}
+
+/* ==========================================
+   MAIN INDEX
+   ========================================== */
 .main_index_group {
     margin: 100px;
     display: flex;
@@ -121,164 +298,201 @@ p { font-weight: 400; }
 }
 #main_index_title h2 { font-size: 30px; }
 
-/* Main Text & Typography */
-.main_index_text {
-    padding: 20px;
-    max-width: 1000px;        
-    margin: 60px auto 5px;     
-}
-.main_index_text h2 {
-    font-weight: 800; 
-    font-size: 42px;         
-    color: #102C26;          
-    margin-bottom: 5px;
-}
-.main_index_text h4 {
-    font-size: 18px;
-    color: #666;             
-    font-weight: normal;
-    margin-bottom: 15px;
-}
-
-/* Main Box */
-.main_index_box {
+/* ==========================================
+   REVIEWS MARQUEE
+   MELHORIA: Seção de avaliações com 3 colunas
+   que rolam em direções opostas (efeito marquee).
+   ========================================== */
+.reviews-section {
+    padding: 100px 0;
+    background-color: #f0f4f2;
+    overflow: hidden;
     display: flex;
-    flex-direction: row;
-    gap: 24px;
-    align-items: stretch;
-    max-width: 1000px; 
-    margin: 50px auto;  
-    padding: 0 20px;
-}
-.main_index_box h2 {
-    font-weight: 700;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-.main_index_box p {
-    color: white;
-    font-size: 14px;
-    line-height: 1.4;
-}
-.main_index_box img {
-    align-self: flex-end; 
-    max-width: 100%;      
-    height: auto;
-    border-radius: 10px;  
-    margin-top: 10px;     
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Card Principal (Esquerda) */
-#main_index_card1 {
-    flex: 1.5; 
-    background-color: #E8E8E8; 
+.reviews-section h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #102C26;
+    margin-bottom: 50px;
+}
+
+.reviews-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    max-width: 1200px;
+    height: 700px; /* Altura fixa para o corte do marquee */
+    position: relative;
+    /* Efeito de fade nas bordas superior e inferior */
+    mask-image: linear-gradient(to bottom, transparent, black 15%, black 85%, transparent);
+}
+
+.review-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+/* Colunas 1 e 3 sobem */
+.review-col-up {
+    animation-name: scrollUp;
+    animation-duration: 35s;
+}
+
+/* Coluna 2 desce */
+.review-col-down {
+    animation-name: scrollDown;
+    animation-duration: 35s;
+}
+
+@keyframes scrollUp {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+@keyframes scrollDown {
+    0% { transform: translateY(-50%); }
+    100% { transform: translateY(0); }
+}
+
+.review-card {
+    background: white;
     padding: 30px;
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border: 1px solid rgba(16, 44, 38, 0.05);
+    transition: transform 0.3s ease;
 }
-#main_index_card1 img {
+
+.review-card:hover {
+    transform: scale(1.02);
+    border-color: #88D66B;
+}
+
+.review-card p {
+    font-size: 15px;
+    color: #444;
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.review-card .user {
     display: flex;
     align-items: center;
-    max-height: 500px;
-}
-#main_index_card1, .main_index_column_small {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-#main_index_card1:hover, .main_index_column_small:hover {
-    transform: translateY(-8px); 
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9); 
+    gap: 14px;
 }
 
-/* Coluna Direita (Cards Pequenos) */
-.main_index_right_column {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.review-card .user img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #88D66B;
 }
-.main_index_column_small {
-    padding: 25px;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    min-height: 180px;
-}
-.card-verde { background-color: #88D66B; color: white; }
-.card-cinza { background-color: #2A4B7D; color: white; }
 
-/* Elementos dos Cards */
-.tag-melhor {
-    background-color: black;
-    width: fit-content;
-    padding: 5px 15px;
-    border-radius: 20px;
+.review-card .user-info h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #102C26;
+    margin-bottom: 2px;
+}
+
+.review-card .user-info span {
     font-size: 12px;
-    font-weight: 900;
-    text-transform: uppercase;
-    margin-bottom: 15px;
-}
-.preco-box { margin-top: auto; }
-.preco-box a { text-decoration: none; }
-.preco-box h4 {
-    background-color: #000;
-    color: #fff;
-    width: fit-content;
-    padding: 10px 25px;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 0; 
+    color: #888;
 }
 
-/* Listagem Inteligente */
-#main_index_list { margin: 60px; }
-#main_index_list ul {
+/* ==========================================
+   REIMAGINED BOTTOM SECTION
+   MELHORIA: Seção final premium com imagem
+   de estilo de vida e CTA impactante.
+   ========================================== */
+.reimagined-bottom {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    background-image: url('../img/futuristic_greenhouse.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efeito parallax suave */
     display: flex;
-    flex-direction: row; 
-    justify-content: space-around;
-    list-style: none; 
-    padding: 0;      
-    margin: 0;
-}
-#main_index_list li {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    text-align: center;
-    padding: 20px;
-    max-width: 300px;
-    background-color: #88D66B;
-    margin: 10px;
-    border-radius: 20px;
-    cursor: default;
+    justify-content: flex-start;
+    padding-left: 10%;
 }
-#main_index_list li p {
-    font-weight: normal; 
-    font-size: 14px; 
-    text-align: center;
-}
-.list-icon {
-    width: 50px;         
-    height: 50px;       
-    margin-bottom: 15px; 
-    object-fit: contain; 
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-#main_index_list li:hover .list-icon { transform: scale(1.2) rotate(5deg); }
 
-/* Footer */
+.bottom-overlay {
+    background: rgba(16, 44, 38, 0.85);
+    backdrop-filter: blur(12px);
+    padding: 60px;
+    border-radius: 30px;
+    max-width: 550px;
+    color: white;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.1);
+    animation: fadeInRight 1s ease-out;
+}
+
+@keyframes fadeInRight {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.bottom-overlay h2 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 24px;
+    line-height: 1.1;
+    color: white;
+}
+
+.bottom-overlay p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 40px;
+}
+
+.bottom-cta {
+    display: inline-block;
+    padding: 20px 50px;
+    background: #F2C94C;
+    color: #102C26;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 18px;
+    border-radius: 15px;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.bottom-cta:hover {
+    background: #fff;
+    transform: scale(1.05) translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+
+/* ==========================================
+   FOOTER
+   ========================================== */
 .footer_index {
     background-color: #102C26;
-    padding: 60px 50px 30px; 
+    padding: 60px 50px 30px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; 
+    align-items: flex-start;
 }
 .footer_index .logo img {
-    width: 90px;      
-    height: auto;      
-    margin-bottom: 40px; 
+    width: 90px;
+    height: auto;
+    margin-bottom: 40px;
     display: block;
 }
 #footer_box {
@@ -296,7 +510,6 @@ p { font-weight: 400; }
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin: 20px 0;
 }
-
 #footer_index_information1 { color: white; }
 #footer_index_information2 ul {
     display: flex;
@@ -313,36 +526,33 @@ p { font-weight: 400; }
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 12px; 
+    gap: 12px;
 }
 #footer_index_information3 li {
     display: flex;
-    align-items: center; 
+    align-items: center;
     color: white;
     font-size: 14px;
-    gap: 10px; 
+    gap: 10px;
     transition: color 0.3s ease;
     cursor: pointer;
 }
 #footer_index_information3 a { color: white; text-decoration: none; }
-#footer_index_information3 li:hover, 
+#footer_index_information3 li:hover,
 #footer_index_information3 a:hover { color: #F2C94C; }
 #footer_index_information3 li:hover .footer-icon { transform: scale(1.2); }
-
 .footer-icon {
-    width: 18px; 
-    height: 18px; 
+    width: 18px;
+    height: 18px;
     transition: transform 0.3s ease;
-    color: #000;
 }
-
 #footer_style {
     display: flex;
-    justify-content: space-between; 
-    align-items: flex-start;      
-    width: 100%;          
-    max-width: 1100px;       
-    margin: 20px auto 0;    
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1100px;
+    margin: 20px auto 0;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -350,12 +560,11 @@ p { font-weight: 400; }
     font-size: 13px;
     color: rgba(255, 255, 255, 0.7);
     margin: 0;
-    text-align: left; 
 }
 .footer_right {
     display: flex;
-    flex-direction: column; 
-    align-items: flex-end;  
+    flex-direction: column;
+    align-items: flex-end;
 }
 .footer_right a {
     font-size: 13px;
@@ -364,13 +573,15 @@ p { font-weight: 400; }
     margin-bottom: 2px;
 }
 #footer_style a:hover {
-    color: #fff;             
-    text-decoration: underline; 
+    color: #fff;
+    text-decoration: underline;
     transition: 0.2s;
 }
 #footer_style a:active { opacity: 0.5; }
 
-/* Sobre Nós */
+/* ==========================================
+   SOBRE NÓS (preservado do original)
+   ========================================== */
 .logo img {
     display: flex;
     justify-content: flex-start;
@@ -411,10 +622,143 @@ p { font-weight: 400; }
     color: #444;
 }
 .sobre-main div:last-child {
-    grid-column: 1 / -1; 
+    grid-column: 1 / -1;
     text-align: center;
     padding: 40px;
     background-color: #f9f9f9;
     border-radius: 20px;
     margin-top: 30px;
 }
+
+/* ==========================================
+   COMPRAS — estilos do produto
+   (preservados do original, usados em
+   Compras.html que referencia style.css)
+   ========================================== */
+.product-page { padding: 40px 60px; max-width: 1200px; margin: 0 auto; }
+.product-main {
+    display: flex;
+    gap: 60px;
+    align-items: flex-start;
+    margin-bottom: 60px;
+}
+.product-gallery .main-img {
+    width: 420px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+.product-details { flex: 1; }
+.badge-novo {
+    background: #88D66B;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.product-details h1 {
+    font-size: 38px;
+    font-weight: 800;
+    color: #102C26;
+    margin: 12px 0 8px;
+}
+.price-container { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+.price-current { font-size: 32px; font-weight: 800; color: #102C26; }
+.price-old { font-size: 18px; color: #999; text-decoration: line-through; }
+.product-description { color: #555; font-size: 15px; line-height: 1.7; margin-bottom: 20px; }
+.feature-tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 28px; }
+.feature-tags span {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+}
+.action-buttons { display: flex; gap: 16px; margin-bottom: 30px; }
+.btn-buy {
+    flex: 1;
+    background: #102C26;
+    color: white;
+    text-align: center;
+    padding: 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s;
+}
+.btn-buy:hover { background: #1a4a3a; }
+.btn-cart {
+    flex: 1;
+    background: #F2C94C;
+    color: #111;
+    text-align: center;
+    padding: 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 2px solid #000;
+    transition: background 0.3s;
+}
+.btn-cart:hover { background: #e0b800; }
+.good-phrase {
+    font-style: italic;
+    color: #888;
+    font-size: 13px;
+    border-left: 3px solid #88D66B;
+    padding-left: 12px;
+    margin-bottom: 24px;
+}
+.spec-table { border-top: 1px solid #eee; margin-top: 16px; }
+.spec-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #444;
+}
+.spec-row span { color: #888; }
+.spec-row strong { color: #111; font-weight: 600; }
+.product-extra {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.growth-management { flex: 1; min-width: 280px; }
+.growth-management h2 { color: #102C26; margin-bottom: 20px; }
+.progress-container { display: flex; flex-direction: column; gap: 14px; }
+.progress-container label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #555;
+    letter-spacing: 0.5px;
+    display: flex;
+    justify-content: space-between;
+}
+.progress-container label span { color: #102C26; }
+.progress-bar {
+    background: #e0e0e0;
+    border-radius: 10px;
+    height: 8px;
+    overflow: hidden;
+}
+.progress-fill {
+    background: linear-gradient(90deg, #88D66B, #102C26);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s ease;
+}
+.sustainability-card {
+    background: #f0faf0;
+    border: 1px solid #c8e6c9;
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 300px;
+}
+.sustainability-card h3 { color: #102C26; margin-bottom: 8px; }
+.sustainability-card p { color: #555; font-size: 14px; line-height: 1.6; }

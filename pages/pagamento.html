@@ -1,124 +1,358 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagamento</title>
-    <link rel="stylesheet" href="styleM.css">
+    <title>Pagamento — Lazy Greenhouse</title>
+    <link rel="stylesheet" href="../css/styleM.css">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo macedo pp.png">
 </head>
 <body>
+
+    <!-- ===== NAVBAR ===== -->
+    <!-- MELHORIA: Nav padronizada com o restante do site -->
     <header>
         <nav>
-            <div class="nav_esq"> 
-                <img src="../img/logo macedo ppp.png" alt="image" id="logo_nav" width="27" height="43"/>
+            <div class="nav_esq">
+                <img src="../img/logo macedo ppp.png" alt="Logo" id="logo_nav" width="27" height="43"/>
                 <div id="nav_button">
                     <a href="index.html">Início</a>
-                    <a href="Login.html">Login</a>
+                    <a href="login.html">Login</a>
                     <a href="cadastro.html">Cadastro</a>
                 </div>
             </div>
+            <!-- MELHORIA: Carrinho posicionado à direita e funcional -->
             <div class="nav_dir">
-                <a href="carrinho.html"><img src="../img/carrinho-carrinho.png" alt="image" id="carrinho_nav" width="30" height="30"/></a>
                 <div class="search_bar">
                     <input type="text" placeholder="O que você está procurando?">
                 </div>
+                <a href="carrinho.html" id="nav_cart_link_pag" title="Ver carrinho">
+                    <img src="../img/carrinho-carrinho.png" alt="Carrinho" id="carrinho_nav" width="30" height="30"/>
+                </a>
             </div>
         </nav>
     </header>
-    <main class="main_pagamento"> >
-    <section class="pagamento">
-        <div id="entrega">   
-            <form action="" method="post">
-                <h2>Endereço de Entrega</h2>
-                <label for="nome">Nome Completo:</label>
-                <input type="text" id="nome" name="nome" required placeholder="Seu nome completo"><br><br>
-                <label for="rua">Endereço:</label>
-                <input type="text" id="endereco" name="endereco" required placeholder="Rua, número, complemento"><br><br>
-                <div id="a">
-                    <label for="cidade">Cidade:</label>
-                    <input type="text" id="cidade" name="cidade" required placeholder="Cidade"><br><br>
-                    <label for="estado">Estado:</label>
-                    <input type="text" id="estado" name="estado" required placeholder="Estado"><br><br>
-                    <label for="cep">CEP:</label>
-                    <input type="text" id="cep" name="cep" required placeholder="CEP"><br><br>
+
+    <main class="main_pagamento">
+
+        <!-- ===== LADO ESQUERDO: Formulários de entrega e pagamento ===== -->
+        <section class="pagamento">
+
+            <!-- Formulário de Endereço de Entrega -->
+            <!-- MELHORIA: Removidos todos os <br><br> — espaçamento agora feito via CSS -->
+            <div id="entrega">
+                <form action="" method="post" id="form-entrega">
+                    <h2>📦 Endereço de Entrega</h2>
+
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+
+                    <label for="endereco">Endereço</label>
+                    <input type="text" id="endereco" name="endereco" required placeholder="Rua, número, complemento">
+
+                    <!-- MELHORIA: Campos cidade/estado/CEP em grid organizado, sem <br> -->
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" id="cidade" name="cidade" required placeholder="Cidade">
+                        </div>
+                        <div class="input-group input-group--sm">
+                            <label for="estado">Estado</label>
+                            <input type="text" id="estado" name="estado" required placeholder="UF" maxlength="2">
+                        </div>
+                        <div class="input-group">
+                            <label for="cep">CEP</label>
+                            <input type="text" id="cep" name="cep" required placeholder="00000-000" maxlength="9">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Formulário de Pagamento -->
+            <div id="pagamento-form">
+                <form action="" method="post" id="form-pagamento">
+                    <h2>💳 Informações de Pagamento</h2>
+
+                    <!-- Seletor de método de pagamento -->
+                    <div class="metodo-pagamento">
+                        <button type="button" class="metodo-btn metodo-ativo" id="btn-cartao">Cartão</button>
+                        <button type="button" class="metodo-btn" id="btn-pix">PIX</button>
+                        <button type="button" class="metodo-btn" id="btn-boleto">Boleto</button>
+                    </div>
+
+                    <label for="nome-cartao">Nome no Cartão</label>
+                    <input type="text" id="nome-cartao" name="nome_cartao" required placeholder="Como está no cartão">
+
+                    <label for="cartao">Número do Cartão</label>
+                    <input type="text" id="cartao" name="cartao" required placeholder="0000 0000 0000 0000" maxlength="19">
+
+                    <!-- MELHORIA: Validade e CVV lado a lado em grid alinhado -->
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label for="validade">Validade</label>
+                            <input type="text" id="validade" name="validade" required placeholder="MM/AA" maxlength="5">
+                        </div>
+                        <div class="input-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv" required placeholder="000" maxlength="3">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+
+        <!-- ===== LADO DIREITO: Resumo do pedido ===== -->
+        <!-- MELHORIA: Resumo completamente refeito com estrutura visual adequada -->
+        <aside class="resumo">
+            <h2>Resumo do Pedido</h2>
+
+            <!-- Item do pedido -->
+            <div class="resumo-item">
+                <img src="https://www.image2url.com/r2/default/images/1776791311496-d3d72ae2-afbd-48a7-ac6d-7534884128c0.png"
+                     alt="Lazy Greenhouse" class="resumo-item-img">
+                <div class="resumo-item-info">
+                    <p class="resumo-item-nome">Lazy Greenhouse</p>
+                    <p class="resumo-item-desc">Estufa inteligente • Bivolt</p>
+                    <div class="resumo-quantidade">
+                        <!-- Controles de quantidade -->
+                        <button type="button" class="qty-btn" id="btn-menos">−</button>
+                        <span id="qty-display">1</span>
+                        <button type="button" class="qty-btn" id="btn-mais">+</button>
+                    </div>
                 </div>
-            </form>
-        </div>
-            
-        <div id="pagamento"> 
-            <form action="" method="post">
-                <h2>Informações de Pagamento</h2>
-                <label for="cartao">Número do Cartão:</label>
-                <input type="text" id="cartao" name="cartao" required placeholder="......."><br><br>
-                <div id="a">
-                    <label for="validade">Validade:</label>
-                    <input type="text" id="validade" name="validade" required><br><br>
-                    <label for="cvv">CVV:</label>
-                    <input type="text" id="cvv" name="cvv" required><br><br>
+                <p class="resumo-item-preco" id="preco-item">R$ 185,00</p>
+            </div>
+
+            <hr class="resumo-divider">
+
+            <!-- Campo de cupom de desconto -->
+            <div class="cupom-container">
+                <label for="cupom">Cupom de Desconto</label>
+                <div class="cupom-field">
+                    <input type="text" id="cupom" name="cupom" placeholder="Digite seu cupom">
+                    <button type="button" id="btn-cupom">Aplicar</button>
                 </div>
-            </form>
-        </div>   
-    </section>          
-    <section class="resumo">
-        <h2>Resumo do Pedido</h2>
-        <p>Lazy Greenhouse</p>
-        <div class="cupom-container">
-            <label for="cupom">Cupom de Desconto</label>
-            <div class="cupom-field">
-                <input type="text" id="cupom" name="cupom" placeholder="Digite seu cupom">
-                <button type="button" id="btn-cupom">Aplicar</button>
-             </div>
-        </div>
-        <br>
-        <p>Quantidade: 1</p>
-        <p>Preço Unitário: R$ 185,00</p>
-        <p>Total: R$ 185,00</p>
-        <button class="btn-confirmar">Confirmar Compra</button>
-    </section>        
+                <!-- Mensagem de feedback do cupom (mostrada pelo JS) -->
+                <p id="cupom-msg" class="cupom-msg"></p>
+            </div>
+
+            <hr class="resumo-divider">
+
+            <!-- Detalhamento dos valores -->
+            <div class="resumo-valores">
+                <div class="resumo-linha">
+                    <span>Subtotal</span>
+                    <span id="subtotal">R$ 185,00</span>
+                </div>
+                <div class="resumo-linha">
+                    <span>Desconto</span>
+                    <span id="desconto" class="valor-desconto">— R$ 0,00</span>
+                </div>
+                <div class="resumo-linha">
+                    <span>Frete</span>
+                    <span id="frete" class="valor-frete">Grátis</span>
+                </div>
+            </div>
+
+            <hr class="resumo-divider">
+
+            <!-- Total final destacado -->
+            <div class="resumo-total">
+                <span>Total</span>
+                <span id="total-final">R$ 185,00</span>
+            </div>
+
+            <!-- MELHORIA: Botão de finalizar compra que abre o modal de confirmação -->
+            <button type="button" class="btn-confirmar" id="btn-finalizar">
+                Finalizar Compra
+            </button>
+
+            <p class="resumo-seguro">🔒 Compra 100% segura e criptografada</p>
+        </aside>
+
     </main>
-         <footer>
+
+    <!-- ===== MODAL DE CONFIRMAÇÃO DE COMPRA ===== -->
+    <!-- MELHORIA: Modal adicionado para confirmação após finalizar compra -->
+    <div id="overlay-modal" class="overlay-modal">
+        <div id="modal-confirmacao" class="modal-confirmacao">
+            <!-- Ícone de sucesso animado -->
+            <div class="modal-icone">✅</div>
+            <h2>Compra Realizada!</h2>
+            <p>Obrigado pela sua compra, <strong id="modal-nome-cliente">Cliente</strong>!</p>
+            <p class="modal-detalhe">Seu pedido da <strong>Lazy Greenhouse</strong> foi confirmado.<br>
+                Em breve você receberá um e-mail com os detalhes.</p>
+
+            <!-- Código do pedido gerado aleatoriamente pelo JS -->
+            <div class="modal-pedido">
+                <span>Número do pedido:</span>
+                <strong id="modal-codigo-pedido">#000000</strong>
+            </div>
+
+            <div class="modal-botoes">
+                <a href="index.html" class="modal-btn-home">Voltar para a Home</a>
+                <button type="button" class="modal-btn-fechar" id="btn-fechar-modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
         <div>
             <p>
                 Desenvolve soluções para tornar o cuidado <br>
-                com plantas mais prático e acessível <br> 
+                com plantas mais prático e acessível <br>
                 através da tecnologia.
             </p>
         </div>
-        <div  id="navegação">
+        <div id="navegação">
             <ul>
                 <p><b>Navegação</b></p>
-                <a href="#">Início</a>
-                <a href="#">Login</a>
-                <a href="#">Cadastro</a>
-                <a href="#">Sobre Nós</a>
+                <a href="index.html">Início</a>
+                <a href="login.html">Login</a>
+                <a href="cadastro.html">Cadastro</a>
+                <a href="SobreNós.html">Sobre Nós</a>
             </ul>
         </div>
-        <div id="contato">           
+        <div id="contato">
             <ul>
-                    <li>
-                        <img src="../img/envelope.png" alt="Email" class="footer-icon">
-                        <a>lazygreenhouse@gmail.com</a>
-                    </li>
-                    <li>
-                        <img src="../img/whatsapp.png" alt="WhatsApp" class="footer-icon">
-                        (12) 98877-2660
-                    </li>
-                    <li>
-                        <img src="../img/instagram.png" alt="Instagram" class="footer-icon">
-                        lazy.greenhouse
-                    </li>
-                    <li>
-                        <img src="../img/marcador.png" alt="Localização" class="footer-icon">
-                        Caçapava-SP 
-                    </li>
-                </ul>
+                <li>
+                    <img src="../img/envelope.png" alt="Email" class="footer-icon">
+                    <a>lazygreenhouse@gmail.com</a>
+                </li>
+                <li>
+                    <img src="../img/whatsapp.png" alt="WhatsApp" class="footer-icon">
+                    (12) 98877-2660
+                </li>
+                <li>
+                    <img src="../img/instagram.png" alt="Instagram" class="footer-icon">
+                    lazy.greenhouse
+                </li>
+                <li>
+                    <img src="../img/marcador.png" alt="Localização" class="footer-icon">
+                    Caçapava-SP
+                </li>
+            </ul>
         </div>
         <hr>
         <div class="footer-style">
             <p>© 2026 Lazy Greenhouse. | Todos os direitos reservados.</p>
             <a href="#">Termos de Uso e Privacidade</a>
         </div>
-    </footer>  
-</body>    
-</html>  
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ---- Preço base do produto ----
+        const PRECO_UNITARIO = 185.00;
+        let quantidade = 1;
+        let descontoValor = 0;
+
+        // ---- Função para formatar valor em reais ----
+        function formatarReais(valor) {
+            return 'R$ ' + valor.toFixed(2).replace('.', ',');
+        }
+
+        // ---- Atualiza os valores do resumo ----
+        function atualizarResumo() {
+            const subtotal = PRECO_UNITARIO * quantidade;
+            const total = subtotal - descontoValor;
+
+            document.getElementById('qty-display').textContent = quantidade;
+            document.getElementById('preco-item').textContent = formatarReais(subtotal);
+            document.getElementById('subtotal').textContent = formatarReais(subtotal);
+            document.getElementById('desconto').textContent = descontoValor > 0
+                ? '— ' + formatarReais(descontoValor)
+                : '— R$ 0,00';
+            document.getElementById('total-final').textContent = formatarReais(total);
+        }
+
+        // ---- Botões de quantidade + e - ----
+        document.getElementById('btn-mais').addEventListener('click', function () {
+            quantidade += 1;
+            atualizarResumo();
+        });
+
+        document.getElementById('btn-menos').addEventListener('click', function () {
+            if (quantidade > 1) { // não deixa ir abaixo de 1
+                quantidade -= 1;
+                atualizarResumo();
+            }
+        });
+
+        // ---- Lógica do cupom de desconto ----
+        // MELHORIA: Cupom funcional com feedback visual
+        const CUPONS_VALIDOS = {
+            'VERDE10': 10,   // 10% de desconto
+            'LAZY20': 20,    // 20% de desconto
+            'SENAI': 15      // 15% de desconto
+        };
+
+        document.getElementById('btn-cupom').addEventListener('click', function () {
+            const codigoCupom = document.getElementById('cupom').value.trim().toUpperCase();
+            const msgEl = document.getElementById('cupom-msg');
+
+            if (CUPONS_VALIDOS[codigoCupom] !== undefined) {
+                // Cupom válido: calcula desconto em %
+                const percentual = CUPONS_VALIDOS[codigoCupom];
+                descontoValor = (PRECO_UNITARIO * quantidade) * (percentual / 100);
+                msgEl.textContent = '✅ Cupom aplicado! ' + percentual + '% de desconto.';
+                msgEl.style.color = '#2e7d32';
+            } else if (codigoCupom === '') {
+                msgEl.textContent = 'Digite um cupom antes de aplicar.';
+                msgEl.style.color = '#c62828';
+            } else {
+                msgEl.textContent = '❌ Cupom inválido. Tente: VERDE10, LAZY20 ou SENAI';
+                msgEl.style.color = '#c62828';
+                descontoValor = 0;
+            }
+
+            atualizarResumo();
+        });
+
+        // ---- Seletor de método de pagamento ----
+        const botoesMetodo = document.querySelectorAll('.metodo-btn');
+        botoesMetodo.forEach(function(btn) {
+            btn.addEventListener('click', function () {
+                // Remove a classe ativa de todos e adiciona só no clicado
+                botoesMetodo.forEach(b => b.classList.remove('metodo-ativo'));
+                btn.classList.add('metodo-ativo');
+            });
+        });
+
+        // ---- Modal de confirmação de compra ----
+        // MELHORIA: Abre o modal ao clicar em "Finalizar Compra"
+        document.getElementById('btn-finalizar').addEventListener('click', function () {
+            // Pega o nome digitado no formulário para personalizar o modal
+            const nomeCliente = document.getElementById('nome').value.trim() || 'Cliente';
+            document.getElementById('modal-nome-cliente').textContent = nomeCliente;
+
+            // Gera um número de pedido aleatório de 6 dígitos
+            const codigoPedido = '#' + Math.floor(100000 + Math.random() * 900000);
+            document.getElementById('modal-codigo-pedido').textContent = codigoPedido;
+
+            // Exibe o overlay + modal
+            document.getElementById('overlay-modal').style.display = 'flex';
+
+            // Limpa o carrinho do localStorage após a compra
+            localStorage.removeItem('carrinho');
+        });
+
+        // ---- Fecha o modal ao clicar no botão "Fechar" ----
+        document.getElementById('btn-fechar-modal').addEventListener('click', function () {
+            document.getElementById('overlay-modal').style.display = 'none';
+        });
+
+        // ---- Fecha o modal ao clicar fora da caixa (no overlay) ----
+        document.getElementById('overlay-modal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+
+        // ---- Inicializa o resumo ao carregar a página ----
+        atualizarResumo();
+    </script>
+
+</body>
+</html>

@@ -1,33 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* ==========================================
+   RESET GLOBAL
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
-    background: white;
+    background: #f4f6f8;
     font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
 }
+
+/* ==========================================
+   NAVBAR
+   ========================================== */
 header {
     background: #102C26;
     color: white;
-    padding: 20px 60px;
-    display: flex;
     width: 100%;
 }
 nav {
     display: flex;
     align-items: center;
-    justify-content: space-between; 
+    justify-content: space-between;
     background-color: #102C26;
-    padding: 2px 40px; 
-    min-height: 40px;
+    padding: 12px 40px;
+    min-height: 60px;
     width: 100%;
- }
-.nav_esq{
+}
+.nav_esq {
     display: flex;
     align-items: center;
     gap: 40px;
@@ -36,188 +41,530 @@ nav {
     text-decoration: none;
     color: white;
     font-weight: 500;
-    margin: 0 10px;
-    padding: 8px 16px;
+    margin: 0 8px;
+    padding: 8px 14px;
     border-radius: 5px;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
+    font-size: 15px;
 }
-.nav_dir{
+#nav_button a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: #F2C94C;
+}
+.nav_dir {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
 }
-#logo__nav{
-    height: 35px;
-    width: auto;
-}
+#logo_nav { object-fit: contain; }
+
+/* MELHORIA: Barra de busca com contraste correto (fundo translúcido, placeholder visível) */
 .search_bar input {
-    background-color: #b0b8b5; /* Cor cinza da barra de busca */
+    background-color: rgba(255,255,255,0.12);
     border: none;
     border-radius: 8px;
     padding: 8px 15px;
-    width: 250px;
+    width: 240px;
     outline: none;
+    color: white;
+    font-size: 14px;
+    font-family: 'Montserrat', sans-serif;
 }
-#main_cadastro {
+.search_bar input::placeholder { color: rgba(255,255,255,0.55); }
+
+/* Ícone do carrinho na nav de pagamento */
+#nav_cart_link_pag {
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    gap: 27px;
-} 
-.wrapper {
+    opacity: 0.9;
+    transition: opacity 0.2s;
+}
+#nav_cart_link_pag:hover { opacity: 1; }
+#carrinho_nav { filter: invert(1); cursor: pointer; }
+
+/* ==========================================
+   LAYOUT PRINCIPAL DA PÁGINA DE PAGAMENTO
+   MELHORIA: Formulário e resumo lado a lado
+   com proporção adequada.
+   ========================================== */
+.main_pagamento {
     display: flex;
     flex-direction: row;
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    width: 800px;
-    min-height: 500px;
-    gap: 27px;
-}
-#cadastro form{
-    display: flex;
-    flex-direction: column;
-}
-#cadastro input:not([type="checkbox"]) {
-    width: 400px;
-    padding: 8px;
-    margin: 10px 0;
-    border: 1px solid #999;
-    border-radius: 5px;
-    display: block;
-}
-.banner{
-    width: 350px;    
-    min-width: 350px;
-    background-color: #102C26;
-    color: white;
-    background-image: 
-        linear-gradient(
-            rgba(10, 30, 24, 0.80),
-            rgba(10, 30, 24, 0.80)
-        ),
-        url(fundobanner.png);
-}
-.banner p {
-    font-size: 13px;
-    color: wheat;
-    font: 'Inter';
-    padding: 10px;
-}
-.banner h1 {
-    font-size: 30px;
-    font-weight: 700;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    padding: 10px;
-}
-button:not(.social-btn) {
-    width: 100%;
-    height: 46px;
-    background: #F2C94C;
-    color: #1a1a1a;
-    font-size: 15px;
-    font-weight: 600;
-    border: 2px solid #000000;
-    border-radius: 10px;        
-    cursor: pointer;
-    margin-top: 16px;
-}
-.check-row {
-    display: flex;
-    align-items: center; 
-    justify-content: flex-start;
-    width: 400px; 
-    margin-top: 10px;
-    gap: 10px; 
-}
-.check-row input[type="checkbox"] {
-    width: auto; 
-    margin: 0;   
-    cursor: pointer;
-}
-.social {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    margin-top: 16px;
-}
-.social p {
-    font-size: 13px;
-    color: #999;
+    gap: 32px;
+    padding: 40px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start; /* resumo não estica junto com o form */
 }
 
-.social-botoes {
+/* ==========================================
+   SEÇÃO DE FORMULÁRIOS (esquerda)
+   ========================================== */
+.pagamento {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    flex: 2; /* ocupa 2/3 da largura */
+}
+
+/* Cabeçalhos das seções do form */
+.pagamento h2 {
+    font-size: 20px;
+    color: #102C26;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+/* ==========================================
+   LABELS E INPUTS
+   MELHORIA: Espaçamento feito via CSS,
+   removidos os <br><br> do HTML original.
+   ========================================== */
+label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 6px;
+    margin-top: 18px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.3px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"] {
+    width: 100%;
+    background-color: #f1f3f4;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 13px 16px;
+    font-size: 15px;
+    color: #333;
+    outline: none;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+/* Borda verde ao focar no input */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #88D66B;
+    background-color: #fff;
+}
+
+/* ==========================================
+   GRID DE INPUTS LADO A LADO
+   MELHORIA: Substituiu os div#a repetidos
+   por uma classe reutilizável .input-row
+   ========================================== */
+.input-row {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-end;
+    margin-top: 4px;
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1; /* ocupa espaço igual por padrão */
+}
+/* Campo menor (ex: UF com 2 letras) */
+.input-group--sm { flex: 0.5; }
+
+/* ==========================================
+   SELETOR DE MÉTODO DE PAGAMENTO
+   ========================================== */
+.metodo-pagamento {
     display: flex;
     gap: 12px;
-    width: 100%;
+    margin-top: 8px;
+    margin-bottom: 4px;
 }
-.social-btn {
+.metodo-btn {
     flex: 1;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.metodo-btn:hover { border-color: #88D66B; color: #102C26; }
+/* Botão de método ativo (selecionado) */
+.metodo-ativo {
+    border-color: #102C26;
+    background-color: #102C26;
+    color: white;
+}
+
+/* ==========================================
+   RESUMO DO PEDIDO (direita)
+   MELHORIA: Completamente refeito com
+   estrutura visual adequada — imagem, nome,
+   quantidade, valores, cupom e total.
+   ========================================== */
+.resumo {
+    flex: 1; /* ocupa 1/3 da largura */
+    background-color: #ffffff;
+    padding: 28px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 80px; /* fica fixo ao rolar, abaixo da nav */
+}
+.resumo h2 {
+    font-size: 20px;
+    color: #102C26;
+    font-weight: 700;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+/* Item do pedido no resumo */
+.resumo-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+/* Imagem miniatura do produto */
+.resumo-item-img {
+    width: 72px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    flex-shrink: 0;
+}
+.resumo-item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.resumo-item-nome {
+    font-weight: 700;
+    font-size: 15px;
+    color: #1a1a1a;
+}
+.resumo-item-desc {
+    font-size: 12px;
+    color: #888;
+}
+
+/* Controles de quantidade + e - */
+.resumo-quantidade {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+}
+.qty-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background: white;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    height: 44px;
-    border: 1px solid #e0e0e0;
+    color: #333;
+    transition: all 0.2s ease;
+    line-height: 1;
+    padding: 0;
+}
+.qty-btn:hover { background: #102C26; color: white; border-color: #102C26; }
+
+#qty-display {
+    font-size: 15px;
+    font-weight: 700;
+    min-width: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* Preço do item alinhado à direita */
+.resumo-item-preco {
+    font-weight: 700;
+    font-size: 16px;
+    color: #102C26;
+    white-space: nowrap;
+}
+
+/* Divisor dentro do resumo */
+.resumo-divider {
+    border: none;
+    border-top: 1px solid #f0f0f0;
+    margin: 16px 0;
+}
+
+/* ==========================================
+   CUPOM DE DESCONTO
+   ========================================== */
+.cupom-container { margin-bottom: 4px; }
+.cupom-container label {
+    margin-top: 0;
+    font-size: 13px;
+    color: #555;
+}
+.cupom-field {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+}
+.cupom-field input {
+    flex: 1;
+    padding: 10px 12px;
+    font-size: 13px;
     border-radius: 8px;
+    border: 2px solid #e0e0e0;
+    background: #f9f9f9;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+}
+.cupom-field input:focus { border-color: #88D66B; background: white; }
+
+/* Botão Aplicar do cupom */
+#btn-cupom {
+    padding: 10px 16px;
+    background: #102C26;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+    /* Override do global button que havia no arquivo original */
+    width: auto;
+    height: auto;
+    margin-top: 0;
+}
+#btn-cupom:hover { background: #1a4a3a; }
+
+/* Mensagem de feedback do cupom (inválido/válido) */
+.cupom-msg {
+    font-size: 12px;
+    margin-top: 6px;
+    font-weight: 600;
+    min-height: 18px;
+}
+
+/* ==========================================
+   DETALHAMENTO DE VALORES
+   ========================================== */
+.resumo-valores {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.resumo-linha {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+}
+.valor-desconto { color: #2e7d32; font-weight: 600; }
+.valor-frete { color: #2e7d32; font-weight: 600; }
+
+/* Total em destaque */
+.resumo-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: #102C26;
+    margin: 8px 0 20px;
+}
+
+/* ==========================================
+   BOTÃO FINALIZAR COMPRA
+   MELHORIA: Botão principal de conversão
+   ========================================== */
+.btn-confirmar {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #102C26, #1a4a3a);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    margin-top: 0;
+    height: auto;
+}
+.btn-confirmar:hover {
+    background: linear-gradient(135deg, #1a4a3a, #2e7d32);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 44, 38, 0.35);
+}
+.btn-confirmar:active { transform: translateY(0); }
+
+/* Texto de segurança abaixo do botão */
+.resumo-seguro {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    margin-top: 12px;
+    font-weight: 500;
+}
+
+/* ==========================================
+   MODAL DE CONFIRMAÇÃO DE COMPRA
+   MELHORIA: Modal exibido ao finalizar compra
+   com overlay escuro e caixa centralizada
+   ========================================== */
+.overlay-modal {
+    display: none; /* escondido por padrão — JS altera para 'flex' */
+    position: fixed;
+    inset: 0; /* equivale a top:0; left:0; right:0; bottom:0 */
+    background: rgba(0, 0, 0, 0.60);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+}
+
+/* Animação de entrada do overlay */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Caixa do modal */
+.modal-confirmacao {
+    background: white;
+    border-radius: 20px;
+    padding: 48px 40px;
+    max-width: 440px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease;
+}
+
+/* Animação de entrada do modal */
+@keyframes slideUp {
+    from { transform: translateY(30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* Ícone de sucesso grande */
+.modal-icone {
+    font-size: 60px;
+    margin-bottom: 16px;
+}
+
+.modal-confirmacao h2 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #102C26;
+    margin-bottom: 10px;
+}
+.modal-confirmacao > p {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 6px;
+}
+.modal-detalhe {
+    color: #777;
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+/* Caixa com número do pedido */
+.modal-pedido {
+    background: #f0faf0;
+    border: 1px solid #c8e6c9;
+    border-radius: 10px;
+    padding: 14px 20px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+}
+.modal-pedido strong {
+    font-size: 18px;
+    color: #102C26;
+    font-weight: 800;
+}
+
+/* Botões do modal */
+.modal-botoes {
+    display: flex;
+    gap: 12px;
+}
+.modal-btn-home {
+    flex: 1;
+    background: #102C26;
+    color: white;
+    padding: 13px;
+    border-radius: 10px;
     text-decoration: none;
     font-size: 14px;
-    font-weight: 500;
-    color: #333;
-    background: #f5f5f5;
+    font-weight: 700;
+    transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
-.social-btn:hover {
-    background: #ebebeb;
+.modal-btn-home:hover { background: #1a4a3a; }
+
+.modal-btn-fechar {
+    flex: 1;
+    background: white;
+    color: #555;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    padding: 13px;
+    width: auto;
+    height: auto;
+    margin-top: 0;
 }
-.social-btn img {
-    width: 18px;
-    height: 18px;
-}
+.modal-btn-fechar:hover { border-color: #102C26; color: #102C26; }
+
+/* ==========================================
+   FOOTER
+   ========================================== */
 footer {
-    margin-top: 100px;
+    margin-top: 80px;
     background: #102C26;
     color: #ffffff;
-    padding: 30px 5% 15px 5%;
+    padding: 48px 60px 24px;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     gap: 40px;
     font-family: 'Montserrat', sans-serif;
-}
-
-hr {
-    border: 0;
-    border-top: 1px solid #2d3748;
-    margin-bottom: 20px;
-}
-
-/* Parte de baixo: Direitos e Termos */
-#footer_style {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-    color: #a0aec0;
-}
-
-.footer_left p {
-    margin: 5px 0;
-}
-
-.footer_right {
-    display: flex;
-    gap: 25px;
-}
-
-.footer_right a {
-    color: #a0aec0;
-    text-decoration: none;
-}
-
-.footer_right a:hover {
-    text-decoration: underline;
 }
 #navegação a {
     display: flex;
@@ -225,14 +572,28 @@ hr {
     color: #ffffff;
     font-size: 14px;
     flex-direction: column;
+    margin-bottom: 4px;
 }
+#contato ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#contato li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: white;
+}
+#contato a { color: white; text-decoration: none; }
+.footer-icon { width: 16px; height: 16px; filter: invert(1); }
 footer hr {
-    grid-column: 1 / -1; 
+    grid-column: 1 / -1;
     border: none;
-    border-top: 1px solid #2e5a4a;
+    border-top: 1px solid rgba(255,255,255,0.1);
     margin: 8px 0;
-    text-decoration: none;
-    color: #ffffff;
 }
 .footer-style {
     grid-column: 1 / -1;
@@ -241,202 +602,11 @@ footer hr {
     align-items: center;
     flex-wrap: wrap;
     gap: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.7);
 }
 .footer-style a {
     text-decoration: none;
-    color: #ffffff;
+    color: rgba(255,255,255,0.7);
 }
-
-#main_login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    gap: 27px;
-} 
-#login{
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
-    text-align: center;
-}
-#login h3 {
-    text-align: center; 
-    padding: 10px; 
-}
-#login > p {
-    text-align: center;
-    padding: 10px; 
-}
-#login form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 10px;
-}
-#login input{
-    width: 400px;
-    padding: 8px;
-    margin: 10px 0;
-    border: 1px solid #999;
-    border-radius: 5px;
-    display: block;
-}
-#login label {
-    font-size: 13px;
-    font-weight: 600;
-    font-family: 'inter';
-    color: #000000;
-    margin-top: 10px;
-    text-align: left;
-}
-#logo_login{
-    width: 50px; 
-    height: 50px;
-    margin:0 auto;
-    padding: 10px;
-    display: block;
-}
-.senha{
-    display: flex;
-    font-size: 13px;
-    font-weight: 600;
-    font-family: 'inter';
-    color: #000000;
-    margin-top: 10px;
-    align-items: center;
-    justify-content: space-between;
-}
-.senha a{
-    color: black;
-    text-decoration: none;
-}
-#main_esqueci {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-#esqueci{
-    background: white;
-    border-radius: 10px;
-    padding: 40px 36px;
-    width: 380px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-}
-#esqueci input{
-    width: 310px;
-    padding: 8px;
-    margin: 10px 0;
-    border: 1px solid #999;
-    border-radius: 5px;
-    display: block;
-}
-#esqueci label {
-    font-size: 13px;
-    font-weight: 600;
-    font-family: 'inter';
-    color: #000000;
-    margin-top: 10px;
-    text-align: left;
-}
-#esqueci  p {
-    font-size: 13px;
-    color: #000000;
-    line-height: 1.7;
-    text-align: left;
-    font-family: 'inter';
-}
-#esqueci h3 {
-    text-align: center; 
-}
-.ainda{
-    display: flex;
-    font-size: 13px;
-    font-weight: 300;
-    font-family: 'inter';
-    text-decoration: none;
-    gap: 3px;
-    justify-content: center;
-    margin-bottom: 3px;
-    margin-top: 3px;
-}
-.ainda a{
-    text-decoration: none;
-    color: black;
-    margin-top: 3px;
-}   
-hr{
-    border: none;
-    border-top: 1px solid #000000; 
-    margin-right: 5px;
-    margin-left: 5px ;
-}
-.main_pagamento {
-    display: flex;          /* Coloca Form e Resumo lado a lado */
-    flex-direction: row;    /* Linha */
-    gap: 40px;
-    padding: 40px;
-    max-width: 1200px;
-    margin: 0 auto;           
-}
-.pagamento {
-    display: flex;          /* Ativa flexbox interno */
-    flex-direction: column; /* FORÇA Pagamento a ficar embaixo de Entrega */
-    gap: 50px;              /* Espaço entre a seção 1 e a seção 2 */
-    flex: 2;  
-}
-.entrega h2{
-    color: #000000;
-    font-family: 'Montserrat', sans-serif;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    margin-top: 30px;
-}
-label {
-    display: block;
-    font-size: 14px;
-    font-weight: 600;
-    color: #000000;
-    margin-bottom: 8px;
-    margin-top: 15px;
-    font-family: 'inter';
-}
-#a {
-    display: flex;       
-    flex-direction: row; 
-    gap: 15px;          
-    align-items: flex-end; 
-}
-input{
-    width: 100%;
-    background-color: #f1f3f4; /* A cor cinza clara da imagem */
-    border: none;           /* Remove aquela borda preta padrão */
-    border-radius: 8px;     /* Arredonda os cantos */
-    padding: 15px;          /* Dá espaço interno para o texto não ficar colado */
-    font-size: 15px;        /* Tamanho da fonte */
-    color: #5f6368;         /* Cor do texto digitado */
-    outline: none;          /* Remove a linha azul ao clicar (opcional) */
-    box-sizing: border-box; /* Garante que o padding não aumente o tamanho do input */
-}
-.resumo {
-    background-color: #f9f9f9; /* Cor de fundo clara para o resumo */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-}
-#btn-cupom{
-    width: 100%;
-    height: 40px;
-    background: #a8ffba;
-    color: #1a1a1a;
-    font-size: 15px;
-    font-weight: 500;
-    border-radius: 10px;        
-    cursor: pointer;
-    margin-top: 16px;
-}
+.footer-style a:hover { color: white; }
