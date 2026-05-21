@@ -8,34 +8,30 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo macedo pp.png">
 </head>
 <body>
-
-    <!-- ===== NAVBAR ===== -->
-    <!-- MELHORIA: Nav igual à home — logo + links à esquerda, busca + carrinho à direita -->
-    <nav class="nav_index">
-        <div class="nav_left">
-            <a href="index.html" id="nav_logo_link">
-                <img src="../img/logo macedo pp.png" alt="Logo Lazy Greenhouse" id="nav_logo_img" />
-            </a>
-            <div id="nav_index_button">
-                <a href="index.html">Início</a>
-                <a href="login.html">Login</a>
-                <a href="cadastro.html">Cadastro</a>
-                <a href="SobreNós.html">Sobre nós</a>
+ <header>
+        <nav>
+            <div class="nav_left">
+                <a href="index.html" id="nav_logo_link">
+                    <img src="../img/logo macedo pp.png" alt="Logo Lazy Greenhouse" id="nav_logo_img" />
+                </a>
+                <div id="nav_button">
+                    <a href="login.html">Login</a>
+                    <a href="cadastro.html">Cadastro</a>
+                    <a href="Compras.html">Compras</a>
+                    <a href="SobreNós.html">Sobre nós</a>
+                </div>
             </div>
-        </div>
-        <div class="nav_right">
-            <form action="/buscar" method="get" class="nav_search_form">
-                <input type="search" name="q" placeholder="O que você está procurando?"
-                       aria-label="Buscar" id="nav_index_navbar">
-            </form>
-            <!-- MELHORIA: Ícone do carrinho funcional à direita -->
-            <a href="carrinho.html" id="nav_cart_link" title="Ver carrinho">
-                <img src="../img/carrinho-carrinho.png" alt="Carrinho" id="nav_cart_icon" />
-                <span id="nav_cart_badge">0</span>
-            </a>
-        </div>
-    </nav>
+            <div class="nav_right">
+                <a href="carrinho.html" id="nav_cart_link" title="Ver carrinho de compras">
+                    <img src="../img/carrinho-carrinho.png" alt="Carrinho" id="cart_icon" />
+                    <!-- Badge que mostra quantidade de itens no carrinho -->
+                    <span id="cart_badge">0</span>
+                </a>
+            </div>
 
+        </nav>
+
+    </header>
     <main class="product-page">
         <section class="product-main">
 
@@ -123,14 +119,14 @@
         </section>
     </main>
 
-    <footer class="footer_index">
+    <footer >
         <div id="footer_box">
-            <div id="footer_index_information1">
+            <div id="footer_information1">
                 <p>Desenvolve soluções para tornar o cuidado <br>
                     com plantas mais prático e acessível <br>
                     através da tecnologia.</p>
             </div>
-            <div id="footer_index_information2">
+            <div id="footer_information2">
                 <ul>
                     <a href="index.html">Início</a>
                     <a href="login.html">Login</a>
@@ -138,22 +134,22 @@
                     <a href="SobreNós.html">Sobre Nós</a>
                 </ul>
             </div>
-            <div id="footer_index_information3">
+            <div id="footer_information3">
                 <ul>
                     <li>
-                        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" class="footer-icon">
+                        <img src="../img/envelope.png" alt="Email" class="footer-icon">
                         <a href="">lazygreenhouse@gmail.com</a>
                     </li>
                     <li>
-                        <img src="https://cdn-icons-png.flaticon.com/512/3670/3670051.png" alt="WhatsApp" class="footer-icon">
+                        <img src="../img/whatsapp.png" alt="WhatsApp" class="footer-icon">
                         (12) 98877-2660
                     </li>
                     <li>
-                        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Localização" class="footer-icon">
+                        <img src="../img/marcador.png" alt="Localização" class="footer-icon">
                         Caçapava-SP
                     </li>
                     <li>
-                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" class="footer-icon">
+                        <img src="../img/instagram.png" alt="Instagram" class="footer-icon">
                         lazy.greenhouse
                     </li>
                 </ul>
@@ -171,7 +167,6 @@
             </div>
         </div>
     </footer>
-
     <!-- ===== JAVASCRIPT ===== -->
     <script>
         // MELHORIA: Atualiza badge do carrinho ao carregar a página

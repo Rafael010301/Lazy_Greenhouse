@@ -19,16 +19,6 @@ body {
     min-height: 100vh;
     gap: 27px;
 } 
-.wrapper {
-    display: flex;
-    flex-direction: row;
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    width: 800px;
-    min-height: 500px;
-    gap: 27px;
-}
 #cadastro form{
     display: flex;
     flex-direction: column;
@@ -41,31 +31,6 @@ body {
     border-radius: 5px;
     display: block;
 }
-.banner{
-    width: 350px;    
-    min-width: 350px;
-    background-color: #102C26;
-    color: white;
-    background-image: 
-        linear-gradient(
-            rgba(10, 30, 24, 0.80),
-            rgba(10, 30, 24, 0.80)
-        ),
-        url(fundobanner.png);
-}
-.banner p {
-    font-size: 13px;
-    color: wheat;
-    font: 'Inter';
-    padding: 10px;
-}
-.banner h1 {
-    font-size: 30px;
-    font-weight: 700;
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    padding: 10px;
-}
 button {
     width: 100%;
     height: 46px;
@@ -77,19 +42,6 @@ button {
     border-radius: 10px;        
     cursor: pointer;
     margin-top: 16px;
-}
-.check-row {
-    display: flex;
-    align-items: center; 
-    justify-content: flex-start;
-    width: 400px; 
-    margin-top: 10px;
-    gap: 10px; 
-}
-.check-row input[type="checkbox"] {
-    width: auto; 
-    margin: 0;   
-    cursor: pointer;
 }
 .social {
     display: flex;
@@ -130,41 +82,107 @@ button {
     width: 18px;
     height: 18px;
 }
+
+/* ==========================================
+   FOOTER
+   ========================================== */
 footer {
-    background: #102C26;
-    color: #ffffff;
-    padding: 48px 60px 24px;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 40px;
-}
-#navegação a {
+    background-color: #102C26;
+    padding: 60px 50px 30px;
     display: flex;
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 14px;
     flex-direction: column;
+    align-items: flex-start;
 }
-footer hr {
-    grid-column: 1 / -1; 
-    border: none;
-    border-top: 1px solid #2e5a4a;
-    margin: 8px 0;
-    text-decoration: none;
-    color: #ffffff;
+footer .logo img {
+    width: 90px;
+    height: auto;
+    margin-bottom: 40px;
+    display: block;
+    margin: top 20px;
 }
-.footer-style {
-    grid-column: 1 / -1;
+#footer_box {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 40px;
+    gap: 30px;
 }
-.footer-style a {
+footer hr {
+    width: 100%;
+    max-width: 1100px;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 20px 0;
+}
+#footer_information1 { color: white; }
+#footer_information2 ul {
+    display: flex;
+    margin: 20px;
+    flex-direction: column;
+    color: white;
+}
+#footer_information2 a {
+    color: white;
     text-decoration: none;
-    color: #ffffff;
+    padding: 2px;
 }
+#footer_information3 ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+#footer_information3 li {
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    gap: 10px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+#footer_information3 a { color: white; text-decoration: none; }
+#footer_information3 li:hover,
+#footer_information3 a:hover { color: #F2C94C; }
+#footer_information3 li:hover .footer-icon { transform: scale(1.2); }
+.footer-icon {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.3s ease;
+}
+#footer_style {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1100px;
+    margin: 20px auto 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+.footer_left p {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+.footer_right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.footer_right a {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    margin-bottom: 2px;
+}
+#footer_style a:hover {
+    color: #fff;
+    text-decoration: underline;
+    transition: 0.2s;
+}
+#footer_style a:active { opacity: 0.5; }
 
 #main_login {
     display: flex;
@@ -174,8 +192,7 @@ footer hr {
     gap: 27px;
 } 
 #login{
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);;
     text-align: center;
 }
 #login h3 {
@@ -216,6 +233,7 @@ footer hr {
     padding: 10px;
     display: block;
 }
+
 .senha{
     display: flex;
     font-size: 13px;
@@ -237,14 +255,12 @@ footer hr {
     min-height: 100vh;
 }
 #esqueci{
-    background: white;
-    border-radius: 10px;
-    padding: 40px 36px;
-    width: 380px;
+    padding: 40px; 
     display: flex;
     flex-direction: column;
-    gap: 14px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    align-items: center; 
+    width: 400px;
+    box-sizing: border-box;
 }
 #esqueci input{
     width: 310px;
@@ -293,4 +309,110 @@ hr{
     border-top: 1px solid #000000; 
     margin-right: 5px;
     margin-left: 5px ;
+}
+body{
+    gap: 10px;
+}
+
+#main_cadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: 27px;
+    padding: 20px;
+} 
+#cadastro{
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+#cadastro h3 {
+    text-align: center; 
+    padding: 10px; 
+}
+#cadstro > p {
+    text-align: center;
+    padding: 10px; 
+}
+#cadastro form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+#cadastro input{
+    width: 400px;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #999;
+    border-radius: 5px;
+    display: block;
+}
+#cadastro label {
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'inter';
+    color: #000000;
+    margin-top: 10px;
+    text-align: left;
+}
+#logo_login{
+    width: 50px; 
+    height: 50px;
+    margin:0 auto;
+    padding: 10px;
+    display: block;
+}
+.senha{
+    display: flex;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'inter';
+    color: #000000;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.senha a{
+    color: black;
+    text-decoration: none;
+}
+#banner{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/fundobanner.png);
+    background-size: cover; 
+    background-position: center;
+    color: white;
+    padding: 40px; 
+    width: 300px;
+}
+
+.junto {
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff; 
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15); 
+    overflow: hidden;
+}
+
+.junto_login {
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff; /* Fundo branco do card */
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15); /* Sombra moderna */
+    overflow: hidden
+}
+.junto_senha {
+    display: flex;
+    flex-direction: row;
+    background-color: #ffffff; /* Fundo branco do card */
+    border-radius: 10px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15); /* Sombra moderna */
+    overflow: hidden
 }

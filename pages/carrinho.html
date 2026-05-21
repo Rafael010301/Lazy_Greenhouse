@@ -234,27 +234,30 @@
     </style>
 </head>
 <body>
-
-    <!-- ===== NAVBAR ===== -->
-    <nav>
-        <div class="nav_left">
-            <a href="index.html">
-                <img src="../img/logo macedo pp.png" alt="Logo" id="nav_logo_img" />
-            </a>
-            <div class="nav_links">
-                <a href="index.html">Início</a>
-                <a href="Compras.html">Compras</a>
-                <a href="login.html">Login</a>
+ <header>
+        <nav>
+            <div class="nav_left">
+                <a href="index.html" id="nav_logo_link">
+                    <img src="../img/logo macedo pp.png" alt="Logo Lazy Greenhouse" id="nav_logo_img" />
+                </a>
+                <div id="nav_button">
+                    <a href="login.html">Login</a>
+                    <a href="cadastro.html">Cadastro</a>
+                    <a href="Compras.html">Compras</a>
+                    <a href="SobreNós.html">Sobre nós</a>
+                </div>
             </div>
-        </div>
-        <div class="nav_right">
-            <!-- Ícone do carrinho na própria página do carrinho -->
-            <a href="carrinho.html" id="nav_cart_link">
-                <img src="../img/carrinho-carrinho.png" alt="Carrinho" id="nav_cart_icon" />
-                <span id="nav_cart_badge">0</span>
-            </a>
-        </div>
-    </nav>
+            <div class="nav_right">
+                <a href="carrinho.html" id="nav_cart_link" title="Ver carrinho de compras">
+                    <img src="../img/carrinho-carrinho.png" alt="Carrinho" id="cart_icon" />
+                    <!-- Badge que mostra quantidade de itens no carrinho -->
+                    <span id="cart_badge">0</span>
+                </a>
+            </div>
+
+        </nav>
+
+    </header>
 
     <!-- ===== CONTEÚDO DO CARRINHO ===== -->
     <div class="carrinho-page">

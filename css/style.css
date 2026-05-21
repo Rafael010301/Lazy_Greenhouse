@@ -19,7 +19,7 @@ p { font-weight: 400; }
    à esquerda e busca+carrinho à direita.
    Agora é sticky (fica fixo ao rolar a página).
    ========================================== */
-.nav_index {
+nav{
     display: flex;
     align-items: center;
     justify-content: space-between; /* empurra esquerda e direita para as pontas */
@@ -55,12 +55,12 @@ p { font-weight: 400; }
 /* ==========================================
    LINKS DA NAVBAR
    ========================================== */
-#nav_index_button {
+#nav_button {
     display: flex;
     align-items: center;
     gap: 4px;
 }
-#nav_index_button a {
+#nav_button a {
     text-decoration: none;
     color: white;
     font-weight: 500;
@@ -69,42 +69,13 @@ p { font-weight: 400; }
     border-radius: 5px;
     transition: all 0.3s ease;
 }
-#nav_index_button a:hover {
+#nav_button a:hover {
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5px);
     color: #F2C94C;
 }
-#nav_index_button a:active { transform: scale(0.95); }
+#nav_button a:active { transform: scale(0.95); }
 
-/* ==========================================
-   CAMPO DE BUSCA NA NAV
-   MELHORIA: Fundo e placeholder com contraste
-   correto — antes era branco sem cor definida.
-   ========================================== */
-.nav_search_form {
-    display: flex;
-    align-items: center;
-}
-#nav_index_navbar {
-    border: none;
-    border-radius: 6px;
-    width: 280px;
-    height: 38px;
-    padding: 0 14px;
-    /* MELHORIA: Fundo levemente branco translúcido no fundo escuro da nav */
-    background-color: rgba(255, 255, 255, 0.12);
-    color: white;
-    font-size: 14px;
-    outline: none;
-    transition: background-color 0.2s ease;
-}
-/* MELHORIA: Cor do placeholder visível no fundo escuro */
-#nav_index_navbar::placeholder {
-    color: rgba(255, 255, 255, 0.55);
-}
-#nav_index_navbar:focus {
-    background-color: rgba(255, 255, 255, 0.22);
-}
 
 /* ==========================================
    CARRINHO NA NAVBAR
@@ -118,18 +89,16 @@ p { font-weight: 400; }
     align-items: center;
     text-decoration: none;
 }
-#nav_cart_icon {
+#cart_icon {
+    color: #F2C94C;
     width: 28px;
     height: 28px;
-    /* Inverte as cores do ícone preto para branco */
-    filter: invert(1);
     cursor: pointer;
-    transition: transform 0.2s ease;
+    
 }
-#nav_cart_icon:hover { transform: scale(1.15); }
 
 /* Badge de contagem de itens no carrinho */
-#nav_cart_badge {
+#cart_badge {
     position: absolute;
     top: -8px;
     right: -8px;
@@ -482,14 +451,14 @@ p { font-weight: 400; }
 /* ==========================================
    FOOTER
    ========================================== */
-.footer_index {
+footer {
     background-color: #102C26;
     padding: 60px 50px 30px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
-.footer_index .logo img {
+footer .logo img {
     width: 90px;
     height: auto;
     margin-bottom: 40px;
@@ -503,32 +472,32 @@ p { font-weight: 400; }
     margin-bottom: 40px;
     gap: 30px;
 }
-.footer_index hr {
+footer hr {
     width: 100%;
     max-width: 1100px;
     border: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin: 20px 0;
 }
-#footer_index_information1 { color: white; }
-#footer_index_information2 ul {
+#footer_information1 { color: white; }
+#footer_information2 ul {
     display: flex;
     margin: 20px;
     flex-direction: column;
     color: white;
 }
-#footer_index_information2 a {
+#footer_information2 a {
     color: white;
     text-decoration: none;
     padding: 2px;
 }
-#footer_index_information3 ul {
+#footer_information3 ul {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
-#footer_index_information3 li {
+#footer_information3 li {
     display: flex;
     align-items: center;
     color: white;
@@ -537,10 +506,10 @@ p { font-weight: 400; }
     transition: color 0.3s ease;
     cursor: pointer;
 }
-#footer_index_information3 a { color: white; text-decoration: none; }
-#footer_index_information3 li:hover,
-#footer_index_information3 a:hover { color: #F2C94C; }
-#footer_index_information3 li:hover .footer-icon { transform: scale(1.2); }
+#footer_information3 a { color: white; text-decoration: none; }
+#footer_information3 li:hover,
+#footer_information3 a:hover { color: #F2C94C; }
+#footer_information3 li:hover .footer-icon { transform: scale(1.2); }
 .footer-icon {
     width: 18px;
     height: 18px;
