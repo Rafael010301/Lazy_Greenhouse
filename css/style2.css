@@ -506,7 +506,12 @@ footer hr {
 
 #footer_style a:active { opacity: 0.5; }
 
+<<<<<<< Updated upstream
 @media (min-width: 481px) and (max-width: 768px) {
+=======
+
+@media (max-width: 768px) {
+>>>>>>> Stashed changes
     .junto,
     .junto_login,
     .junto_senha {
@@ -521,10 +526,21 @@ footer hr {
     #cadastro,
     #login,
     #esqueci {
+<<<<<<< Updated upstream
         width: 92%;         
         max-width: 100%;
         padding: 30px 20px; 
         margin: 20px auto;
+=======
+        width: 100%;         /* Ocupa quase a tela toda do celular (ganha largura) */
+        max-width: 100%;    /* Garante que não vai travar em tamanhos menores */
+        padding: 30px 18px; /* Diminui o espaço interno para os inputs poderem esticar */
+        margin: 20px auto;  /* Mantém perfeitamente centralizado */
+    }
+    #cadastro input,
+    #login input {
+        width: 200%;
+>>>>>>> Stashed changes
     }
 
     #footer_box {
@@ -542,4 +558,8 @@ footer hr {
     .footer_right {
         align-items: center;
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes
