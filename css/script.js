@@ -67,7 +67,7 @@ function renderizarCarrinho() {
         subtituloEl.textContent = 'Seu carrinho está vazio.';
         container.innerHTML = `
             <div class="carrinho-vazio">
-                <div class="icone-vazio">🛒</div>
+                <div class="icone-vazio"></div>
                 <h3>Nada por aqui ainda!</h3>
                 <p>Adicione produtos para continuar as compras.</p>
                 <a href="Compras.html" class="btn-ir-compras">Ver produtos</a>
@@ -171,3 +171,48 @@ function loginUsuario() {
     alert("Login realizado com sucesso!");
     window.location.href = "index.html";
 }
+
+function atualizarBadgeCarrinho() {
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const badge = document.getElementById('nav_cart_badge');
+    const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
+    badge.textContent = total;
+    badge.style.display = total > 0 ? 'flex' : 'none';
+}
+
+// MELHORIA: Adiciona o produto ao carrinho (localStorage) ao clicar no botão
+document.getElementById('btn-adicionar-carrinho').addEventListener('click', function(e) {
+    e.preventDefault(); // impede de seguir o href="#"
+
+    // Produto fixo (único produto do site)
+    const produto = {
+        id: 1,
+        nome: 'Lazy Greenhouse',
+        preco: 185.00,
+        quantidade: 1,
+        imagem: 'https://www.image2url.com/r2/default/images/1776791311496-d3d72ae2-afbd-48a7-ac6d-7534884128c0.png'
+    };
+
+    // Pega carrinho atual ou cria vazio
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+    // Verifica se o produto já está no carrinho
+    const indexExistente = carrinho.findIndex(item => item.id === produto.id);
+
+    if (indexExistente >= 0) {
+        // Se já existe, incrementa a quantidade
+        carrinho[indexExistente].quantidade += 1;
+    } else {
+        // Senão, adiciona novo item
+        carrinho.push(produto);
+    }
+
+    // Salva de volta no localStorage
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+    // Atualiza o badge e redireciona para o carrinho
+    atualizarBadgeCarrinho();
+    window.location.href = 'carrinho.html';
+});
+
+atualizarBadgeCarrinho();

@@ -105,17 +105,6 @@ nav {
     justify-content: center;
 }
 
-/* Responsividade da Navbar */
-@media (max-width: 768px) {
-    nav {
-        padding: 10px 20px;
-    }
-    #nav_button a {
-        padding: 6px 10px;
-        font-size: 13px;
-    }
-}
-
 /* ==========================================
    ALINHAMENTO GLOBAL DE PÁGINAS (LOGIN/CADASTRO)
    ========================================== */
@@ -363,25 +352,6 @@ nav {
     text-decoration: underline; 
 }
 
-/* Responsividade interna dos Cards (Celular) */
-@media (max-width: 600px) {
-    .carrinho-item-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 15px;
-    }
-    .item-preco-total {
-        text-align: center;
-        padding-right: 0;
-        margin-top: 10px;
-    }
-    .btn-remover-item {
-        position: absolute;
-        top: 10px;
-        right: 15px;
-    }
-}
-
 /* ==========================================
    FOOTER (RODAPÉ DA PÁGINA GLOBAL)
    ========================================== */
@@ -505,22 +475,3 @@ footer .logo img {
     transition: 0.2s;
 }
 
-/* Responsividade do Footer (Telas Pequenas) */
-@media (max-width: 768px) {
-    #footer_box {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    #footer_information3 li {
-        justify-content: center;
-    }
-    .footer_right {
-        align-items: center;
-        width: 100%;
-    }
-    #footer_style {
-        flex-direction: column;
-        text-align: center;
-    }
-}
