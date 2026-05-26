@@ -1,5 +1,5 @@
 /* ==========================================
-   RESET GLOBAL & ESTRUTURA VERTICAL (STICKY FOOTER)
+   RESET GLOBAL & ESTRUTURA VERTICAL
    ========================================== */
 * {
     margin: 0;
@@ -10,53 +10,44 @@
 body {
     background: #f4f6f8;
     font-family: 'Montserrat', sans-serif;
-    min-height: 100vh;       /* Ocupa no mínimo a altura total da tela */
-    display: flex;           /* Ativa o Flexbox para empurrar o footer */
-    flex-direction: column;  /* Alinha os blocos como colunas verticais */
+    min-height: 100vh;       
+    display: flex;           
+    flex-direction: column;  
 }
 
 /* ==========================================
    NAVBAR
    ========================================== */
-header {
-    background: #102C26;
-    color: white;
-    width: 100%;
-}
-
 nav {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Empurra esquerda e direita para as pontas */
+    justify-content: space-between; 
     background-color: #102C26;
     padding: 10px 50px;
     position: sticky;
     top: 0;
-    z-index: 100; /* Garante que fique sobre o conteúdo ao rolar */
+    z-index: 100; 
 }
 
-/* Container do lado esquerdo (logo + links) */
 .nav_left {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-/* Logo na navbar */
 #nav_logo_img {
     width: 38px;
     height: 38px;
     object-fit: contain;
 }
 
-/* Container do lado direito (busca + carrinho) */
 .nav_right {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-/* LINKS DA NAVBAR */
+/* Links da Navbar */
 #nav_button {
     display: flex;
     align-items: center;
@@ -83,7 +74,7 @@ nav {
     transform: scale(0.95); 
 }
 
-/* CARRINHO NA NAVBAR */
+/* Carrinho na Navbar Icon */
 #nav_cart_link {
     position: relative;
     display: flex;
@@ -98,7 +89,6 @@ nav {
     cursor: pointer;
 }
 
-/* Badge de contagem de itens no carrinho */
 #cart_badge {
     position: absolute;
     top: -8px;
@@ -110,9 +100,33 @@ nav {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    display: none; /* JS altera para flex quando há itens */
+    display: none; 
     align-items: center;
     justify-content: center;
+}
+
+/* Responsividade da Navbar */
+@media (max-width: 768px) {
+    nav {
+        padding: 10px 20px;
+    }
+    #nav_button a {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+}
+
+/* ==========================================
+   ALINHAMENTO GLOBAL DE PÁGINAS (LOGIN/CADASTRO)
+   ========================================== */
+#main_cadastro,
+#main_login,
+#main_esqueci {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 /* ==========================================
@@ -122,7 +136,8 @@ nav {
     max-width: 1200px;
     margin: 40px auto 80px;
     padding: 0 20px;
-    flex: 1; /* ESSENCIAL: Expande para ocupar o espaço vago e empurrar o footer para baixo */
+    flex: 1; 
+    width: 100%;
 }
 
 .carrinho-titulo {
@@ -165,19 +180,21 @@ nav {
     transition: background 0.2s;
 }
 
-.btn-voltar-compras:hover {
-    background: #1a4a3a;
+.btn-voltar-compras:hover { 
+    background: #1a4a3a; 
 }
 
-/* Layout em Duas Colunas (Desktop) */
+/* Layout em Duas Colunas Adaptável */
 .carrinho-layout {
     display: flex;
-    gap: 40px;
+    flex-wrap: wrap; 
+    gap: 30px;
     align-items: flex-start;
 }
 
 .carrinho-itens-lista {
     flex: 2;
+    min-width: 310px; 
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -203,8 +220,8 @@ nav {
     background-color: #f9f9f9;
 }
 
-.item-info {
-    flex: 2;
+.item-info { 
+    flex: 2; 
 }
 
 .item-info h3 {
@@ -264,13 +281,14 @@ nav {
     transition: color 0.2s;
 }
 
-.btn-remover-item:hover {
-    color: #e74c3c;
+.btn-remover-item:hover { 
+    color: #e74c3c; 
 }
 
 /* Painel de Resumo Lateral */
 .carrinho-resumo-card {
     flex: 1;
+    min-width: 300px; 
     background: #ffffff;
     border: 1px solid rgba(16, 44, 38, 0.08);
     border-radius: 16px;
@@ -341,21 +359,38 @@ nav {
     font-weight: 600;
 }
 
-.link-continuar-comprando:hover {
-    text-decoration: underline;
+.link-continuar-comprando:hover { 
+    text-decoration: underline; 
+}
+
+/* Responsividade interna dos Cards (Celular) */
+@media (max-width: 600px) {
+    .carrinho-item-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+    .item-preco-total {
+        text-align: center;
+        padding-right: 0;
+        margin-top: 10px;
+    }
+    .btn-remover-item {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+    }
 }
 
 /* ==========================================
-   FOOTER (AJUSTADO & FIXADO EMBAIXO)
+   FOOTER (RODAPÉ DA PÁGINA GLOBAL)
    ========================================== */
 footer {
     background-color: #102C26;
-    padding: 60px 50px 30px;
+    padding: 60px 20px 30px; 
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: 100%;            
-    margin-top: auto; /* Força o footer a grudar na base caso o conteúdo seja menor que a tela */
+    align-items: center;
 }
 
 footer .logo img {
@@ -367,58 +402,49 @@ footer .logo img {
 
 #footer_box {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around; 
+    align-items: flex-start;       
+    max-width: 1100px;             
+    margin: 0 auto 40px;               
+    padding: 20px 0;
     width: 100%;
-    max-width: 1100px;
-    margin-bottom: 40px;
     gap: 30px;
-}
-
-footer hr {
-    width: 100%;
-    max-width: 1100px;
-    border: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 20px 0;
+    flex-wrap: wrap; 
 }
 
 #footer_information1 { 
     color: white; 
+    min-width: 250px;
 }
 
-/* Ajuste da lista do meio para remover as bolinhas brancas */
 #footer_information2 ul {
-    list-style: none; /* Remove de vez as bolinhas do print anterior */
     display: flex;
-    margin: 0;
-    padding: 0;
     flex-direction: column;
     color: white;
+    list-style: none;
 }
 
 #footer_information2 a {
     color: white;
     text-decoration: none;
-    padding: 2px 0;
+    padding: 4px 0;
+    display: inline-block;
 }
 
 #footer_information3 ul {
-    list-style: none; /* Remove as bolinhas do bloco da direita */
+    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 12px;
-    padding: 0;
-    margin: 0;
 }
 
 #footer_information3 li {
     display: flex;
-    align-items: center;
     color: white;
     font-size: 14px;
     gap: 10px;
     transition: color 0.3s ease;
-    cursor: pointer;
+    cursor: pointer; 
 }
 
 #footer_information3 a { 
@@ -444,12 +470,14 @@ footer hr {
 #footer_style {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     max-width: 1100px;
     margin: 20px auto 0;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
 .footer_left p {
@@ -477,6 +505,22 @@ footer hr {
     transition: 0.2s;
 }
 
-#footer_style a:active { 
-    opacity: 0.5; 
+/* Responsividade do Footer (Telas Pequenas) */
+@media (max-width: 768px) {
+    #footer_box {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    #footer_information3 li {
+        justify-content: center;
+    }
+    .footer_right {
+        align-items: center;
+        width: 100%;
+    }
+    #footer_style {
+        flex-direction: column;
+        text-align: center;
+    }
 }

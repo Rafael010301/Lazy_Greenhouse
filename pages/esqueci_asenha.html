@@ -8,21 +8,44 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo macedo pp.png">
 </head>
 <body>
+        <header>
+            <nav>
+                <div class="nav_left">
+                    <a href="index.html" id="nav_logo_link">
+                        <img src="../img/logo macedo pp.png" alt="Logo Lazy Greenhouse" id="nav_logo_img" />
+                    </a>
+                    <div id="nav_button">
+                        <a href="login.html">Login</a>
+                        <a href="cadastro.html">Cadastro</a>
+                        <a href="Compras.html">Compras</a>
+                        <a href="SobreNós.html">Sobre nós</a>
+                    </div>
+                </div>
+                <div class="nav_right">
+                    <a href="carrinho.html" id="nav_cart_link" title="Ver carrinho de compras">
+                        <img src="../img/carrinho-carrinho.png" alt="Carrinho" id="cart_icon" />
+                        <!-- Badge que mostra quantidade de itens no carrinho -->
+                        <span id="cart_badge">0</span>
+                    </a>
+                </div>
+    
+            </nav>
+    
+        </header>
 <main id="main_esqueci">
     <div class="junto_senha">
     
         <!-- Lado Esquerdo: Banner Lateral -->
         <div id="banner">
             <h2>Lazy Greenhouse</h2>
+            <img id="logo_login" src="../img/logo macedo pp.png" alt="Logo Lazy Greenhouse">
         </div>
 
         <!-- Lado Direito: Formulário -->
         <div id="esqueci">
             <!-- Logo e Títulos -->
-            <img id="logo_login" src="../img/logo macedo pp.png" alt="Logo Lazy Greenhouse">
-            <h3>Lazy Greenhouse</h3>
-            <p><strong>Esqueceu a senha?</strong><br>
-            Não se preocupe, a natureza leva o tempo dela — e você também pode. Insira seu e-mail abaixo e enviaremos um link para redefinir seu acesso.</p>
+            <h2>Esqueceu a senha?</h2>
+            <p>Não se preocupe, a natureza leva o tempo dela — e você também pode. Insira seu e-mail abaixo e enviaremos um link para redefinir seu acesso.</p>
 
             <!-- Formulário -->
             <form action="#" method="POST">
@@ -63,7 +86,7 @@
                 <ul>
                     <li>
                         <img src="../img/envelope.png" alt="Email" class="footer-icon">
-                        <a href="">lazygreenhouse@gmail.com</a>
+                        lazygreenhouse@gmail.com
                     </li>
                     <li>
                         <img src="../img/whatsapp.png" alt="WhatsApp" class="footer-icon">
@@ -80,7 +103,6 @@
                 </ul>
             </div>
         </div>
-        <hr>
         <div id="footer_style">
             <div class="footer_left">
                 <p>©2026 LazyGreenhouse. Todos os direitos reservados.</p>

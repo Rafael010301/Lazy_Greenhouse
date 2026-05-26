@@ -125,7 +125,7 @@ function renderizarCarrinho() {
             </div>
             <a href="pagamento.html" class="btn-checkout">Finalizar Compra →</a>
             <a href="Compras.html" class="btn-continuar">← Continuar comprando</a>
-            <p class="seguro-msg">🔒 Compra 100% segura e criptografada</p>
+            <p class="seguro-msg">Compra 100% segura e criptografada</p>
         </div>
     `;
 

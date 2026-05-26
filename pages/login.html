@@ -8,26 +8,52 @@
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo macedo pp.png">
 </head>
 <body>
+
+ <header>
+        <nav>
+            <div class="nav_left">
+                <a href="index.html" id="nav_logo_link">
+                    <img src="../img/logo macedo pp.png" alt="Logo Lazy Greenhouse" id="nav_logo_img" />
+                </a>
+                <div id="nav_button">
+                    <a href="login.html">Login</a>
+                    <a href="cadastro.html">Cadastro</a>
+                    <a href="Compras.html">Compras</a>
+                    <a href="SobreNós.html">Sobre nós</a>
+                </div>
+            </div>
+            <div class="nav_right">
+                <a href="carrinho.html" id="nav_cart_link" title="Ver carrinho de compras">
+                    <img src="../img/carrinho-carrinho.png" alt="Carrinho" id="cart_icon" />
+                    <!-- Badge que mostra quantidade de itens no carrinho -->
+                </a>
+            </div>
+
+        </nav>
+
+    </header>
+
+
      <main id="main_login">
         <div class="junto_login">
-            <div id="banner">
+            <div id="banner">                                
                 <h2>Lazy Greenhouse</h2>
+                <img id="logo_login" src="../img/file-removebg-preview.png" alt="Logo Lazy Greenhouse">
             </div>
 
             <div id="login">
-                <img id="logo_login" src="../img/logo macedo pp.png" alt="Logo Lazy Greenhouse">
-                <h3>Lazy Greenhouse</h3>
-                <p>Bem-vindo de volta ao seu conservatório inteligente.</p>
+                <h3>Bem-vindo de volta ao seu conservatório inteligente.</h3>
 
                 <form action="post">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="Digite seu email" required>
 
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" name="senha" placeholder="••••••••" required>
+                    
                     <div class="senha">
-                        <label for="senha">Senha</label>
                         <a href="esqueci_asenha.html">Esqueci a senha?</a>
                     </div>
-                    <input type="password" id="senha" name="senha" placeholder="••••••••" required>
 
                     <button type="button" onclick="loginUsuario()">Entrar</button>
                 </form>
@@ -74,7 +100,6 @@
                 </ul>
             </div>
         </div>
-        <hr>
         <div id="footer_style">
             <div class="footer_left">
                 <p>©2026 LazyGreenhouse. Todos os direitos reservados.</p>

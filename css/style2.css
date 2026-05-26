@@ -15,6 +15,68 @@ body {
     font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
 }
+/* ==========================================
+   NAVBAR
+   MELHORIA: Reestruturada para ter logo+links
+   à esquerda e busca+carrinho à direita.
+   Agora é sticky (fica fixo ao rolar a página).
+   ========================================== */
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* empurra esquerda e direita para as pontas */
+    background-color: #102C26;
+    padding: 10px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 100; /* garante que fique sobre o conteúdo ao rolar */
+}
+
+/* Container do lado esquerdo (logo + links) */
+.nav_left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Logo na navbar */
+#nav_logo_img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+/* Container do lado direito (busca + carrinho) */
+/* MELHORIA: Lado direito da nav com busca e carrinho */
+.nav_right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* ==========================================
+   LINKS DA NAVBAR
+   ========================================== */
+#nav_button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+#nav_button a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 15px;
+    padding: 8px 14px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+#nav_button a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    color: #F2C94C;
+}
+#nav_button a:active { transform: scale(0.95); }
 
 /* Containers de Alinhamento das Páginas */
 #main_cadastro,
@@ -25,6 +87,42 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+}
+/* ==========================================
+   CARRINHO NA NAVBAR
+   MELHORIA: Ícone do carrinho agora funcional
+   (link para carrinho.html) e posicionado
+   corretamente à direita.
+   ========================================== */
+#nav_cart_link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+#cart_icon {
+    color: #F2C94C;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    
+}
+
+/* Badge de contagem de itens no carrinho */
+#cart_badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #F2C94C;
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: none; /* escondido por padrão, JS mostra quando há itens */
+    align-items: center;
+    justify-content: center;
 }
 
 /* ==========================================
@@ -86,6 +184,9 @@ body {
     line-height: 1.6;
     margin-bottom: 20px;
 }
+.senha a {
+    flex-direction: row;
+}
 
 /* ==========================================
    FORMULÁRIOS, INPUTS E BOTÕES
@@ -96,6 +197,14 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
+}
+#banner {
+    display: flex;
+    flex-direction: column;   /* Alinha os itens um embaixo do outro */
+    justify-content: flex-start; /* 🎯 Move TUDO para o topo (título e logo sobem!) */
+    align-items: center;      /* Mantém tudo centralizado horizontalmente */
+    gap: 40px;                /* Dá um espaço perfeito de 40px entre o título e a logo */
+    padding-top: 50px;
 }
 
 #cadastro label,
@@ -121,7 +230,14 @@ body {
     border-radius: 5px;
     display: block;
 }
+#logo_login {
+    display: flex;
+    align-items: start;
+    width: 60px; 
+    height: 60px;
+    margin: 0 auto 10px;
 
+}
 /* Botão Amarelo de Ação Principal */
 button, 
 #cadastro button,
@@ -292,9 +408,12 @@ footer .logo img {
 
 #footer_box {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around; /* Distribui as 3 colunas com espaços iguais */
+    align-items: flex-start;       /* Alinha o topo delas certinho */
+    max-width: 1200px;             /* Limita a largura máxima para não espalhar muito */
+    margin: 0 auto;                /* Centraliza o bloco do footer na tela */
+    padding: 40px 20px;
     width: 100%;
-    max-width: 1100px;
     margin-bottom: 40px;
     gap: 30px;
 }
@@ -331,12 +450,11 @@ footer hr {
 
 #footer_information3 li {
     display: flex;
-    align-items: center;
     color: white;
     font-size: 14px;
     gap: 10px;
     transition: color 0.3s ease;
-    cursor: pointer;
+    cursor: none;
 }
 
 #footer_information3 a { color: white; text-decoration: none; }
@@ -387,3 +505,41 @@ footer hr {
 }
 
 #footer_style a:active { opacity: 0.5; }
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .junto,
+    .junto_login,
+    .junto_senha {
+        flex-direction: column;
+    }
+
+    #banner {
+        width: 100%;
+        padding: 20px;
+    }
+
+    #cadastro,
+    #login,
+    #esqueci {
+        width: 92%;         
+        max-width: 100%;
+        padding: 30px 20px; 
+        margin: 20px auto;
+    }
+
+    #footer_box {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #footer_information2 ul,
+    #footer_information3 ul {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer_right {
+        align-items: center;
+    }
+}
