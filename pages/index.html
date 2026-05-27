@@ -264,20 +264,7 @@
 </footer>
 
     <!-- ===== JAVASCRIPT ===== -->
-    <!-- MELHORIA: Script que lê o localStorage e atualiza o badge de quantidade do carrinho -->
-    <script>
-        function atualizarBadgeCarrinho() {
-            // Pega o carrinho salvo no navegador (ou array vazio se não existir)
-            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-            const badge = document.getElementById('nav_cart_badge');
-            // Soma a quantidade total de todos os itens
-            const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
-            badge.textContent = total;
-            // Mostra o badge só quando tem item, esconde quando está vazio
-            badge.style.display = total > 0 ? 'flex' : 'none';
-        }
-        atualizarBadgeCarrinho();
-    </script>
+    <script src="../js/script.js" defer></script>
 
 </body>
 </html>
