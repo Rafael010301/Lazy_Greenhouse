@@ -11,43 +11,37 @@
 }
 
 body {
-    background: #f5f5f5; /* Troca para cinza claro para realçar o card branco flutuante */
+    background: #f5f5f5; 
     font-family: 'Montserrat', sans-serif;
     min-height: 100vh;
 }
+
 /* ==========================================
    NAVBAR
-   MELHORIA: Reestruturada para ter logo+links
-   à esquerda e busca+carrinho à direita.
-   Agora é sticky (fica fixo ao rolar a página).
    ========================================== */
-nav{
+nav {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* empurra esquerda e direita para as pontas */
+    justify-content: space-between; 
     background-color: #102C26;
     padding: 10px 50px;
     position: sticky;
     top: 0;
-    z-index: 100; /* garante que fique sobre o conteúdo ao rolar */
+    z-index: 100; 
 }
 
-/* Container do lado esquerdo (logo + links) */
 .nav_left {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-/* Logo na navbar */
 #nav_logo_img {
     width: 38px;
     height: 38px;
     object-fit: contain;
 }
 
-/* Container do lado direito (busca + carrinho) */
-/* MELHORIA: Lado direito da nav com busca e carrinho */
 .nav_right {
     display: flex;
     align-items: center;
@@ -88,11 +82,9 @@ nav{
     min-height: 100vh;
     padding: 20px;
 }
+
 /* ==========================================
    CARRINHO NA NAVBAR
-   MELHORIA: Ícone do carrinho agora funcional
-   (link para carrinho.html) e posicionado
-   corretamente à direita.
    ========================================== */
 #nav_cart_link {
     position: relative;
@@ -105,10 +97,8 @@ nav{
     width: 28px;
     height: 28px;
     cursor: pointer;
-    
 }
 
-/* Badge de contagem de itens no carrinho */
 #cart_badge {
     position: absolute;
     top: -8px;
@@ -120,7 +110,7 @@ nav{
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    display: none; /* escondido por padrão, JS mostra quando há itens */
+    display: none; 
     align-items: center;
     justify-content: center;
 }
@@ -139,16 +129,18 @@ nav{
     overflow: hidden;
 }
 
-/* Banner Lateral Esquerdo (Compartilhado) */
+/* Banner Lateral Esquerdo (Configuração unificada para evitar conflitos) */
 #banner {
     display: flex;
     flex-direction: column;
-    justify-content: space-between; 
+    justify-content: flex-start; /* Move tudo para o topo */
+    align-items: center;        /* Centraliza horizontalmente */
+    gap: 40px;                  /* Espaço entre título e logo */
     background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(../img/fundobanner.png);
     background-size: cover; 
     background-position: center;
     color: white;
-    padding: 40px; 
+    padding: 50px 40px 40px 40px; 
     width: 300px;
 }
 
@@ -160,15 +152,16 @@ nav{
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 450px; /* Alinhado para dar espaço igual nas três telas */
+    width: 450px; 
     box-sizing: border-box;
 }
 
 #logo_login {
-    width: 50px; 
-    height: 50px;
+    display: flex;
+    align-items: flex-start;
+    width: 60px; 
+    height: 60px;
     margin: 0 auto 10px;
-    display: block;
 }
 
 #cadastro h3, #login h3, #esqueci h3 {
@@ -184,9 +177,6 @@ nav{
     line-height: 1.6;
     margin-bottom: 20px;
 }
-.senha a {
-    flex-direction: row;
-}
 
 /* ==========================================
    FORMULÁRIOS, INPUTS E BOTÕES
@@ -197,14 +187,6 @@ nav{
     display: flex;
     flex-direction: column;
     width: 100%;
-}
-#banner {
-    display: flex;
-    flex-direction: column;   /* Alinha os itens um embaixo do outro */
-    justify-content: flex-start; /* 🎯 Move TUDO para o topo (título e logo sobem!) */
-    align-items: center;      /* Mantém tudo centralizado horizontalmente */
-    gap: 40px;                /* Dá um espaço perfeito de 40px entre o título e a logo */
-    padding-top: 50px;
 }
 
 #cadastro label,
@@ -222,22 +204,15 @@ nav{
 /* Estilização Geral de Inputs de Texto */
 #cadastro input:not([type="checkbox"]),
 #login input:not([type="checkbox"]),
-#esqueci input {
-    width: 100%; /* Ocupa dinamicamente a largura do form */
+#esqueci input:not([type="checkbox"]) {
+    width: 100%; 
     padding: 12px;
     margin-top: 6px;
     border: 1px solid #ccc;
     border-radius: 5px;
     display: block;
 }
-#logo_login {
-    display: flex;
-    align-items: start;
-    width: 60px; 
-    height: 60px;
-    margin: 0 auto 10px;
 
-}
 /* Botão Amarelo de Ação Principal */
 button, 
 #cadastro button,
@@ -259,7 +234,7 @@ button:hover {
     background: #e0bb46;
 }
 
-/* Esconder e alinhar links de esqueci senha */
+/* Links de esqueci senha */
 .senha {
     display: flex;
     font-size: 13px;
@@ -393,52 +368,70 @@ hr {
    ========================================== */
 footer {
     background-color: #102C26;
-    padding: 60px 50px 30px;
+    padding: 60px 20px 30px; /* Reduzido o padding lateral para evitar quebras em telas médias */
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;    /* Centraliza os blocos principais na tela */
+    width: 100%;
+}
+
+/* Container que envelopa o conteúdo para garantir o mesmo alinhamento vertical */
+.footer_container {
+    width: 100%;
+    max-width: 1100px;      /*Unificado para que o topo e a base alinhem perfeitamente */
+    display: flex;
+    flex-direction: column;
 }
 
 footer .logo img {
     width: 90px;
     height: auto;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     display: block;
 }
 
 #footer_box {
     display: flex;
-    justify-content: space-around; /* Distribui as 3 colunas com espaços iguais */
-    align-items: flex-start;       /* Alinha o topo delas certinho */
-    max-width: 1200px;             /* Limita a largura máxima para não espalhar muito */
-    margin: 0 auto;                /* Centraliza o bloco do footer na tela */
-    padding: 40px 20px;
+    justify-content: space-around;
+    align-items: flex-start;       
     width: 100%;
-    margin-bottom: 40px;
+    padding: 20px 0 40px;          /* Ajustado padding para não criar vácuos */
     gap: 30px;
+
 }
 
 footer hr {
     width: 100%;
-    max-width: 1100px;
     border: 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin: 20px 0;
 }
 
-#footer_information1 { color: white; }
+#footer_information1 { 
+    color: white; 
+    flex: 1; /* Distribui espaço igual entre as colunas */
+}
+
+#footer_information2 {
+    flex: 1;
+}
 
 #footer_information2 ul {
     display: flex;
-    margin: 20px;
     flex-direction: column;
     color: white;
+    list-style: none; /* Garante que não terá bolinhas de lista */
+    padding: 0;       /* Removido o 'margin: 20px' que estava empurrando a coluna para o lado */
 }
 
 #footer_information2 a {
     color: white;
     text-decoration: none;
-    padding: 2px;
+    padding: 4px 0;   /* Ajustado para espaçamento vertical apenas */
+}
+
+#footer_information3 {
+    flex: 1;
 }
 
 #footer_information3 ul {
@@ -446,15 +439,17 @@ footer hr {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    padding: 0;
 }
 
 #footer_information3 li {
     display: flex;
+    align-items: center; /* Alinha o ícone verticalmente com o texto */
     color: white;
     font-size: 14px;
     gap: 10px;
     transition: color 0.3s ease;
-    cursor: none;
+    cursor: default; 
 }
 
 #footer_information3 a { color: white; text-decoration: none; }
@@ -468,13 +463,12 @@ footer hr {
     transition: transform 0.3s ease;
 }
 
+/* Bloco de Direitos Autorais e Políticas (Base do Footer) */
 #footer_style {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center; /* Centraliza verticalmente o texto e os links da direita */
     width: 100%;
-    max-width: 1100px;
-    margin: 20px auto 0;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
@@ -487,15 +481,14 @@ footer hr {
 
 .footer_right {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    flex-direction: row; /* Mudado para 'row' para os links ficarem lado a lado (ex: Termos | Privacidade) */
+    gap: 20px;           /* Espaço entre os links da direita */
 }
 
 .footer_right a {
     font-size: 13px;
     color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
-    margin-bottom: 2px;
 }
 
 #footer_style a:hover {
@@ -505,30 +498,41 @@ footer hr {
 }
 
 #footer_style a:active { opacity: 0.5; }
+/* ==========================================
+   RESPONSIVIDADE (MOBILE)
+   ========================================== */
+@media (max-width: 768px) {
+    nav {
+        padding: 10px 20px; /* Reduz padding da nav no mobile */
+    }
 
-@media (min-width: 360px) and (max-width: 768px) {
     .junto,
     .junto_login,
     .junto_senha {
         flex-direction: column;
+        width: 100%;
     }
 
     #banner {
         width: 100%;
-        padding: 20px;
+        padding: 30px 20px;
+        gap: 20px;
     }
 
     #cadastro,
     #login,
     #esqueci {
-        width: 100%;         /* Ocupa quase a tela toda do celular (ganha largura) */
-        max-width: 100%;    /* Garante que não vai travar em tamanhos menores */
-        padding: 30px 18px; /* Diminui o espaço interno para os inputs poderem esticar */
-        margin: 20px auto;  /* Mantém perfeitamente centralizado */
+        width: 100%;         
+        max-width: 100%;    
+        padding: 30px 20px; 
+        margin: 0 auto;  
     }
-    #cadastro input,
-    #login input {
-        width: 200%;
+    
+    /* 🎯 CORREÇÃO CRÍTICA: Removido o width: 200% que quebrava a tela */
+    #cadastro input:not([type="checkbox"]),
+    #login input:not([type="checkbox"]),
+    #esqueci input:not([type="checkbox"]) {
+        width: 100%;
     }
 
     #footer_box {
@@ -540,6 +544,15 @@ footer hr {
     #footer_information2 ul,
     #footer_information3 ul {
         align-items: center;
+        text-align: center;
+        padding: 0;
+        margin: 10px 0;
+    }
+
+    #footer_style {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
         text-align: center;
     }
 
