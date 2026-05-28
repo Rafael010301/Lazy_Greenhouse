@@ -125,30 +125,35 @@ if (btnCupom) {
 // FUNÇÕES DA PÁGINA DE CARRINHO
 // ==========================================
 function renderizarCarrinho() {
-    const carrinho     = lerCarrinho();
-    const container    = document.getElementById('carrinho-conteudo');
-    const subtituloEl  = document.getElementById('subtitulo-qtd');
+    const carrinho = lerCarrinho();
+    const container = document.getElementById('carrinho-conteudo');
+    const subtituloEl = document.getElementById('subtitulo-qtd');
+
     if (!container || !subtituloEl) return;
 
     atualizarBadge(carrinho);
 
+    // CASO 1: O carrinho está vazio
     if (carrinho.length === 0) {
         subtituloEl.textContent = 'Seu carrinho está vazio.';
         container.innerHTML = `
             <div class="carrinho-vazio">
-                <div class="icone-vazio"></div>
                 <h3>Nada por aqui ainda!</h3>
                 <p>Adicione produtos para continuar as compras.</p>
                 <a href="Compras.html" class="btn-ir-compras">Ver produtos</a>
-            </div>`;
+            </div>
+        `;
         return;
     }
 
+    // CASO 2: O carrinho tem itens
     const totalItens = carrinho.reduce((s, i) => s + i.quantidade, 0);
     const totalValor = carrinho.reduce((s, i) => s + (i.preco * i.quantidade), 0);
+    
     subtituloEl.textContent = totalItens + (totalItens === 1 ? ' item no carrinho' : ' itens no carrinho');
-
+    
     let htmlItens = '<div class="carrinho-lista">';
+    
     carrinho.forEach(function(item, index) {
         htmlItens += `
             <div class="carrinho-item">
@@ -166,19 +171,35 @@ function renderizarCarrinho() {
                     <p class="item-preco">${formatarReais(item.preco * item.quantidade)}</p>
                     <button class="btn-remover" onclick="removerItem(${index})">✕ Remover</button>
                 </div>
-            </div>`;
+            </div>
+        `;
     });
+    
     htmlItens += '</div>';
 
-    container.innerHTML = htmlItens + `
+    // Gera o rodapé do resumo de valores
+    const htmlRodape = `
         <div class="carrinho-rodape">
-            <div class="rodape-linha"><span>Subtotal (${totalItens} ${totalItens === 1 ? 'item' : 'itens'})</span><span>${formatarReais(totalValor)}</span></div>
-            <div class="rodape-linha"><span>Frete</span><span style="color:#2e7d32;font-weight:600;">Grátis</span></div>
-            <div class="rodape-total"><span>Total</span><span>${formatarReais(totalValor)}</span></div>
+            <div class="rodape-linha">
+                <span>Subtotal (${totalItens} ${totalItens === 1 ? 'item' : 'itens'})</span>
+                <span>${formatarReais(totalValor)}</span>
+            </div>
+            <div class="rodape-linha">
+                <span>Frete</span>
+                <span style="color:#2e7d32;font-weight:600;">Grátis</span>
+            </div>
+            <div class="rodape-total">
+                <span>Total</span>
+                <span>${formatarReais(totalValor)}</span>
+            </div>
             <a href="pagamento.html" class="btn-checkout">Finalizar Compra →</a>
             <a href="Compras.html" class="btn-continuar">← Continuar comprando</a>
             <p class="seguro-msg">Compra 100% segura e criptografada</p>
-        </div>`;
+        </div>
+    `;
+
+    // Injeta a lista completa de itens + o rodapé financeiro na div do HTML
+    container.innerHTML = htmlItens + htmlRodape;
 }
 
 function alterarQuantidade(index, delta) {
@@ -269,6 +290,58 @@ document.addEventListener("DOMContentLoaded", function () {
     // Inicializa o resumo ao carregar
     atualizarResumo();
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    // Métodos de pagamento
+    const btnCartao   = document.getElementById('btn-cartao');
+    const btnPix      = document.getElementById('btn-pix');
+    const btnBoleto   = document.getElementById('btn-boleto');
+    const secaoCartao = document.getElementById('form-cartao');
+    const secaoPix    = document.getElementById('pix');
+    const secaoBoleto = document.getElementById('boleto');
+
+    if (btnCartao && btnPix && btnBoleto) {
+        function resetarBotoes() {
+            [btnCartao, btnPix, btnBoleto].forEach(b => b.classList.remove('metodo-ativo'));
+        }
+        btnCartao.addEventListener('click', function () {
+            resetarBotoes(); btnCartao.classList.add('metodo-ativo');
+            secaoCartao?.classList.remove('escondido');
+            secaoPix?.classList.add('escondido');
+            secaoBoleto?.classList.add('escondido');
+        });
+        btnPix.addEventListener('click', function () {
+            resetarBotoes(); btnPix.classList.add('metodo-ativo');
+            secaoPix?.classList.remove('escondido');
+            secaoCartao?.classList.add('escondido');
+            secaoBoleto?.classList.add('escondido');
+        });
+        btnBoleto.addEventListener('click', function () {
+            resetarBotoes(); btnBoleto.classList.add('metodo-ativo');
+            secaoBoleto?.classList.remove('escondido');
+            secaoCartao?.classList.add('escondido');
+            secaoPix?.classList.add('escondido');
+        });
+    }
+
+    const btnFinalizar = document.getElementById('btn-finalizar');
+    if (btnFinalizar) {
+        btnFinalizar.addEventListener('click', function () {
+            alert('Compra finalizada com sucesso! Obrigado por comprar na Lazy Greenhouse.');
+        });
+    }
+
+    // Inicializa carrinho OU resumo dependendo da página
+    if (document.getElementById('carrinho-conteudo')) {
+        renderizarCarrinho();
+    } else {
+        atualizarResumo();
+    }
+
+});
+
 function adicionarAoCarrinho() {
     let carrinho = lerCarrinho();
     const index = carrinho.findIndex(item => item.id === 1);
@@ -286,6 +359,11 @@ function adicionarAoCarrinho() {
     }
 
     salvarCarrinho(carrinho);
-    alert("Produto adicionado ao carrinho! 🛒");
-    window.location.href = "carrinho.html"; // redireciona e já exibe atualizado
+    alert("Produto adicionado ao carrinho!");
+    window.location.href = "../pages/carrinho.html";
+}
+
+// Adicione isso no final do arquivo para disparar o gatilho na página do carrinho
+if (document.getElementById('carrinho-conteudo')) {
+    renderizarCarrinho();
 }
