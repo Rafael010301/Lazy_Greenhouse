@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/styleM.css">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/logo macedo pp.png">
 </head>
-<body>
+<body  class="body_pagamento">
 
     <header>
         <nav>
@@ -19,13 +19,13 @@
                     <a href="login.html">Login</a>
                     <a href="cadastro.html">Cadastro</a>
                     <a href="Compras.html">Compras</a>
-                    <a href="SobreNós.html">Sobre nós</a>
+                    <a href="sobre_nós.html">Sobre nós</a>
                 </div>
             </div>
             <div class="nav_right">
                 <a href="carrinho.html" id="nav_cart_link" title="Ver carrinho de compras">
                     <img src="../img/carrinho-carrinho.png" alt="Carrinho" id="cart_icon" />
-                    <span id="cart_badge">0</span>
+                    
                 </a>
             </div>
         </nav>
@@ -72,7 +72,7 @@
             </div>
 
             <!-- Formulário de Pagamento -->
-            <div id="pagamento">
+            <div id="pagamento" >
                 <form action="" method="post" id="form-pagamento">
                     
                      <div class="titulo_form">
@@ -80,31 +80,67 @@
                         <h2>Informações de Pagamento</h2>
                     </div>
 
-                    <!-- Seletor de método de pagamento -->
-                    <div class="metodo-pagamento">
+                    <div id="metodo-pagamento">
                         <button type="button" class="metodo-btn metodo-ativo" id="btn-cartao">Cartão</button>
                         <button type="button" class="metodo-btn" id="btn-pix">PIX</button>
                         <button type="button" class="metodo-btn" id="btn-boleto">Boleto</button>
                     </div>
+                </form>
 
-                    <div class="input-group">
-                        <label for="cartao">Número do Cartão</label>
-                        <input type="text" id="cartao" name="cartao" required placeholder="0000 0000 0000 0000" maxlength="19">
-                    </div>
-                    <!-- MELHORIA: Validade e CVV lado a lado em grid alinhado -->
-                    <div class="input-row2">
+                <form action="" method="post" id="form-cartao">  
+                    <div id="dados-cartao">
                         <div class="input-group">
-                            <label for="validade">Validade</label>
-                            <input type="text" id="validade" name="validade" required placeholder="MM/AA" maxlength="5">
+                            <label for="cartao">Número do Cartão</label>
+                            <input type="text" id="cartao" name="cartao" placeholder="0000 0000 0000 0000" maxlength="19">
                         </div>
-                        <div class="input-group">
-                            <label for="cvv">CVV</label>
-                            <input type="text" id="cvv" name="cvv" required placeholder="000" maxlength="3">
+                        <div class="input-row2">
+                            <div class="input-group">
+                                <label for="validade">Validade</label>
+                                <input type="text" id="validade" name="validade" placeholder="MM/AA" maxlength="5">
+                            </div>
+                            <div class="input-group">
+                                <label for="cvv">CVV</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="000" maxlength="3">
+                            </div>
                         </div>
                     </div>
                 </form>
-            </div>
 
+                <div id="pix" class="escondido">
+                    <div class="pix_container">
+                        <div class="qrcode">
+                            <img src="../img/qr-code.png" alt="QR Code PIX" class="pix-qrcode-img">
+                        </div>
+
+                        <div class="input-group">
+                            <label for="pix-copia-cola">Ou pague pelo Pix Copia e Cola:</label>
+                            <div class="cupom-field">
+                                <input type="text" id="pix-copia-cola" value="00020101021126580014br.gov.bcb.pix0136lazygreenhouse-674a-4923-b123-exemplo" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="boleto" class="escondido">
+                    <div class="boleto_container">
+                        <div class="boleto-icone-box">
+                            <img src="../img/barcode_codabar.png" alt="Ícone Boleto" class="boleto-img">
+                        </div>
+
+                        <p class="boleto-instrucao">
+                            O boleto será gerado após a finalização da compra.<br>
+                            <span>Você pode pagar pelo internet banking, app do banco ou lotéricas.</span>
+                        </p>
+
+                        <div class="input-group">
+                            <label for="boleto-codigo">Código de barras para pagamento:</label>
+                            <div class="cupom-field">
+                                <input type="text" id="boleto-codigo" value="34191.79001 01043.513184 91020.150008 7 98230000018500" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- ===== LADO DIREITO: Resumo do pedido ===== -->
@@ -174,33 +210,9 @@
             </button>
 
             <p class="resumo-seguro">Compra 100% segura e criptografada</p>
-        </aside>C
+        </aside>
 
     </main>
-
-    <!-- ===== MODAL DE CONFIRMAÇÃO DE COMPRA ===== -->
-    <!-- MELHORIA: Modal adicionado para confirmação após finalizar compra -->
-    <div id="overlay-modal" class="overlay-modal">
-        <div id="modal-confirmacao" class="modal-confirmacao">
-            <!-- Ícone de sucesso animado -->
-            <div class="modal-icone"></div>
-            <h2>Compra Realizada!</h2>
-            <p>Obrigado pela sua compra, <strong id="modal-nome-cliente">Cliente</strong>!</p>
-            <p class="modal-detalhe">Seu pedido da <strong>Lazy Greenhouse</strong> foi confirmado.<br>
-                Em breve você receberá um e-mail com os detalhes.</p>
-
-            <!-- Código do pedido gerado aleatoriamente pelo JS -->
-            <div class="modal-pedido">
-                <span>Número do pedido:</span>
-                <strong id="modal-codigo-pedido">#000000</strong>
-            </div>
-
-            <div class="modal-botoes">
-                <a href="index.html" class="modal-btn-home">Voltar para a Home</a>
-                <button type="button" class="modal-btn-fechar" id="btn-fechar-modal">Fechar</button>
-            </div>
-        </div>
-    </div>
 
 <footer>
     <div id="footer_box">

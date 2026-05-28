@@ -351,28 +351,66 @@ nav {
 .link-continuar-comprando:hover { 
     text-decoration: underline; 
 }
-/* ==========================================
-   PAGINA DE PAGAMENTO 
-   ========================================== */
+/* ==========================================================================
+   ESTRUTURA PRINCIPAL (PÁGINA DE PAGAMENTO)
+   ========================================================================== */
+.body_pagamento{
+    margin: 0;
+    padding: 0;
+    background-color: #f1f4f3;
+}
 .main_pagamento {
     display: flex;
-    flex-direction: row;          /* Garante o formulário na esquerda e resumo na direita */
+    flex-direction: row;
     justify-content: center;
-    align-items: flex-start;      /* Alinha os dois pelo topo */
-    gap: 40px;                    /* Espaçamento perfeito entre os dois blocos */
-    max-width: 1200px;            /* Limita a largura máxima da tela inteira */
-    margin: 40px auto 80px;       /* Centraliza a estrutura na tela */
-    padding: 0 20px;
+    align-items: flex-start;      /* Alinha os dois exatamente pelo topo */
+    gap: 30px;
+    max-width: 100%;              /* Permite ocupar a largura total */
+    margin: 0 auto;               /* ZERADO: Remove a margem de 20px superior */
+    padding: 20px 20px 60px;      /* Controla o espaçamento interno nas bordas da tela */
     min-height: 80vh;
+    box-sizing: border-box;
 }
-.formulario{
-    max-width: 1200px;  
-    margin: 40px auto 80px;
-    margin-top: 5px;
-    padding: 0 20px;
+
+.formulario {
     flex: 1; 
     width: 100%;
+    margin-top: 0px;             
 }
+
+/* ==========================================================================
+   FORMULÁRIOS (ENTREGA E PAGAMENTO)
+   ========================================================================== */
+
+#form-entrega, #form-pagamento, #form-cartao {
+    background-color: #f8fafc;    
+    padding: 25px 20px;           
+    border-radius: 12px;
+    width: 100%;
+    max-width: 100%;              /* Mudado para 100% para ocupar todo o espaço da esquerda */
+    margin: 0px auto 20px;        /* MODIFICADO: 0px no topo tira o desalinhamento; mantém 20px embaixo para separar os dois forms */
+    box-sizing: border-box;
+}
+
+#form-entrega input, #form-pagamento input , #form-cartao input {
+    width: 100%;                  
+    background-color: #F1F4F3;
+    border: 1px solid rgba(16, 44, 38, 0.1);
+    border-radius: 8px;
+    padding: 14px 16px;           /* Inputs altos e robustos */
+    font-size: 15px;              /* Texto proporcional ao tamanho do campo */
+    box-shadow: 0 4px 12px rgba(16, 44, 38, 0.05);
+    box-sizing: border-box;       
+}
+
+/* Títulos e Elementos de Identificação */
+.titulo_form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-direction: row;
+}
+
 .num_bonitin {
     width: 32px;  
     height: 32px; 
@@ -385,61 +423,426 @@ nav {
     align-items: center; 
     justify-content: center;      
 }
-.titulo_form{
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-direction: row;
-}
-/* Estilo para os formulários gerais */
-#form-entrega, #form-pagamento {
-    background-color: #f8fafc; /* Um tom bem suave de branco/cinza, como na foto */
-    padding: 30px;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 800px; /* Ajuste para centralizar o formulário */
-    margin: 20px auto;
-}
-#form-entrega input, #form-pagamento input{
-    background-color: #F1F4F3;
-    border: 1px solid rgba(16, 44, 38, 0.1);
-    border-radius: 8px;
-    padding: 10px;
-    box-shadow: 0 4px 12px rgba(16, 44, 38, 0.05);
-}
+
+/* Estruturas de Alinhamento (Grids dos Inputs) */
 .input-group {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;                    
     margin: 10px 0;
 }
+
 .input-row {
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
-    gap: 20px;
+    gap: 15px;                    
     margin: 10px 0;
 }
+
 .input-row2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr); 
-    gap: 20px;
+    gap: 15px;
     margin: 10px 0;
 }
+
+/* Métodos de Seleção de Pagamento (Cartão, Pix, Boleto) */
+#metodo-pagamento {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px;
+    margin: 10px 0;
+}
+
 .metodo-btn {
     display: inline-block;
-    padding: 12px 20px;
+    padding: 14px 20px;           
     background-color: #102C26;
     color: white;
     text-decoration: none;
     font-weight: 700;
     border-radius: 8px;
     transition: background-color 0.2s;
+    border: none;                 
+    cursor: pointer;
 }
-.metodo-pagamento {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 20px;
-    margin: 10px 0;;
+.escondido {
+    display: none !important;
+}
+/*PIX*/
+.pix_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;         /* Centraliza o QR Code e o input horizontalmente */
+    justify-content: center;
+    padding: 20px 10px 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Moldura branca para o QR Code (estilo caixinha protegida) */
+.qrcode {
+    background-color: #ffffff;
+    padding: 16px;
+    border-radius: 12px;
+    display: inline-block;       /* Faz a caixinha se ajustar ao tamanho da imagem */
+    border: 1px solid rgba(16, 44, 38, 0.1);
+    box-shadow: 0 4px 12px rgba(16, 44, 38, 0.05);
+    margin-bottom: 25px;         /* Empurra o texto do Copia e Cola um pouco para baixo */
+}
+
+/* Controla o tamanho ideal da imagem do QR Code */
+.pix-qrcode-img {
+    width: 180px;
+    height: 180px;
+    display: block;
+    object-fit: contain;
+}
+
+/* Garante que o grupo do Copia e Cola ocupe a largura total do formulário */
+.pix_container .input-group {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+/* Alinha o texto explicativo à esquerda para seguir o padrão dos outros inputs */
+.pix_container .input-group label {
+    text-align: left;
+    font-size: 14px;
+    color: #444;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+/* Reutiliza a sua estrutura de cupom para o input do código PIX */
+.pix_container .cupom-field {
+    display: flex;
+    width: 100%;
+}
+/* ==========================================================================
+   ESTILIZAÇÃO DA SEÇÃO BOLETO
+   ========================================================================== */
+#boleto {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Envelopa o conteúdo na mesma caixa cinza com cantos arredondadas do site */
+.boleto_container {
+    background-color: #f8fafc;    /* Mesma cor de fundo do form de entrega */
+    padding: 30px 24px;           /* Espaçamento interno idêntico ao do cartão */
+    border-radius: 12px;          /* Mantém o padrão de arredondamento do seu site */
+    border: 1px solid rgba(16, 44, 38, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;          /* Centraliza o ícone e as instruções */
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Caixa branca para destacar o seu ícone */
+.boleto-icone-box {
+    background-color: #ffffff;
+    padding: 5px 20px;           /* Espaço interno para valorizar o ícone */
+    border-radius: 12px;
+    display: inline-block;
+    border: 1px solid rgba(16, 44, 38, 0.1);
+    box-shadow: 0 4px 12px rgba(16, 44, 38, 0.05);
+    margin-bottom: 20px;
+}
+
+/* CÓDIGO DE BARRAS MAIOR: Ajustado para o tamanho correto */
+.boleto-img {
+    width: 180px;                 /* Deixei o seu código de barras bem grande e visível */
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+/* Ajuste dos textos de instrução superiores */
+.boleto-instrucao {
+    font-size: 15px;
+    color: #102C26;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.boleto-instrucao span {
+    display: block;               /* Quebra a linha sutilmente */
+    font-size: 13px;
+    color: #666;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+/* Faz o grupo de input ocupar toda a largura interna da caixinha */
+.boleto_container .input-group {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+}
+
+/* Alinha o título "Código de barras para pagamento:" à esquerda */
+.boleto_container .input-group label {
+    text-align: left;
+    font-size: 14px;
+    color: #102C26;               /* Cor oficial das suas labels */
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Alinha o campo de texto na estrutura horizontal padrão do seu cupom */
+.boleto_container .cupom-field {
+    display: flex;
+    width: 100%;
+}
+
+/* Linha digitável idêntica aos seus outros inputs de texto */
+#boleto-codigo {
+    flex: 1;
+    background-color: #F1F4F3;   /* Fundo cinza oficial do seu formulário */
+    border: 1px solid rgba(16, 44, 38, 0.1);
+    border-radius: 8px;
+    padding: 14px 16px;          /* Altura robusta padrão */
+    font-size: 14px;             /* Texto nítido */
+    color: #333;
+    font-family: monospace;      /* Fonte largura fixa, perfeita para números de boleto */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+/* ==========================================================================
+   RESUMO DO PEDIDO (LADO DIREITO)
+   ========================================================================== */
+
+.resumo {
+    flex: 0 1 400px;              /* Largura fixa ideal para a barra lateral */
+    background-color: #f8fafc;    
+    padding: 30px 24px;
+    border-radius: 12px;
+    box-sizing: border-box;
+    font-family: sans-serif;      
+}
+
+.resumo h2 {
+    font-size: 20px;
+    color: #1a1a1a;
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-weight: 700;
+}
+
+/* Listagem do Produto */
+.resumo-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.resumo-item-img {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.resumo-item-info {
+    flex: 1;
+}
+
+.resumo-item-nome {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 4px 0;
+}
+
+.resumo-item-desc {
+    font-size: 13px;
+    color: #666;
+    margin: 0 0 12px 0;
+}
+
+/* Elemento de Quantidade (- 1 +) */
+.resumo-quantidade {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    width: max-content;
+    padding: 2px 4px;
+}
+
+.qty-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+}
+
+.qty-btn:hover {
+    opacity: 0.6;
+}
+
+#qty-display {
+    font-size: 14px;
+    font-weight: 600;
+    min-width: 12px;
+    text-align: center;
+}
+
+.resumo-item-preco {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.resumo-divider {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin: 20px 0;
+}
+
+/* Container do Cupom */
+.cupom-container label {
+    display: block;
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.cupom-field {
+    display: flex;
+    gap: 10px;
+}
+
+.cupom-field input {
+    flex: 1;
+    background-color: #ffffff;
+    border: 1px solid rgba(16, 44, 38, 0.15);
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+#btn-cupom {
+    background-color: #bfebe3;    
+    color: #102C26;
+    border: none;
+    border-radius: 8px;
+    padding: 0 20px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#btn-cupom:hover {
+    background-color: #aae2d8;
+}
+
+.cupom-msg {
+    font-size: 12px;
+    margin: 4px 0 0 0;
+}
+
+/* Detalhamento Financeiro */
+.resumo-valores {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.resumo-linha {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+}
+
+.valor-desconto {
+    color: #2e7d32;               
+    font-weight: 500;
+}
+
+.valor-frete {
+    color: #444;
+}
+
+/* Exibição do Total */
+.resumo-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.resumo-total span:first-child {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+#total-final {
+    font-size: 26px;              
+    font-weight: 700;
+    color: #102c26;
+}
+
+/* Botão Principal de Confirmação (Estilo Flat Moderno) */
+.btn-confirmar {
+    display: block;
+    width: 100%;
+    background-color: #f4c444;    /* Amarelo mostarda plano */
+    color: #102C26;               /* Contraste escuro elegante */
+    border: none;                 
+    border-radius: 16px;          /* Cantos altamente arredondados */
+    padding: 16px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: none;             
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.btn-confirmar:hover {
+    background-color: #e5b535;    
+}
+
+.btn-confirmar:active {
+    transform: scale(0.99);       /* Efeito sutil de clique */
+}
+
+.resumo-seguro {
+    text-align: center;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #777;
+    margin-top: 20px;
+    margin-bottom: 0;
 }
 
 /* ==========================================
