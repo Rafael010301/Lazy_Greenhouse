@@ -968,3 +968,374 @@ footer .logo img {
     transition: 0.2s;
 }
 
+
+/* ==========================================
+   CONTEÚDO DA PÁGINA DO CARRINHO
+   ========================================== */
+.carrinho-layout{
+    display:flex;
+    gap:30px;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    margin-top:40px;
+}
+
+.carrinho-itens-lista{
+    flex:2;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.carrinho-item-card{
+    background:#fff;
+    border-radius:16px;
+    padding:20px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+
+.item-img{
+    width:90px;
+    height:90px;
+    object-fit:contain;
+}
+
+.item-info{
+    flex:1;
+}
+
+.item-info h3{
+    font-size:22px;
+    margin-bottom:8px;
+    color:#102C26;
+}
+
+.item-preco-unitario{
+    color:#666;
+    margin-bottom:10px;
+}
+
+.item-quantidade-controle{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.item-quantidade-controle button{
+    width:30px;
+    height:30px;
+    border:none;
+    border-radius:6px;
+    background:#102C26;
+    color:white;
+    cursor:pointer;
+}
+
+.item-preco-total{
+    margin-left:auto;
+    font-size:20px;
+    font-weight:bold;
+    color:#102C26;
+}
+
+.btn-remover-item{
+    border:none;
+    background:none;
+    font-size:22px;
+    cursor:pointer;
+    color:#999;
+}
+
+.carrinho-resumo-card{
+    flex:1;
+    min-width:280px;
+    background:#fff;
+    padding:25px;
+    border-radius:16px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.05);
+}
+
+.resumo-linha-card{
+    display:flex;
+    justify-content:space-between;
+    margin:15px 0;
+}
+
+.resumo-linha-card.total{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.btn-finalizar-compra{
+    width:100%;
+    padding:15px;
+    background:#F2C94C;
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:20px;
+    text-decoration: none;
+}
+
+.carrinho-resumo-card{
+    flex:1;
+    background:#fff;
+    border-radius:16px;
+    padding:25px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.05);
+    min-width:280px;
+}
+
+.resumo-linha-card{
+    display:flex;
+    justify-content:space-between;
+    margin:15px 0;
+}
+
+.resumo-linha-card.total{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.btn-finalizar-compra{
+    width:100%;
+    padding:15px;
+    background:#F2C94C;
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:20px;
+}
+
+/* ==========================================
+   RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================== */
+
+/* ------------------------------------------
+   TABLETS (Até 768px)
+   ------------------------------------------ */
+@media (max-width: 768px) {
+    nav {
+        padding: 10px 20px;
+    }
+
+    .carrinho-layout {
+        flex-direction: column;
+    }
+
+    .carrinho-itens-lista, 
+    .carrinho-resumo-card {
+        width: 100%;
+        flex: none;
+    }
+
+    .main_pagamento {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 15px 40px;
+    }
+
+    .resumo {
+        flex: none;
+        width: 100%;
+    }
+
+    .input-row, .input-row2 {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    #metodo-pagamento {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    #footer_box {
+        justify-content: flex-start;
+        padding-left: 10px;
+    }
+    
+    #footer_style {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer_right {
+        align-items: center;
+    }
+}
+
+/* ------------------------------------------
+   SMARTPHONES (Até 481px)
+   ------------------------------------------ */
+@media (max-width: 481px) {
+    #nav_button a {
+        padding: 6px 10px;
+        font-size: 13px;
+    }
+
+    .carrinho-titulo {
+        font-size: 26px;
+    }
+
+    .carrinho-item-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+        padding: 15px;
+    }
+
+    .carrinho-item-card .item-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .item-preco-total {
+        text-align: center;
+        padding-right: 0;
+        margin-top: 5px;
+    }
+
+    .btn-remover-item {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+    }
+
+    #form-entrega, #form-pagamento, #form-cartao {
+        padding: 20px 15px;
+    }
+
+    .titulo_form {
+        font-size: 16px;
+    }
+
+    .input-row, .input-row2, #metodo-pagamento {
+        grid-template-columns: 1fr !important;
+        gap: 12px;
+    }
+
+    .metodo-btn {
+        padding: 12px 10px;
+        font-size: 14px;
+    }
+
+    .pix-qrcode-img, .boleto-img {
+        width: 140px;
+    }
+
+    .boleto-instrucao {
+        font-size: 13px;
+    }
+
+    .carrinho-resumo-card, .resumo {
+        padding: 20px 15px;
+    }
+
+    #total-final {
+        font-size: 22px;
+    }
+
+    #footer_box {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    #footer_information1, 
+    #footer_information2, 
+    #footer_information3 {
+        width: 100%;
+        min-width: 0;
+    }
+}   
+
+/* ==========================================
+   PAINEL DE RESUMO LATERAL (RESPONSIVO)
+   ========================================== */
+.carrinho-resumo-card {
+    flex: 1;
+    min-width: 280px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-sizing: border-box; /* Garante que o padding não mude a largura total */
+    width: 100%;            /* Força o card a ocupar todo o espaço disponível em telas menores */
+}
+
+.resumo-linha-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;    /* Alinha os textos verticalmente ao centro */
+    margin: 15px 0;
+    gap: 10px;              /* Evita que os textos grudem se a tela for muito estreita */
+}
+
+.resumo-linha-card.total {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.btn-finalizar-compra {
+    width: 100%;
+    padding: 15px;
+    background: #F2C94C;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;        /* Garante boa leitura e clique fácil no celular */
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+/* Feedback visual de clique/hover nos dispositivos que suportam */
+.btn-finalizar-compra:hover {
+    background: #e0b800;
+}
+
+.btn-finalizar-compra:active {
+    transform: scale(0.98);
+}
+    #footer_box {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #footer_information2 ul,
+    #footer_information3 ul {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer_right {
+        align-items: center;
+    }
+
+
+/* ==========================================
+   AJUSTES DE MEDIA QUERIES (ADICIONE SE NÃO HOUVER)
+   ========================================== */
+@media (max-width: 768px) {
+    /* Faz o resumo ir para baixo da lista de itens e ocupar a largura total da tela */
+    .carrinho-resumo-card {
+        flex: none;
+        width: 100%;
+    }
+}
+
+@media (max-width: 481px) {
+    /* Ajustes finos para celulares pequenos, reduzindo um pouco o espaçamento interno */
+    .carrinho-resumo-card {
+        padding: 20px 15px;
+    }
+    
+    .resumo-linha-card.total {
+        font-size: 19px; /* Diminui levemente a fonte do total para não quebrar linha */
+    }
+}

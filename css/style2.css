@@ -506,12 +506,7 @@ footer hr {
 
 #footer_style a:active { opacity: 0.5; }
 
-<<<<<<< Updated upstream
-@media (min-width: 481px) and (max-width: 768px) {
-=======
-
-@media (max-width: 768px) {
->>>>>>> Stashed changes
+@media (min-width: 360px) and (max-width: 768px) {
     .junto,
     .junto_login,
     .junto_senha {
