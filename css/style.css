@@ -638,7 +638,9 @@ footer hr {
    (preservados do original, usados em
    Compras.html que referencia style.css)
    ========================================== */
-.product-page { padding: 40px 60px; max-width: 1200px; margin: 0 auto; }
+.product-page { 
+    padding: 40px 60px; max-width: 1200px; margin: 0 auto;
+}
 .product-main {
     display: flex;
     gap: 60px;
@@ -769,127 +771,98 @@ footer hr {
 
 @media (min-width: 481px) and (max-width: 768px) {
     .hero {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 60px 20px;
-        flex-direction: row;
-        /* Overlay escuro sobre o fundo para manter contraste do texto */
-        background: linear-gradient(to right, red, blue);
-        background-size: cover;
-        background-position: center;
-        min-height: 520px;
-        width: 100%;
-        gap: 40px;
-    }
-
-    /* Bloco de texto do hero (esquerda) */
-    .hero_content {
-        display: flex;
         flex-direction: column;
-        max-width: 520px;
-        color: white;
+        text-align: center;
+        padding: 60px 20px;
+        min-height: auto;
+        justify-content: center;
     }
-
-    /* Pílula/badge acima do título */
-    .hero_badge {
-        background-color: rgba(242, 201, 76, 0.12);
-        border: 1px solid #F2C94C;
-        color: #F2C94C;
-        font-size: 13px;
-        font-weight: 600;
-        padding: 6px 18px;
-        border-radius: 20px;
-        width: fit-content;
-        margin-bottom: 20px;
-        letter-spacing: 0.5px;
-    }
-
-    /* Título principal do hero */
-    .hero h1 {
-        font-size: 62px;
-        font-weight: 800;
-        line-height: 1.1;
-        color: white;
-        margin-bottom: 16px;
-    }
-
-    /* Subtítulo do hero */
-    .hero_subtitle {
-        font-size: 18px;
-        font-weight: 400;
-        color: rgba(255, 255, 255, 0.78);
-        margin-bottom: 28px;
-    }
-
-    /* Divisor decorativo */
     .hero_divider {
-        border: none;
-        border-top: 1px solid rgba(255, 255, 255, 0.2);
-        margin-bottom: 30px;
-        width: 280px;
+        margin: 20px auto;
     }
-
-    /* Container dos botões CTA */
     .hero_buttons {
-        display: flex;
-        gap: 16px;
-        flex-wrap: wrap;
+        justify-content: center;
     }
 
-    /* Botão primário: amarelo sólido */
-    .hero_btn_primary {
-        height: 50px;
-        padding: 0 32px;
-        background-color: #F2C94C;
-        color: #111;
-        border-radius: 8px;
-        border: 2px solid #F2C94C;
-        text-decoration: none;
-        font-size: 15px;
-        font-weight: 700;
-        display: inline-flex;
+    #footer_box {
+        flex-direction: column;
         align-items: center;
-        transition: all 0.3s ease;
-    }
-    .hero_btn_primary:hover {
-        background-color: transparent;
-        color: #F2C94C;
+        gap: 20px;
     }
 
-    /* Botão secundário: contorno branco */
-    .hero_btn_secondary {
-        height: 50px;
-        padding: 0 32px;
-        background-color: transparent;
-        color: white;
-        border-radius: 8px;
-        border: 2px solid rgba(255, 255, 255, 0.4);
-        text-decoration: none;
-        font-size: 15px;
-        font-weight: 600;
-        display: inline-flex;
+    #footer_information2 ul,
+    #footer_information3 ul {
         align-items: center;
-        transition: all 0.3s ease;
-    }
-    .hero_btn_secondary:hover {
-        border-color: white;
-        background-color: rgba(255, 255, 255, 0.08);
+        text-align: center;
     }
 
-    /* Imagem do produto no hero (direita) */
-    .hero_image {
-        flex: 1;
+    .footer_right {
+        align-items: center;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+    .product-page {
+        padding: 20px 16px; /* Padding ideal e enxuto para telas pequenas */
+    }
+
+    .product-main {
+        flex-direction: column; /* Empilha a foto e as informações */
+        gap: 24px;
+        margin-bottom: 40px;
+    }
+
+    .product-gallery {
+        width: 100%; /* Faz a galeria ocupar toda a largura disponível */
         display: flex;
         justify-content: center;
-        max-width: 420px;
     }
-    .hero_image img {
-        width: 100%;
-        max-width: 400px;
+
+    .product-gallery .main-img {
+        width: 100%;       /* A imagem agora é fluida e se adapta ao celular */
+        max-width: 450px;  /* Impede que a imagem fique gigante em celulares muito largos */
         height: auto;
-        object-fit: contain;
-        /* Sombra suave para destacar o produto */
-        filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
+    }
+
+    .product-details {
+        width: 100%;
+    }
+
+    .product-details h1 {
+        font-size: 26px; /* Título mais harmônico para ler no celular */
+        margin: 10px 0;
+    }
+
+    .price-current {
+        font-size: 28px; /* Reduz ligeiramente o preço */
+    }
+
+    /* Botões de Ação na Vertical */
+    .action-buttons {
+        flex-direction: column; /* Coloca um botão embaixo do outro para facilitar o clique com o polegar */
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    .btn-buy, .btn-cart {
+        width: 100%; /* Força os botões a ocuparem toda a largura da tela */
+        padding: 16px; /* Aumenta a área de toque para ficar mais confortável no celular */
+        box-sizing: border-box;
+    }
+
+    /* Seção Extra (Gerenciamento e Card de Sustentabilidade) */
+    .product-extra {
+        flex-direction: column; /* Empilha os blocos inferiores */
+        gap: 32px;
+    }
+
+    .growth-management {
+        width: 100%;
+    }
+
+    .sustainability-card {
+        max-width: 100%; /* O card de sustentabilidade expande para preencher a largura total */
+        width: 100%;
+        box-sizing: border-box;
     }
 }

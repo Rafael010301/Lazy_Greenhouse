@@ -18,14 +18,13 @@
                     <a href="login.html">Login</a>
                     <a href="cadastro.html">Cadastro</a>
                     <a href="Compras.html">Compras</a>
-                    <a href="SobreNós.html">Sobre nós</a>
+                    <a href="sobre_nós.html">Sobre nós</a>
                 </div>
             </div>
             <div class="nav_right">
                 <a href="carrinho.html" id="nav_cart_link" title="Ver carrinho de compras">
                     <img src="../img/carrinho-carrinho.png" alt="Carrinho" id="cart_icon" />
                     <!-- Badge que mostra quantidade de itens no carrinho -->
-                    <span id="cart_badge">0</span>
                 </a>
             </div>
 
@@ -70,9 +69,15 @@
                     <a class="btn-buy" href="pagamento.html">Compre agora</a>
                     <!-- MELHORIA: Botão "Adicionar ao carrinho" agora salva no localStorage
                          e redireciona para o carrinho -->
+<<<<<<< HEAD
+                    <a class="btn-cart" href="#" id="btn-adicionar-carrinho" onclick="adicionarAoCarrinho()">
+                        Adicionar ao carrinho
+                    </a>
+=======
                     <a class="btn-cart" href="#" id="btn-adicionar-carrinho">Adicionar ao carrinho</a>
+>>>>>>> 08f32fc4a70f0cf8b6a6889c95b80d5a91c9d529
                 </div>
-
+ 
                 <div class="good-phrase">
                     <p>"Se soubesse que o mundo se acabaria amanhã, eu ainda hoje plantaria uma árvore" – Martin Luther King</p>
                 </div>
@@ -168,53 +173,7 @@
         </div>
     </footer>
     <!-- ===== JAVASCRIPT ===== -->
-    <script>
-        // MELHORIA: Atualiza badge do carrinho ao carregar a página
-        function atualizarBadgeCarrinho() {
-            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-            const badge = document.getElementById('nav_cart_badge');
-            const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
-            badge.textContent = total;
-            badge.style.display = total > 0 ? 'flex' : 'none';
-        }
-
-        // MELHORIA: Adiciona o produto ao carrinho (localStorage) ao clicar no botão
-        document.getElementById('btn-adicionar-carrinho').addEventListener('click', function(e) {
-            e.preventDefault(); // impede de seguir o href="#"
-
-            // Produto fixo (único produto do site)
-            const produto = {
-                id: 1,
-                nome: 'Lazy Greenhouse',
-                preco: 185.00,
-                quantidade: 1,
-                imagem: 'https://www.image2url.com/r2/default/images/1776791311496-d3d72ae2-afbd-48a7-ac6d-7534884128c0.png'
-            };
-
-            // Pega carrinho atual ou cria vazio
-            let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-
-            // Verifica se o produto já está no carrinho
-            const indexExistente = carrinho.findIndex(item => item.id === produto.id);
-
-            if (indexExistente >= 0) {
-                // Se já existe, incrementa a quantidade
-                carrinho[indexExistente].quantidade += 1;
-            } else {
-                // Senão, adiciona novo item
-                carrinho.push(produto);
-            }
-
-            // Salva de volta no localStorage
-            localStorage.setItem('carrinho', JSON.stringify(carrinho));
-
-            // Atualiza o badge e redireciona para o carrinho
-            atualizarBadgeCarrinho();
-            window.location.href = 'carrinho.html';
-        });
-
-        atualizarBadgeCarrinho();
-    </script>
+    <script src="../js/script.js" defer></script>
 
 </body>
 </html>

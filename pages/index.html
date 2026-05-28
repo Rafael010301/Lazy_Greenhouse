@@ -21,7 +21,7 @@
                 <a href="login.html">Login</a>
                 <a href="cadastro.html">Cadastro</a>
                 <a href="Compras.html">Compras</a>
-                <a href="SobreNós.html">Sobre nós</a>
+                <a href="sobre_nós.html">Sobre nós</a>
             </div>
         </div>
         <div class="nav_right">
@@ -43,7 +43,7 @@
 <!-- MELHORIA: Banner hero de largura total adicionado ao início da página -->
 <section class="hero">
     <div class="hero_content">
-        <span class="hero_badge">✦ Automação Inteligente</span>
+        <span class="hero_badge">Automação Inteligente</span>
         <h1>Mais <span id="verdao">Verde</span><br>Menos Esforço</h1>
         <p class="hero_subtitle">Cuidar das suas plantas nunca foi tão fácil</p>
         <hr class="hero_divider">
@@ -265,19 +265,9 @@
 
     <!-- ===== JAVASCRIPT ===== -->
     <!-- MELHORIA: Script que lê o localStorage e atualiza o badge de quantidade do carrinho -->
-    <script>
-        function atualizarBadgeCarrinho() {
-            // Pega o carrinho salvo no navegador (ou array vazio se não existir)
-            const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-            const badge = document.getElementById('nav_cart_badge');
-            // Soma a quantidade total de todos os itens
-            const total = carrinho.reduce((soma, item) => soma + item.quantidade, 0);
-            badge.textContent = total;
-            // Mostra o badge só quando tem item, esconde quando está vazio
-            badge.style.display = total > 0 ? 'flex' : 'none';
-        }
-        atualizarBadgeCarrinho();
-    </script>
+    <script src="../css/script.js"></script>
+      
+    <script src="../js/script.js" defer></script>
 
 </body>
 </html>
