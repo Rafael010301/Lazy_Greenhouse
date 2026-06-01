@@ -850,52 +850,67 @@ nav {
    ========================================== */
 footer {
     background-color: #102C26;
-    padding: 60px 20px 30px; 
+    padding: 60px 50px 30px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Alterado de flex-start para center para alinhar o conteúdo interno corretamente no meio da tela */
 }
 
 footer .logo img {
     width: 90px;
     height: auto;
     margin-bottom: 40px;
-    display: block;
 }
 
 #footer_box {
     display: flex;
-    justify-content: space-around; 
-    align-items: flex-start;       
-    max-width: 1100px;             
-    margin: 0 auto 40px;               
-    padding: 20px 0;
+    justify-content: space-between; /* Ajustado de space-around para alinhar melhor com as extremidades */
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
     width: 100%;
+    margin-bottom: 40px;
     gap: 30px;
-    flex-wrap: wrap; 
+}
+
+footer hr {
+    width: 100%;
+    max-width: 1100px;
+    border: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin: 20px 0;
 }
 
 #footer_information1 { 
     color: white; 
-    min-width: 250px;
+    line-height: 1.6; /* Melhora a leitura do texto */
 }
 
 #footer_information2 ul {
+    list-style: none; /* Remove as bolinhas da lista */
+    padding: 0;       /* Removido o recuo padrão */
+    margin: 0;        /* Mudado de 20px para 0 para alinhar perfeitamente no topo */
     display: flex;
     flex-direction: column;
-    color: white;
-    list-style: none;
+    gap: 12px;        /* Substitui o padding individual por um espaçamento uniforme igual à coluna 3 */
 }
 
 #footer_information2 a {
     color: white;
     text-decoration: none;
-    padding: 4px 0;
-    display: inline-block;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+#footer_information2 a:hover {
+    color: #F2C94C; /* Adicionado hover para manter o padrão visual da coluna 3 */
 }
 
 #footer_information3 ul {
     list-style: none;
+    padding: 0; /* Garante que não haverá recuo na lista */
+    margin: 0;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -903,26 +918,18 @@ footer .logo img {
 
 #footer_information3 li {
     display: flex;
+    align-items: center; /* Alinha verticalmente os ícones com os textos */
     color: white;
     font-size: 14px;
     gap: 10px;
     transition: color 0.3s ease;
-    cursor: pointer; 
+    cursor: default; /* Correção: Removido o 'none' para o mouse não desaparecer */
 }
 
-#footer_information3 a { 
-    color: white; 
-    text-decoration: none; 
-}
-
+#footer_information3 a { color: white; text-decoration: none; }
 #footer_information3 li:hover,
-#footer_information3 a:hover { 
-    color: #F2C94C; 
-}
-
-#footer_information3 li:hover .footer-icon { 
-    transform: scale(1.2); 
-}
+#footer_information3 a:hover { color: #F2C94C; }
+#footer_information3 li:hover .footer-icon { transform: scale(1.2); }
 
 .footer-icon {
     width: 18px;
@@ -933,14 +940,12 @@ footer .logo img {
 #footer_style {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
-    max-width: 1100px;
+    max-width: 1200px; /* Ajustado para bater com o max-width do footer_box */
     margin: 20px auto 0;
     padding-top: 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
-    flex-wrap: wrap;
-    gap: 15px;
 }
 
 .footer_left p {
@@ -968,3 +973,4 @@ footer .logo img {
     transition: 0.2s;
 }
 
+#footer_style a:active { opacity: 0.5; }
