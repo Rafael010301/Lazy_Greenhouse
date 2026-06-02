@@ -121,9 +121,6 @@ if (btnCupom) {
     });
 }
 
-// ==========================================
-// FUNÇÕES DA PÁGINA DE CARRINHO
-// ==========================================
 function renderizarCarrinho() {
     const carrinho = lerCarrinho();
     const container = document.getElementById('carrinho-conteudo');
@@ -133,75 +130,115 @@ function renderizarCarrinho() {
 
     atualizarBadge(carrinho);
 
-    // CASO 1: O carrinho está vazio
     if (carrinho.length === 0) {
         subtituloEl.textContent = 'Seu carrinho está vazio.';
+
         container.innerHTML = `
             <div class="carrinho-vazio">
-                <h3>Nada por aqui ainda!</h3>
                 <p>Adicione produtos para continuar as compras.</p>
-                <a href="Compras.html" class="btn-ir-compras">Ver produtos</a>
+                <a href="Compras.html" class="btn-voltar-compras">
+                    Ver produtos
+                </a>
             </div>
         `;
         return;
     }
 
-    // CASO 2: O carrinho tem itens
     const totalItens = carrinho.reduce((s, i) => s + i.quantidade, 0);
     const totalValor = carrinho.reduce((s, i) => s + (i.preco * i.quantidade), 0);
-    
-    subtituloEl.textContent = totalItens + (totalItens === 1 ? ' item no carrinho' : ' itens no carrinho');
-    
-    let htmlItens = '<div class="carrinho-lista">';
-    
-    carrinho.forEach(function(item, index) {
-        htmlItens += `
-            <div class="carrinho-item">
-                <img src="${item.imagem}" alt="${item.nome}" class="item-img">
+
+    subtituloEl.textContent =
+        totalItens + (totalItens === 1
+            ? ' item no carrinho'
+            : ' itens no carrinho');
+
+    let html = `
+        <div class="carrinho-layout">
+
+            <div class="carrinho-itens-lista">
+    `;
+
+    carrinho.forEach((item, index) => {
+
+        html += `
+            <div class="carrinho-item-card">
+
                 <div class="item-info">
-                    <p class="item-nome">${item.nome}</p>
-                    <p class="item-desc">Estufa inteligente • Bivolt</p>
-                    <div class="item-quantidade">
-                        <button class="qty-btn" onclick="alterarQuantidade(${index}, -1)">−</button>
-                        <span class="qty-numero">${item.quantidade}</span>
-                        <button class="qty-btn" onclick="alterarQuantidade(${index}, +1)">+</button>
+                    <h3>${item.nome}</h3>
+
+                    <p class="item-preco-unitario">
+                        Estufa inteligente • Bivolt
+                    </p>
+
+                    <div class="item-quantidade-controle">
+
+                        <button onclick="alterarQuantidade(${index}, -1)">
+                            −
+                        </button>
+
+                        <span>${item.quantidade}</span>
+
+                        <button onclick="alterarQuantidade(${index}, 1)">
+                            +
+                        </button>
+
                     </div>
                 </div>
-                <div class="item-preco-col">
-                    <p class="item-preco">${formatarReais(item.preco * item.quantidade)}</p>
-                    <button class="btn-remover" onclick="removerItem(${index})">✕ Remover</button>
+
+                <div class="item-preco-total">
+                    ${formatarReais(item.preco * item.quantidade)}
                 </div>
+
+                <button
+                    class="btn-remover-item"
+                    onclick="removerItem(${index})">
+                    ✕
+                </button>
+
             </div>
         `;
     });
-    
-    htmlItens += '</div>';
 
-    // Gera o rodapé do resumo de valores
-    const htmlRodape = `
-        <div class="carrinho-rodape">
-            <div class="rodape-linha">
-                <span>Subtotal (${totalItens} ${totalItens === 1 ? 'item' : 'itens'})</span>
-                <span>${formatarReais(totalValor)}</span>
+    html += `
             </div>
-            <div class="rodape-linha">
-                <span>Frete</span>
-                <span style="color:#2e7d32;font-weight:600;">Grátis</span>
+
+            <div class="carrinho-resumo-card">
+
+                <h3>Resumo do Pedido</h3>
+
+                <div class="resumo-linha-card">
+                    <span>
+                        Subtotal (${totalItens} ${totalItens === 1 ? 'item' : 'itens'})
+                    </span>
+
+                    <span>${formatarReais(totalValor)}</span>
+                </div>
+
+                <div class="resumo-linha-card">
+                    <span>Frete</span>
+                    <span class="frete-gratis">Grátis</span>
+                </div>
+
+                <hr>
+
+                <div class="resumo-linha-card total">
+                    <span>Total</span>
+                    <span>${formatarReais(totalValor)}</span>
+                </div>
+
+                <a href="pagamento.html">
+                    <button class="btn-finalizar-compra">
+                        Finalizar Compra
+                    </button>
+                </a>
+
             </div>
-            <div class="rodape-total">
-                <span>Total</span>
-                <span>${formatarReais(totalValor)}</span>
-            </div>
-            <a href="pagamento.html" class="btn-checkout">Finalizar Compra →</a>
-            <a href="Compras.html" class="btn-continuar">← Continuar comprando</a>
-            <p class="seguro-msg">Compra 100% segura e criptografada</p>
+
         </div>
     `;
 
-    // Injeta a lista completa de itens + o rodapé financeiro na div do HTML
-    container.innerHTML = htmlItens + htmlRodape;
+    container.innerHTML = html;
 }
-
 function alterarQuantidade(index, delta) {
     let carrinho = lerCarrinho();
     carrinho[index].quantidade += delta;
@@ -292,40 +329,48 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// ==========================================
+// INICIALIZAÇÃO ÚNICA (Aguardando o DOM)
+// ==========================================
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Métodos de pagamento
+    // 1. Alternância dos Métodos de Pagamento
     const btnCartao   = document.getElementById('btn-cartao');
     const btnPix      = document.getElementById('btn-pix');
     const btnBoleto   = document.getElementById('btn-boleto');
+    
     const secaoCartao = document.getElementById('form-cartao');
     const secaoPix    = document.getElementById('pix');
     const secaoBoleto = document.getElementById('boleto');
 
     if (btnCartao && btnPix && btnBoleto) {
-        function resetarBotoes() {
+        function resetarMetodos() {
+            // Remove a classe ativa de todos os botões
             [btnCartao, btnPix, btnBoleto].forEach(b => b.classList.remove('metodo-ativo'));
+            // Adiciona a classe escondido em todas as seções (garanta que .escondido { display: none; } exista no CSS)
+            [secaoCartao, secaoPix, secaoBoleto].forEach(s => s?.classList.add('escondido'));
         }
+
         btnCartao.addEventListener('click', function () {
-            resetarBotoes(); btnCartao.classList.add('metodo-ativo');
+            resetarMetodos();
+            btnCartao.classList.add('metodo-ativo');
             secaoCartao?.classList.remove('escondido');
-            secaoPix?.classList.add('escondido');
-            secaoBoleto?.classList.add('escondido');
         });
+
         btnPix.addEventListener('click', function () {
-            resetarBotoes(); btnPix.classList.add('metodo-ativo');
+            resetarMetodos();
+            btnPix.classList.add('metodo-ativo');
             secaoPix?.classList.remove('escondido');
-            secaoCartao?.classList.add('escondido');
-            secaoBoleto?.classList.add('escondido');
         });
+
         btnBoleto.addEventListener('click', function () {
-            resetarBotoes(); btnBoleto.classList.add('metodo-ativo');
+            resetarMetodos();
+            btnBoleto.classList.add('metodo-ativo');
             secaoBoleto?.classList.remove('escondido');
-            secaoCartao?.classList.add('escondido');
-            secaoPix?.classList.add('escondido');
         });
     }
 
+    // 2. Botão Finalizar Compra
     const btnFinalizar = document.getElementById('btn-finalizar');
     if (btnFinalizar) {
         btnFinalizar.addEventListener('click', function () {
@@ -333,15 +378,17 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Inicializa carrinho OU resumo dependendo da página
+    // 3. Renderização Automática baseada na Página Atual
     if (document.getElementById('carrinho-conteudo')) {
         renderizarCarrinho();
     } else {
         atualizarResumo();
     }
-
 });
 
+// ==========================================
+// FUNÇÕES DE ADIÇÃO (Escopo Global)
+// ==========================================
 function adicionarAoCarrinho() {
     let carrinho = lerCarrinho();
     const index = carrinho.findIndex(item => item.id === 1);
@@ -361,9 +408,4 @@ function adicionarAoCarrinho() {
     salvarCarrinho(carrinho);
     alert("Produto adicionado ao carrinho!");
     window.location.href = "../pages/carrinho.html";
-}
-
-// Adicione isso no final do arquivo para disparar o gatilho na página do carrinho
-if (document.getElementById('carrinho-conteudo')) {
-    renderizarCarrinho();
 }

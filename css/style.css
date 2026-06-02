@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght=0,100..900;1,100..900&display=swap');
 
 /* ==========================================
    RESET GLOBAL
@@ -15,37 +15,30 @@ p { font-weight: 400; }
 
 /* ==========================================
    NAVBAR
-   MELHORIA: Reestruturada para ter logo+links
-   à esquerda e busca+carrinho à direita.
-   Agora é sticky (fica fixo ao rolar a página).
    ========================================== */
-nav{
+nav {
     display: flex;
     align-items: center;
-    justify-content: space-between; /* empurra esquerda e direita para as pontas */
+    justify-content: space-between;
     background-color: #102C26;
     padding: 10px 50px;
     position: sticky;
     top: 0;
-    z-index: 100; /* garante que fique sobre o conteúdo ao rolar */
+    z-index: 100;
 }
 
-/* Container do lado esquerdo (logo + links) */
 .nav_left {
     display: flex;
     align-items: center;
     gap: 16px;
 }
 
-/* Logo na navbar */
 #nav_logo_img {
     width: 38px;
     height: 38px;
     object-fit: contain;
 }
 
-/* Container do lado direito (busca + carrinho) */
-/* MELHORIA: Lado direito da nav com busca e carrinho */
 .nav_right {
     display: flex;
     align-items: center;
@@ -76,13 +69,6 @@ nav{
 }
 #nav_button a:active { transform: scale(0.95); }
 
-
-/* ==========================================
-   CARRINHO NA NAVBAR
-   MELHORIA: Ícone do carrinho agora funcional
-   (link para carrinho.html) e posicionado
-   corretamente à direita.
-   ========================================== */
 #nav_cart_link {
     position: relative;
     display: flex;
@@ -94,10 +80,8 @@ nav{
     width: 28px;
     height: 28px;
     cursor: pointer;
-    
 }
 
-/* Badge de contagem de itens no carrinho */
 #cart_badge {
     position: absolute;
     top: -8px;
@@ -109,23 +93,19 @@ nav{
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    display: none; /* escondido por padrão, JS mostra quando há itens */
+    display: none;
     align-items: center;
     justify-content: center;
 }
 
 /* ==========================================
    HERO SECTION
-   MELHORIA: Banner de largura total adicionado
-   ao início da página. Usa imagem de fundo com
-   overlay escuro para manter o texto legível.
    ========================================== */
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding: 80px 100px;
-    /* Overlay escuro sobre o fundo para manter contraste do texto */
     background-color: #102C26;
     background-image:
         linear-gradient(
@@ -140,7 +120,6 @@ nav{
     gap: 40px;
 }
 
-/* Bloco de texto do hero (esquerda) */
 .hero_content {
     display: flex;
     flex-direction: column;
@@ -148,7 +127,6 @@ nav{
     color: white;
 }
 
-/* Pílula/badge acima do título */
 .hero_badge {
     background-color: rgba(242, 201, 76, 0.12);
     border: 1px solid #F2C94C;
@@ -162,7 +140,6 @@ nav{
     letter-spacing: 0.5px;
 }
 
-/* Título principal do hero */
 .hero h1 {
     font-size: 62px;
     font-weight: 800;
@@ -171,7 +148,6 @@ nav{
     margin-bottom: 16px;
 }
 
-/* Subtítulo do hero */
 .hero_subtitle {
     font-size: 18px;
     font-weight: 400;
@@ -179,7 +155,6 @@ nav{
     margin-bottom: 28px;
 }
 
-/* Divisor decorativo */
 .hero_divider {
     border: none;
     border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -187,14 +162,12 @@ nav{
     width: 280px;
 }
 
-/* Container dos botões CTA */
 .hero_buttons {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
 }
 
-/* Botão primário: amarelo sólido */
 .hero_btn_primary {
     height: 50px;
     padding: 0 32px;
@@ -214,7 +187,6 @@ nav{
     color: #F2C94C;
 }
 
-/* Botão secundário: contorno branco */
 .hero_btn_secondary {
     height: 50px;
     padding: 0 32px;
@@ -234,7 +206,6 @@ nav{
     background-color: rgba(255, 255, 255, 0.08);
 }
 
-/* Imagem do produto no hero (direita) */
 .hero_image {
     flex: 1;
     display: flex;
@@ -246,7 +217,6 @@ nav{
     max-width: 400px;
     height: auto;
     object-fit: contain;
-    /* Sombra suave para destacar o produto */
     filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
 }
 
@@ -277,7 +247,7 @@ nav{
 }
 
 /* ==========================================
-   REVIEWS MARQUEE (EFEITO ROLAGEM INFINITA)
+   REVIEWS MARQUEE (ROLAGEM INFINITA)
    ========================================== */
 .reviews-section {
     padding: 80px 0;
@@ -303,11 +273,10 @@ nav{
     gap: 24px;
     width: 100%;
     max-width: 1200px;
-    height: 650px; /* Altura controlada para o corte do efeito */
+    height: 650px;
     position: relative;
     overflow: hidden;
     padding: 10px;
-    /* Efeito moderno de sumiço (fade) no topo e na base */
     mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
 }
@@ -316,25 +285,16 @@ nav{
     display: flex;
     flex-direction: column;
     gap: 24px;
-    height: max-content; /* Garante o cálculo correto da altura dos cards */
+    height: max-content;
 }
 
-/* Colunas 1 e 3 sobem */
-.review-col-up {
-    animation: scrollUp 30s linear infinite;
-}
+.review-col-up { animation: scrollUp 30s linear infinite; }
+.review-col-down { animation: scrollDown 30s linear infinite; }
 
-/* Coluna 2 desce */
-.review-col-down {
-    animation: scrollDown 30s linear infinite;
-}
-
-/* Pausa a animação ao passar o mouse para facilitar a leitura */
 .reviews-container:hover .review-col {
     animation-play-state: paused;
 }
 
-/* Animações calculadas para loop perfeito */
 @keyframes scrollUp {
     0% { transform: translateY(0); }
     100% { transform: translateY(-50%); }
@@ -345,7 +305,6 @@ nav{
     100% { transform: translateY(0); }
 }
 
-/* CARD DE AVALIAÇÃO */
 .review-card {
     background: #ffffff;
     padding: 24px;
@@ -356,7 +315,7 @@ nav{
 }
 
 .review-card:hover {
-    transform: translateY(-4px); /* Efeito de elevação mais natural */
+    transform: translateY(-4px);
     border-color: #88D66B;
     box-shadow: 0 12px 32px rgba(136, 214, 107, 0.15);
 }
@@ -395,11 +354,8 @@ nav{
     color: #888888;
 }
 
-
 /* ==========================================
    REIMAGINED BOTTOM SECTION
-   MELHORIA: Seção final premium com imagem
-   de estilo de vida e CTA impactante.
    ========================================== */
 .reimagined-bottom {
     position: relative;
@@ -408,7 +364,7 @@ nav{
     background-image: url('../img/futuristic_greenhouse.png');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Efeito parallax suave */
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -465,9 +421,8 @@ nav{
     box-shadow: 0 15px 30px rgba(0,0,0,0.3);
 }
 
-
 /* ==========================================
-   FOOTER (RODAPÉ DA PÁGINA GLOBAL)
+   FOOTER (RODAPÉ GLOBAL)
    ========================================== */
 footer {
     background-color: #102C26;
@@ -596,14 +551,8 @@ footer hr {
 
 #footer_style a:active { opacity: 0.5; }
 /* ==========================================
-   SOBRE NÓS (preservado do original)
+   SOBRE NÓS
    ========================================== */
-.logo img {
-    display: flex;
-    justify-content: flex-start;
-    height: fit-content;
-    width: fit-content;
-}
 .sobre-header {
     display: flex;
     flex-direction: column;
@@ -647,9 +596,7 @@ footer hr {
 }
 
 /* ==========================================
-   COMPRAS — estilos do produto
-   (preservados do original, usados em
-   Compras.html que referencia style.css)
+   COMPRAS — DETALHES DO PRODUTO
    ========================================== */
 .product-page { 
     padding: 40px 60px; max-width: 1200px; margin: 0 auto;
@@ -781,8 +728,11 @@ footer hr {
 .sustainability-card h3 { color: #102C26; margin-bottom: 8px; }
 .sustainability-card p { color: #555; font-size: 14px; line-height: 1.6; }
 
-
+/* ==========================================
+   MEDIA QUERIES (RESPONSIVIDADE 481px a 768px)
+   ========================================== */
 @media (min-width: 481px) and (max-width: 768px) {
+    /* Ajustes Gerais e Index */
     .hero {
         flex-direction: column;
         text-align: center;
@@ -812,28 +762,27 @@ footer hr {
     .footer_right {
         align-items: center;
     }
-}
 
-@media (min-width: 481px) and (max-width: 768px) {
+    /* Ajustes da Página de Compras */
     .product-page {
-        padding: 20px 16px; /* Padding ideal e enxuto para telas pequenas */
+        padding: 20px 16px;
     }
 
     .product-main {
-        flex-direction: column; /* Empilha a foto e as informações */
+        flex-direction: column;
         gap: 24px;
         margin-bottom: 40px;
     }
 
     .product-gallery {
-        width: 100%; /* Faz a galeria ocupar toda a largura disponível */
+        width: 100%;
         display: flex;
         justify-content: center;
     }
 
     .product-gallery .main-img {
-        width: 100%;       /* A imagem agora é fluida e se adapta ao celular */
-        max-width: 450px;  /* Impede que a imagem fique gigante em celulares muito largos */
+        width: 100%;
+        max-width: 450px;
         height: auto;
     }
 
@@ -842,30 +791,28 @@ footer hr {
     }
 
     .product-details h1 {
-        font-size: 26px; /* Título mais harmônico para ler no celular */
+        font-size: 26px;
         margin: 10px 0;
     }
 
     .price-current {
-        font-size: 28px; /* Reduz ligeiramente o preço */
+        font-size: 28px;
     }
 
-    /* Botões de Ação na Vertical */
     .action-buttons {
-        flex-direction: column; /* Coloca um botão embaixo do outro para facilitar o clique com o polegar */
+        flex-direction: column;
         gap: 12px;
         margin-bottom: 24px;
     }
 
     .btn-buy, .btn-cart {
-        width: 100%; /* Força os botões a ocuparem toda a largura da tela */
-        padding: 16px; /* Aumenta a área de toque para ficar mais confortável no celular */
+        width: 100%;
+        padding: 16px;
         box-sizing: border-box;
     }
 
-    /* Seção Extra (Gerenciamento e Card de Sustentabilidade) */
     .product-extra {
-        flex-direction: column; /* Empilha os blocos inferiores */
+        flex-direction: column;
         gap: 32px;
     }
 
@@ -874,7 +821,7 @@ footer hr {
     }
 
     .sustainability-card {
-        max-width: 100%; /* O card de sustentabilidade expande para preencher a largura total */
+        max-width: 100%;
         width: 100%;
         box-sizing: border-box;
     }
